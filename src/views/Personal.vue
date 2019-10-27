@@ -1,7 +1,7 @@
 <template>
   <div class="personal">
     <Header msg="个人中心" right="<span class='go-serve'> <span>" />
-    <ul class="head-portrait">
+    <ul class="head-portrait" @click="goRouter('/info')">
       <div class="head"></div>
       <ul>
         <li>彭于晏</li>
@@ -77,7 +77,10 @@ export default {
     })
   },
   methods: {
-    ...mapActions(["runName"])
+    ...mapActions(["runName"]),
+    goRouter(path){
+       this.$router.push({ path: path })
+    }
   }
 };
 </script>

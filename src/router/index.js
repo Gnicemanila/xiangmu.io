@@ -7,6 +7,7 @@ import More from '../views/More.vue'
 import Personal from '../views/Personal.vue'
 import Play from '../views/Play.vue'
 import Chat from '../views/Chat.vue'
+import Info from '../views/personal/Info.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -34,6 +35,11 @@ const routes = [
     path: '/personal',
     name: 'personal',
     component: Personal
+  },
+  {
+    path: '/info',
+    name: 'info',
+    component: Info
   },
   {
     path: '/play',
