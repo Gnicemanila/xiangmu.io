@@ -3,13 +3,13 @@
     <Header
       left="会员"
       msg="武汉交友计划"
-      right="<span class='go-serve'> <span>"
+      serve="true"
       v-show="sign"
     />
     <Header
       left="游客"
       msg="武汉交友计划"
-      right="<span class='go-serve'> <span>"
+      serve="true"
       v-show="!sign"
     />
     <div class="swipe">

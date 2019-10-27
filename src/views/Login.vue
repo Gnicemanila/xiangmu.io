@@ -1,6 +1,6 @@
 <template>
   <div class="login">
-    <Header msg="登录" left="<span class='go-back'> <span>" right="<span class='go-serve'> <span>" />
+    <Header msg="登录" goback="true" serve="true"/>
     <ul class="form-info">
       <li>
         <span class="form-name"></span>

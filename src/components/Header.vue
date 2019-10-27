@@ -2,15 +2,13 @@
   <div class="header">
     <span class="left" >
       <span @click="goBack()" class='go-back' v-if="goback"></span>
-      <span  v-if="left">
-       {{left}}
-      </span>
+      <span  v-if="left">{{left}}</span>
     </span>
     <span class="tittle">
       <span>{{msg}}</span>
     </span>
     <span class="right">
-      <span v-if="right" v-html="right" @click="goServe()"></span>
+      <i  @click="goServe()" class="go-serve" v-show="serve"> </i>
     </span>
   </div>
 </template>
@@ -18,7 +16,7 @@
 <script>
 export default {
   name: "Header",
-  props: ["left", "msg", "right",'goback'],
+  props: ["left", "msg", "serve",'goback'],
   methods: {
     goBack() {
      this.$router.history.go(-1);
