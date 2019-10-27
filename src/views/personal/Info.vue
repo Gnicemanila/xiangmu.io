@@ -5,35 +5,36 @@
       <span class="head"></span>
       <span class="name">欢迎您,彭于晏</span>
     </div>
-    <ul class="details">
-      <li>
-        <span class="info-fun">真实姓名</span>
-        <span class="write fr">未填写</span>
+    <ul class="default-deatil">
+      <li class="have-bottom">
+        <span class="info-fun">真实姓名 <span class="write fr">未填写</span></span>
         <i class="icon-next fr"></i>
       </li>
-      <li>
-        <span class="info-fun">手机号码</span>
-        <span class="write fr">未填写</span>
+      <li  class="have-bottom">
+        <span class="info-fun">手机号码 <span class="write fr">未填写</span></span>
+       
         <i class="icon-next fr"></i>
       </li>
-      <li>
-        <span class="info-fun">性别</span>
-        <span class="write fr">未填写</span>
+      <li  class="have-bottom">
+        <span class="info-fun">性别 <span class="write fr">未填写</span></span>
+       
         <i class="icon-next fr"></i>
       </li>
-      <li>
-        <span class="info-fun">银行卡号</span>
-        <span class="write fr">未填写</span>
+      <li  class="have-bottom">
+        <span class="info-fun">银行卡号 <span class="write fr">未填写</span></span>
+       
         <i class="icon-next fr"></i>
       </li>
-      <li>
-        <span class="info-fun">修改密码</span>
-        <span class="write fr">未填写</span>
+      <li  class="have-bottom">
+        <span class="info-fun">修改密码
+             <span class="write fr">未填写</span>
+        </span>
+       
         <i class="icon-next fr"></i>
       </li>
     </ul>
-    <button class="logout">
-        退出当前账号
+    <button class="logout" >
+        <router-link to="/login">退出当前账号</router-link>
     </button>
   </div>
 </template>
@@ -52,7 +53,7 @@ export default {
     })
   },
   methods: {
-    ...mapActions(["runName"])
+    ...mapActions(["runName"]),
   }
 };
 </script>
@@ -81,32 +82,6 @@ export default {
       margin: auto;
     }
   }
-  .details {
-    background: #ffffff;
-    li {
-      padding: 0 0.23rem 0 0.3rem;
-      height: 0.88rem;
-      border-bottom: 2px solid rgba(245, 245, 245, 1);
-      align-items: center;
-      display: flex;
-      .info-fun {
-        display: inline-block;
-        width: 100%;
-        text-align: left;
-        font-size: 0.3rem;
-        font-weight: 500;
-        color: rgba(51, 51, 51, 1);
-      }
-      .write {
-        text-align: right;
-        width: 1.16rem;
-        margin-right: 0.11rem;
-        font-size: 0.28rem;
-        font-weight: 500;
-        color: rgba(153, 153, 153, 1);
-      }
-    }
-  }
   .logout{
         width:5.8rem;
         height:.88rem;
@@ -114,7 +89,9 @@ export default {
         border-radius:10px;
         font-size:.3rem;
 font-weight:500;
-color:rgba(255,255,255,1);
+    a{
+        color:rgba(255,255,255,1);
+    }
 margin: .80rem .85rem 0 .85rem;
   }
 }
