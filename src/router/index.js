@@ -8,6 +8,9 @@ import Personal from '../views/Personal.vue'
 import Play from '../views/Play.vue'
 import Chat from '../views/Chat.vue'
 import Info from '../views/personal/Info.vue'
+import AboutMe from '../views/personal/AboutMe.vue'
+import Help from '../views/personal/Help.vue'
+import ShareMe from '../views/personal/ShareMe.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -40,6 +43,21 @@ const routes = [
     path: '/info',
     name: 'info',
     component: Info
+  },
+  {
+    path: '/aboutMe',
+    name: 'aboutMe',
+    component: AboutMe
+  },
+  {
+    path: '/help',
+    name: 'help',
+    component: Help
+  },
+  {
+    path: '/shareMe',
+    name: 'shareMe',
+    component: ShareMe
   },
   {
     path: '/play',
