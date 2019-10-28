@@ -8,7 +8,7 @@
       <span>{{msg}}</span>
     </span>
     <span class="right">
-      <i  @click="goServe()" class="go-serve" v-show="serve"> </i>
+      <i  @click="goBack('/serve')" class="go-serve" v-if="serve"> </i>
       <span  v-if="right" v-html="right"></span>
     </span>
   </div>
@@ -19,11 +19,8 @@ export default {
   name: "Header",
   props: ["left","right", "msg", "serve",'goback'],
   methods: {
-    goBack() {
-     this.$router.history.go(-1);
-    },
-    goServe() {
-      console.log("goServe");
+    goBack(path) {
+      path?this.$router.push({ path: path }):this.$router.history.go(-1);
     }
   }
 };

@@ -55,7 +55,7 @@
     width: .48rem;
     height: .48rem;
     background: url('./assets/imgs/open_clock.png') no-repeat;
-    background-size: 100%;
+    background-size:.48rem .48rem; 
   }
   //手机
   .form-phone{
@@ -157,8 +157,16 @@
     float: left;
 }
 
-.default-deatil{
 
+.logo{
+  display: inline-block;
+  width: 1.2rem;
+  height: 1.2rem;
+   background: url("./assets/imgs/play/logo.png") no-repeat;
+  background-size: 100%;
+}
+//默认的ul 样式复用
+.default-deatil{
   li {
     background: #ffffff;
     padding: 0 0.23rem 0 0.3rem;
@@ -180,7 +188,6 @@
       color: rgba(51, 51, 51, 1);
       .write {
         text-align: right;
-        // width: 5.16rem;
         margin-right: 0.11rem;
         font-size: 0.28rem;
         font-weight: 500;

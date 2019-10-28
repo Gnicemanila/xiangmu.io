@@ -2,7 +2,7 @@
   <div class="info">
     <Header goback="true" msg="个人信息" serve="true" />
     <div class="picture">
-      <span class="head"></span>
+      <span class="head logo"></span>
       <span class="name">欢迎您,彭于晏</span>
     </div>
     <ul class="default-deatil">
@@ -69,7 +69,6 @@ export default {
       display: block;
       width: 1.2rem;
       height: 1.2rem;
-      background: rgba(188, 188, 188, 1);
       border-radius: 50%;
       margin: auto;
     }

@@ -25,7 +25,7 @@
         <div class="form-input">
           <van-field v-model="phone" placeholder="请输入11位手机号码" type="number" />
         </div>
-        <span class="get-code fr" @click="getCode()">获取验证码</span>
+        <span class="get-code fr" @click="getCode()">{{verificationCode?verificationCode:'获取验证码'}}</span>
       </li>
       <li>
         <span class="form-message"></span>
@@ -65,7 +65,8 @@ export default {
       phone: "",
       message:"",
       invitation:"",
-      have_invitation:false
+      have_invitation:false,
+      verificationCode:"",
     };
   },
   components: {
@@ -78,6 +79,7 @@ export default {
   },
   methods: {
       getCode(){
+        this.verificationCode=985236
           console.log("===获取验证码")
       },
       haveInvitation(){

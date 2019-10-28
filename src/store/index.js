@@ -7,16 +7,17 @@ export default new Vuex.Store({
   state: {
     sign:false,
     isBoss:false,
-    play:"王者农药"
+    play:"王者农药",
+    user:null,//保存用户信息
   },
   mutations: {
-    changeName(state,sign){
-      state.sign=sign
+    changeName(state,user){
+      state.user=user
     }
   },
   actions: {
-    runName(改变,sign){
-      改变.commit("changeName",sign)
+    runName(改变,user){
+      改变.commit("changeName",user)
     }
   },
   modules: {

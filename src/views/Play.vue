@@ -1,30 +1,65 @@
 <template>
   <div class="play">
-    <Header msg="活动"  />
-    <h1>{{name}}喜欢玩王者荣耀</h1>
-    <h2 @click="runName('李力宏')">下一位</h2>
-    <Footer message="活动"/>
+    <Header msg="活动" />
+    <ul class="info">
+      <li class="have-bottom play1"></li>
+      <li class="have-bottom play2"></li>
+      <li class="have-bottom play3"></li>
+      <li class="have-bottom play4"></li>
+    </ul>
+    <Footer message="活动" />
   </div>
-  
 </template>
 
 <script>
-import {mapState, mapActions} from 'vuex'
-import Footer from '@/components/Footer';
+import { mapState, mapActions } from "vuex";
+import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 export default {
-  name: 'Play',
+  name: "Play",
   components: {
     Footer,
     Header
   },
-  computed:{
+  computed: {
     ...mapState({
-      name:state=>state.name
+      name: state => state.name
     })
   },
-  methods:{
-    ...mapActions(['runName'])
+  methods: {
+    ...mapActions(["runName"])
+  }
+};
+</script>
+<style lang="less">
+.play {
+  .info {
+    background: #ffffff;
+    padding: 0.16rem 0;
+    overflow: scroll;
+    li {
+      width: 7.5rem;
+      height: 2.58rem;
+      &.have-bottom {
+        margin-bottom: 0.15rem;
+      }
+      &.play1 {
+        background: url("../assets/imgs/play/play1s.png") no-repeat;
+        background-size: 100%;
+      }
+      &.play2 {
+        background: url("../assets/imgs/play/play2s.png") no-repeat;
+        background-size: 100%;
+      }
+      &.play3 {
+        background: url("../assets/imgs/play/play3s.png") no-repeat;
+        background-size: 100%;
+      }
+      &.play4 {
+        background: url("../assets/imgs/play/play4s.png") no-repeat;
+        background-size: 100%;
+      }
+    }
   }
 }
-</script>
+</style>

@@ -1,5 +1,4 @@
 import Axios from 'axios'
-import { rejects } from 'assert'
 
 export default function Api(path,data={},type="get"){
     return new Promise(function(resolve,reject){
@@ -12,7 +11,7 @@ export default function Api(path,data={},type="get"){
         promise.then((res)=>{
             resolve(res.data)
         }).catch((error)=>{
-            rejects(error)
+            reject(error)
         })
     })
 }

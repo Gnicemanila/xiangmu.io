@@ -2,7 +2,7 @@
   <div class="about-me">
     <Header goback="true" msg="个人信息" serve="true" />
     <div class="picture-version">
-      <span class="picture"></span>
+      <span class="picture logo"></span>
       <span class="version">当前版本V1.0.0</span>
     </div>
     <ul class="default-deatil">
@@ -62,7 +62,7 @@ export default {
     width: 1.2rem;
     height: 1.2rem;
     margin: auto;
-    background: #ddd;
+
     }
   }
 }

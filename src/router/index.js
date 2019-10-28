@@ -1,48 +1,57 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
-import Login from '../views/Login.vue'
-import Register from '../views/Register.vue'
-import More from '../views/More.vue'
-import Personal from '../views/Personal.vue'
+//更多关于个人中心的'../views/personal/Personal.vue'
+import Info from '../views/personal/Info.vue'
+//主功能
 import Play from '../views/Play.vue'
 import Chat from '../views/Chat.vue'
-import Info from '../views/personal/Info.vue'
-import AboutMe from '../views/personal/AboutMe.vue'
-import Help from '../views/personal/Help.vue'
-import ShareMe from '../views/personal/ShareMe.vue'
+//更多关于系统的
+import More from '../views/More.vue'
+import AboutMe from '../views/more/AboutMe.vue'
+import Help from '../views/more/Help.vue'
+import ShareMe from '../views/more/ShareMe.vue'
+import Opinion from '../views/more/Opinion.vue'
+import Myopinion from '../views/more/Myopinion.vue'
+//在线客服
+import Serve from '../views/Serve.vue'
+
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/home',
     name: 'home',
-    component: Home
+    component: () => import(/* webpackChunkName: "home" */ '../views/Home.vue')
   },
   {
     path: '/login',
     name: 'login',
-    component: Login
+    component: () => import(/* webpackChunkName: "login" */ '../views/Login.vue')
   },
   {
     path: '/register',
     name: 'register',
-    component: Register
-  },
-  {
-    path: '/more',
-    name: 'more',
-    component: More
+    component: () => import(/* webpackChunkName: "register" */ '../views/Register.vue')
   },
   {
     path: '/personal',
     name: 'personal',
-    component: Personal
+    component: () => import(/* webpackChunkName: "personal" */ '../views/Personal.vue')
   },
   {
     path: '/info',
     name: 'info',
     component: Info
+  },
+  {
+    path:'/serve',
+    name:'serve',
+    component:Serve
+  },
+  {
+    path: '/more',
+    name: 'more',
+    component: More
   },
   {
     path: '/aboutMe',
@@ -58,6 +67,16 @@ const routes = [
     path: '/shareMe',
     name: 'shareMe',
     component: ShareMe
+  },
+  {
+    path: '/opinion',
+    name: 'opinion',
+    component: Opinion
+  },
+  {
+    path: '/myopinion',
+    name: 'myopinion',
+    component: Myopinion
   },
   {
     path: '/play',

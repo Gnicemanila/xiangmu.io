@@ -14,7 +14,7 @@
         <span class="info-fun">帮助中心</span>
         <i class="icon-next fr"></i>
       </li>
-      <li class="have-bottom have-margin">
+      <li class="have-bottom have-margin" @click="goRouter('/opinion')">
         <span class="info-fun">意见反馈</span>
         <i class="icon-next fr"></i>
       </li>

@@ -4,13 +4,13 @@
       left="会员"
       msg="武汉交友计划"
       serve="true"
-      v-show="sign"
+      v-if="user"
     />
     <Header
       left="游客"
       msg="武汉交友计划"
       serve="true"
-      v-show="!sign"
+      v-if="!user"
     />
     <div class="swipe">
       <van-swipe :autoplay="3000" indicator-color="white" style="height: 100%;width:100%">
@@ -61,7 +61,7 @@
         </li>
       </ul>
     </div>
-    <div class="tourist" v-show="!sign">
+    <div class="tourist" v-if="!user">
       <button>
         <router-link to="/login">登录</router-link>
       </button>
@@ -69,7 +69,7 @@
         <router-link to="/register">注册</router-link>
       </button>
     </div>
-    <div  v-show="sign">
+    <div  v-if="user">
     <FansLike/>
     </div>
     <Footer message="首页" />
@@ -97,7 +97,7 @@ export default {
   },
   computed: {
     ...mapState({
-      sign: state => state.sign
+      user: state => state.user
     })
   }
 };

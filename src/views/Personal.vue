@@ -1,8 +1,8 @@
 <template>
   <div class="personal">
-    <Header msg="个人中心" right="<span class='go-serve'> <span>" />
+    <Header msg="个人中心" serve="true"/>
     <ul class="head-portrait" @click="goRouter('/info')">
-      <div class="head"></div>
+      <div class="head logo"></div>
       <ul>
         <li>彭于晏</li>
         <li>
@@ -95,7 +95,6 @@ export default {
       display: inline-block;
       width: 1.2rem;
       height: 1.2rem;
-      background: rgba(188, 188, 188, 1);
       border-radius: 50%;
     }
     ul {
