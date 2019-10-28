@@ -83,7 +83,8 @@ export default {
       let res = await this.$http("/getlogin",parameter,'post');
       if(res.status==200){
         this.runName(res.data)
-        console.log(res.data)
+        this.$router.push({ path: '/home' })
+        // console.log(res.data)
       };
     },
     async getcode(){
