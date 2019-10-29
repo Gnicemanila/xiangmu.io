@@ -7,7 +7,7 @@ import Vant from 'vant'
 import 'vant/lib/index.css';
 import './assets/style/reset.less'
 import './variables.less';
-import Api from './Api/Api'
+import Api from './api/api'
 Vue.prototype.$http=Api
 import './mock/index'
 Vue.use(Vant)
