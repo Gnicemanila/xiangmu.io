@@ -23,7 +23,7 @@ module.exports = {
     // }
   }
   ,
-  productionSourceMap:false,
+  productionSourceMap:false,//是否打包出来map文件 去优化当前js
   css: {
     loaderOptions: {
       // 给 less-loader 传递 Less.js 相关选项
