@@ -1,0 +1,15 @@
+<!DOCTYPE html><html lang=en><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><!--[if IE]><link rel="icon" href="xiangmu/favicon.ico"><![endif]--><title>xiangmu</title><script>//JS监听浏览器文字大小代码
+    "use strict";
+    (function (doc, win) {
+        var docEl = doc.documentElement,
+            resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+            recalc = function () {
+                var clientWidth = docEl.clientWidth;
+                if (!clientWidth) return;
+                docEl.style.fontSize = clientWidth / 7.5 + 'px';
+            };
+
+        if (!doc.addEventListener) return;
+        win.addEventListener(resizeEvt, recalc, false);
+        doc.addEventListener('DOMContentLoaded', recalc, false);
+    })(document, window);</script><link href=xiangmu/static/css/app.32504ce5.css rel=preload as=style><link href=xiangmu/static/css/chunk-vendors.14aaf9bb.css rel=preload as=style><link href=xiangmu/static/js/app.312d1cb0.js rel=preload as=script><link href=xiangmu/static/js/chunk-vendors.a7156ba3.js rel=preload as=script><link href=xiangmu/static/css/chunk-vendors.14aaf9bb.css rel=stylesheet><link href=xiangmu/static/css/app.32504ce5.css rel=stylesheet><link rel=icon type=image/png sizes=32x32 href=xiangmu/img/icons/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=xiangmu/img/icons/favicon-16x16.png><link rel=manifest href=xiangmu/manifest.json><meta name=theme-color content=#4DBA87><meta name=apple-mobile-web-app-capable content=no><meta name=apple-mobile-web-app-status-bar-style content=default><meta name=apple-mobile-web-app-title content=xiangmu><link rel=apple-touch-icon href=xiangmu/img/icons/apple-touch-icon-152x152.png><link rel=mask-icon href=xiangmu/img/icons/safari-pinned-tab.svg color=#4DBA87><meta name=msapplication-TileImage content=xiangmu/img/icons/msapplication-icon-144x144.png><meta name=msapplication-TileColor content=#000000></head><body><noscript><strong>We're sorry but xiangmu doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript><div id=app></div><script src=xiangmu/static/js/chunk-vendors.a7156ba3.js></script><script src=xiangmu/static/js/app.312d1cb0.js></script></body></html>

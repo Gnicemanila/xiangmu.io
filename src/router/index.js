@@ -5,6 +5,10 @@ import Info from '../views/personal/Info.vue'
 //主功能
 import Play from '../views/Play.vue'
 import Chat from '../views/Chat.vue'
+import Home from '../views/Home.vue'
+import Login from '../views/Login.vue'
+import Register from '../views/Register.vue'
+import Personal from '../views/Personal.vue'
 //更多关于系统的
 import More from '../views/More.vue'
 import AboutMe from '../views/more/AboutMe.vue'
@@ -14,29 +18,30 @@ import Opinion from '../views/more/Opinion.vue'
 import Myopinion from '../views/more/Myopinion.vue'
 //在线客服
 import Serve from '../views/Serve.vue'
-
+//
+import About from '../views/About.vue'
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/home',
     name: 'home',
-    component: () => import(/* webpackChunkName: "home" */ '../views/Home.vue')
+    component: Home
   },
   {
     path: '/login',
     name: 'login',
-    component: () => import(/* webpackChunkName: "login" */ '../views/Login.vue')
+    component: Login
   },
   {
     path: '/register',
     name: 'register',
-    component: () => import(/* webpackChunkName: "register" */ '../views/Register.vue')
+    component:Register
   },
   {
     path: '/personal',
     name: 'personal',
-    component: () => import(/* webpackChunkName: "personal" */ '../views/Personal.vue')
+    component: Personal
   },
   {
     path: '/info',
@@ -94,16 +99,16 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    component: About
   },{
     path:'/',
     redirect: '/home'
   }
 ]
-console.log(process.env)
+console.log( process.env.BASE_URL)
 const router = new VueRouter({
   mode: 'history',
-  base: process.env.BASE_URL,
+  base: process.env.PUBLIC_PATH,
   routes
 })
 

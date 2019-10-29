@@ -1,19 +1,10 @@
 <template>
   <div class="home">
-    <Header
-      left="会员"
-      msg="武汉交友计划"
-      serve="true"
-      v-if="user"
-    />
-    <Header
-      left="游客"
-      msg="武汉交友计划"
-      serve="true"
-      v-if="!user"
-    />
-    <div class="swipe">
-      <van-swipe :autoplay="3000" indicator-color="white" style="height: 100%;width:100%">
+    <Header left="会员" msg="武汉交友计划" serve="true" v-if="user" />
+    <Header left="游客" msg="武汉交友计划" serve="true" v-if="!user" />
+    <div class="home-body">
+          <div class="swipe">
+        <van-swipe :autoplay="3000">
         <van-swipe-item>
           <img :src="imgUrl" />
         </van-swipe-item>
@@ -61,6 +52,35 @@
         </li>
       </ul>
     </div>
+    <div class="video-content">
+      <div class="video-swipe">
+        <div class="tittle">
+            <div class="head-message">
+                武汉头条
+            </div>
+            <ul class="content">
+              <li>
+                江汉路出现大面积采光江汉路出现大面积采光江汉路出现大面积采光江汉路出现大面积采光江汉路出现大面积采光江汉路出现大面积采光
+              </li>
+              <li>江汉路出现大面积采光</li>
+            </ul>
+        </div>
+         <van-swipe :loop="false" :width="300">
+          <van-swipe-item>
+            <img :src="video1" />
+          </van-swipe-item>
+          <van-swipe-item>
+            <img :src="video2" />
+          </van-swipe-item>
+          <van-swipe-item>
+            <img :src="video3" />
+          </van-swipe-item>
+          <van-swipe-item>
+            <img :src="video4" />
+          </van-swipe-item>
+        </van-swipe>
+      </div>
+    </div>
     <div class="tourist" v-if="!user">
       <button>
         <router-link to="/login">登录</router-link>
@@ -69,8 +89,9 @@
         <router-link to="/register">注册</router-link>
       </button>
     </div>
-    <div  v-if="user">
-    <FansLike/>
+    <div v-if="user">
+      <FansLike />
+    </div>
     </div>
     <Footer message="首页" />
   </div>
@@ -92,7 +113,11 @@ export default {
   data() {
     return {
       imgUrl: require("../assets/imgs/home/banner1.png"),
-      imgUrl2: require("../assets/imgs/home/banner2.png")
+      imgUrl2: require("../assets/imgs/home/banner2.png"),
+      video1: require("../assets/imgs/home/video1.png"),
+      video2: require("../assets/imgs/home/video2.png"),
+      video3: require("../assets/imgs/home/video3.png"),
+      video4: require("../assets/imgs/home/video4.png")
     };
   },
   computed: {
@@ -105,6 +130,7 @@ export default {
 
 <style lang="less">
 .home {
+  padding-bottom: 0.98rem;
   .info {
     margin-left: 0.19rem;
   }
@@ -202,6 +228,48 @@ export default {
       background: #ffffff;
       &:first-child {
         border-bottom: 2px solid rgba(245, 245, 245, 1);
+      }
+    }
+  }
+  .video-content {
+    margin-top: 0.16rem;
+    height: 4.26rem;
+    background: #ffffff;
+    .tittle{
+      height: 1.26rem;
+      display: flex;
+      padding: .3rem .3rem .29rem 0.3rem;
+        align-items: center;
+      .head-message{
+        width: 1.57rem;
+        display: inline-block;
+            border-right: 1px solid rgba(215,215,215,1);
+            text-align: left;
+            font-size:.36rem;
+        font-weight:800;
+        color:rgba(51,51,51,1);
+      }
+      .content{
+        display: inline-block;
+        width: 5.31rem;
+          padding-left: .16rem;
+        li{
+              text-align: left;
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              &:first-child{
+                border-bottom:2px solid rgba(245,245,245,1);
+              }
+        }
+      }
+    }
+    .video-swipe {
+      height: 3rem;
+      img {
+        width: 5rem;
+        height: 3rem;
+        border-radius: 0.05rem;
       }
     }
   }

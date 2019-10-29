@@ -1,7 +1,8 @@
 module.exports = {
    //webpack配置
-  // baseUrl: process.env.NODE_ENV === 'production'?'https://gnicemanila.github.io/':'https://gnicemanila.github.io/',// 部署应用包时的基本 URL
+  publicPath: process.env.NODE_ENV === 'production'?'./xiangmu/':'/',// 部署应用包时的基本 URL
   assetsDir: 'static',
+  outputDir:'docs',
   configureWebpack: {
     //关闭 webpack 的性能提示
     performance: {
