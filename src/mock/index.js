@@ -21,15 +21,25 @@ Mock.mock('/getcode','get',{
 })
 
 Mock.mock('/getlogin','post',function(opttion){
-    console.log(opttion)
+    let user = JSON.parse(opttion.body)
     return {
         status:200,
         message:"登录成功",
         data:{
          'id': '9527',
-        'name': '胡歌',
+        'name': user.name,
         'integral': 580,
         'coin': 690,
+        isBoss:false
         }
+    }
+})
+
+Mock.mock('/register','post',function(opttion){
+    console.log(opttion)
+    return {
+        status:200,
+        message:"登录成功",
+        // data:'123'
     }
 })

@@ -5,10 +5,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    sign:false,
-    isBoss:false,
-    play:"王者农药",
-    user:null,//保存用户信息
+    user:sessionStorage.getItem('user')?JSON.parse(sessionStorage.getItem('user')):null,//保存用户信息
   },
   mutations: {
     changeName(state,user){

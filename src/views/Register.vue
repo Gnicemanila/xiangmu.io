@@ -1,6 +1,6 @@
 <template>
   <div class="register">
-    <Header msg="注册" goback="true" serve="true"/>
+    <Header msg="注册" goback="true" serve="true" />
     <ul class="form-info">
       <li>
         <span class="form-name"></span>
@@ -33,21 +33,22 @@
           <van-field v-model="message" placeholder="请输入您收到的短信验证码" type="number" />
         </div>
       </li>
-            <li v-if="have_invitation" class="have-invitation">
+      <li v-if="have_invitation" class="have-invitation">
         <span class="form-invitation"></span>
         <div class="form-input">
           <van-field v-model="invitation" placeholder="请输入邀请码" type="number" />
         </div>
       </li>
     </ul>
-      <div class="have-invitation-code fr" @click="haveInvitation()" v-if="!have_invitation">我有注册邀请码</div>
+    <div class="have-invitation-code fr" @click="haveInvitation()" v-if="!have_invitation">我有注册邀请码</div>
 
-      <button class="submit-btn">
-注册并登录
-      </button>
-      <button class="go-login-btn">
-           <router-link to="/login">已有账号？<span>登录</span></router-link>
-      </button>
+    <button class="submit-btn">注册并登录</button>
+    <button class="go-login-btn">
+      <router-link to="/login">
+        已有账号？
+        <span>登录</span>
+      </router-link>
+    </button>
   </div>
 </template>
 
@@ -55,7 +56,7 @@
 import { mapState, mapActions } from "vuex";
 import Header from "@/components/Header";
 export default {
-  name: "Register",
+  name: "register",
   data() {
     return {
       name: "",
@@ -63,10 +64,10 @@ export default {
       psd_two: "",
       code: "",
       phone: "",
-      message:"",
-      invitation:"",
-      have_invitation:false,
-      verificationCode:"",
+      message: "",
+      invitation: "",
+      have_invitation: false,
+      verificationCode: ""
     };
   },
   components: {
@@ -78,13 +79,13 @@ export default {
     })
   },
   methods: {
-      getCode(){
-        this.verificationCode=985236
-          console.log("===获取验证码")
-      },
-      haveInvitation(){
-          this.have_invitation=true
-      }
+    getCode() {
+      this.verificationCode = 985236;
+      console.log("===获取验证码");
+    },
+    haveInvitation() {
+      this.have_invitation = true;
+    }
   }
 };
 </script>
@@ -98,26 +99,25 @@ export default {
       border-bottom: 1px solid rgba(215, 215, 215, 1);
       display: flex;
       align-items: center;
-      &.have-invitation{
-          margin-bottom: .7rem;
+      &.have-invitation {
+        margin-bottom: 0.7rem;
       }
       .form-input {
         width: 85%;
-
       }
       .get-code {
         font-size: 0.28rem;
         font-weight: 500;
-        color: #FFFFFF;
+        color: #ffffff;
         background: @primary;
-        width:1.8rem;
-        height:.58rem;
+        width: 1.8rem;
+        height: 0.58rem;
         line-height: 0.58rem;
-        border-radius:.05rem;
+        border-radius: 0.05rem;
       }
     }
   }
-.have-invitation-code {
+  .have-invitation-code {
     padding: 0.38rem 0.3rem 0 0.3rem;
     height: 0.9rem;
     width: 100%;
@@ -127,7 +127,7 @@ export default {
     color: rgba(102, 102, 102, 1);
     background: #ffffff;
   }
-    button {
+  button {
     padding: 0 0.3rem;
     width: 6.9rem;
     height: 0.88rem;
@@ -144,8 +144,8 @@ export default {
       font-weight: 500;
       a {
         color: @primary;
-        span{
-            color:#2993EC;
+        span {
+          color: #2993ec;
         }
       }
       background: #ffffff;

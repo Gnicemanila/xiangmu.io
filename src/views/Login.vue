@@ -40,7 +40,7 @@ import { mapState, mapActions } from "vuex";
 import Header from "@/components/Header";
 import { Toast } from 'vant';
 export default {
-  name: "Login",
+  name: "login",
   data() {
     return {
       name: "",
@@ -48,7 +48,8 @@ export default {
       code: "",
       type: "password",
       verificationCode:"",
-      show_psd: false
+      show_psd: false,
+      cangetcode:false,//放重复点击
     };
   },
   components: {
@@ -82,19 +83,20 @@ export default {
       parameter.code = this.code;
       let res = await this.$http("/getlogin",parameter,'post');
       if(res.status==200){
-        this.runName(res.data)
+        this.runName(res.data);
+        sessionStorage.setItem('user',JSON.stringify(res.data))
         this.$router.push({ path: '/home' })
-        // console.log(res.data)
       };
     },
     async getcode(){
-      Toast.loading({
-        message: '提交中...',
-      })
+        if(this.cangetcode){
+          return
+        }
+        this.cangetcode=true
         let res = await this.$http("/getcode");
            if(res.status==200){
-           this.verificationCode=res.data.code
-             Toast.clear()
+           this.verificationCode=res.data.code;
+            this.cangetcode=false;
             this.drawPic()
            };
     },

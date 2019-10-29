@@ -36,7 +36,7 @@
 import { mapState, mapActions } from "vuex";
 import Header from "@/components/Header";
 export default {
-  name: "AboutMe",
+  name: "aboutMe",
   components: {
     Header
   },

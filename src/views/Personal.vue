@@ -4,25 +4,25 @@
     <ul class="head-portrait" @click="goRouter('/info')">
       <div class="head logo"></div>
       <ul>
-        <li>彭于晏</li>
+        <li>{{user.name}}</li>
         <li>
           <span class="fans">粉丝N</span>
           <span class="like">关注N</span>
         </li>
         <li>
-          <span class="point">积分：9999</span>
-          <span class="coin">金币：9999</span>
+          <span class="point">积分：{{user.integral}}</span>
+          <span class="coin">金币：{{user.coin}}</span>
         </li>
       </ul>
       <i class="icon-next fr"></i>
     </ul>
     <ul class="all-function">
-      <li v-show="isBoss">
+      <li v-show="user.isBoss">
         <i class="i-function icon-boss"></i>
         <span>申请成为专家</span>
         <i class="icon-next fr"></i>
       </li>
-            <li v-show="!isBoss">
+            <li v-show="!user.isBoss">
         <i class="i-function icon-my-send"></i>
         <span>我的发布</span>
         <i class="icon-next fr"></i>
@@ -65,7 +65,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FansLike from "@/components/FansLike";
 export default {
-  name: "Personal",
+  name: "personal",
   components: {
     Header,
     Footer,
@@ -73,7 +73,7 @@ export default {
   },
   computed: {
     ...mapState({
-      isBoss: state => state.isBoss
+      user: state => state.user
     })
   },
   methods: {

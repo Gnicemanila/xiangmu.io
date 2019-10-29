@@ -3,7 +3,7 @@
     <Header goback="true" msg="个人信息" serve="true" />
     <div class="picture">
       <span class="head logo"></span>
-      <span class="name">欢迎您,彭于晏</span>
+      <span class="name">欢迎您,{{user.name}}</span>
     </div>
     <ul class="default-deatil">
       <li class="have-bottom">
@@ -29,12 +29,11 @@
         <span class="info-fun">修改密码
              <span class="write fr">未填写</span>
         </span>
-       
         <i class="icon-next fr"></i>
       </li>
     </ul>
-    <button class="logout" >
-        <router-link to="/login">退出当前账号</router-link>
+    <button class="logout" @click="getOut()">
+        退出当前账号
     </button>
   </div>
 </template>
@@ -43,17 +42,22 @@
 import { mapState, mapActions } from "vuex";
 import Header from "@/components/Header";
 export default {
-  name: "Info",
+  name: "info",
   components: {
     Header
   },
   computed: {
     ...mapState({
-      name: state => state.name
+      user: state => state.user
     })
   },
   methods: {
     ...mapActions(["runName"]),
+    getOut(){
+        sessionStorage.removeItem("user")
+        this.runName(null)
+       this.$router.push({ path: '/home' })
+    }
   }
 };
 </script>
@@ -88,9 +92,7 @@ export default {
         border-radius:10px;
         font-size:.3rem;
 font-weight:500;
-    a{
-        color:rgba(255,255,255,1);
-    }
+ color:rgba(255,255,255,1);
 margin: .80rem .85rem 0 .85rem;
   }
 }

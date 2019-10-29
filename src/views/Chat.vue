@@ -11,7 +11,7 @@
 import Footer from '@/components/Footer';
 import {mapState, mapActions} from 'vuex'
 export default {
-  name: 'Chat',
+  name: 'chat',
   components: {
       Footer
   },

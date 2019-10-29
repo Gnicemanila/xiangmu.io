@@ -96,7 +96,8 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   },{
-    path:"/",redirect: "/home"
+    path:'/',
+    redirect: '/home'
   }
 ]
 
@@ -105,5 +106,26 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes
 })
+
+const blackList = ['/personal'] // 路由黑名单需要登录的界面
+
+router.beforeEach((to, from, next) => {
+    // console.log('进入守卫');
+    const flag  = window.sessionStorage.getItem('user');; //鉴权
+    if (flag) {
+        next();
+        return  //以下的代码不执行
+    } else {
+        if (blackList.indexOf(to.path) >= 0) { // 在免登录黑名单，直接进入登录界面
+          next('/login'); 
+        }else if(to.path == '/login'){
+          next(); 
+        } else {        
+          next()//记得当所有程序执行完毕后要进行next()，不然是无法继续进行的;
+        }
+    }
+
+})
+
 
 export default router
