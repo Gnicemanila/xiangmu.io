@@ -100,7 +100,7 @@ const routes = [
     redirect: '/home'
   }
 ]
-
+console.log(process.env)
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,

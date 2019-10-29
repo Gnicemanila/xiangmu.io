@@ -1,12 +1,12 @@
 module.exports = {
-
-  //webpack配置
+   //webpack配置
+  // baseUrl: process.env.NODE_ENV === 'production'?'https://gnicemanila.github.io/':'https://gnicemanila.github.io/',// 部署应用包时的基本 URL
+  assetsDir: 'static',
   configureWebpack: {
     //关闭 webpack 的性能提示
     performance: {
       hints: false
     }
-
     //或者
 
     //警告 webpack 的性能提示
@@ -23,6 +23,7 @@ module.exports = {
     // }
   }
   ,
+  productionSourceMap:false,
   css: {
     loaderOptions: {
       // 给 less-loader 传递 Less.js 相关选项
