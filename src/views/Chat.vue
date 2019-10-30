@@ -1,29 +1,17 @@
 <template>
   <div class="chat">
+    <div class="notice">
     <Header msg="聊天室" serve="true" />
-    <van-notice-bar
+    <div class="notice-nav">
+                <van-notice-bar
       mode="closeable"
       text="足协杯战线连续第2年上演广州德比战，上赛季半决赛上恒大以两回合5-3的总比分淘汰富力。"
       background="#ECECEC"
       color="#333333"
     ></van-notice-bar>
-    <van-card
-      :num="num"
-      price="2.00"
-      desc="描述信息"
-      title="商品标题"
-      thumb="https://img.yzcdn.cn/vant/t-thirt.jpg"
-      origin-price="10.00"
-    >
-      <div slot="tags">
-        <van-tag plain type="danger">标签</van-tag>
-        <van-tag plain type="danger">标签</van-tag>
-      </div>
-      <div slot="footer">
-        <van-button size="mini" @click="add()">加价</van-button>
-        <van-button size="mini" @click="count()">减价</van-button>
-      </div>
-    </van-card>
+    </div>
+    </div>
+    <div class="content">
     <Message />
     <Message />
     <Message />
@@ -33,6 +21,7 @@
     <Message />
     <Message />
     <Message />
+    </div>
     <div class="chat-bottom">
       <div class="chat-function">
         <i class="chat-btn-func"></i>
@@ -62,8 +51,7 @@ export default {
   },
   data() {
     return {
-      num: 0,
-      message: ""
+    message:"",
     };
   },
   computed: {
@@ -73,22 +61,24 @@ export default {
   },
   methods: {
     ...mapActions(["runName"]),
-    add() {
-      this.num += 1;
-    },
-    count() {
-      if (this.num == 0) {
-        this.num = 0;
-      } else {
-        this.num -= 1;
-      }
-    }
   }
 };
 </script>
 <style lang="less">
 .chat {
   padding-bottom: 1.98rem;
+  .notice{
+ 
+    .notice-nav{
+      height:.88rem;
+      .van-notice-bar{
+            position: fixed;
+    left: 0;
+    right: 0;
+    z-index: 2;
+      }
+    }
+  }
   .chat-bottom {
     position: fixed;
     bottom: 0;

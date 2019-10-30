@@ -17,7 +17,7 @@
 <script>
 export default {
   name: "message",
-  props:['user'],
+//   props:['user'],
   methods: {}
 };
 </script>
