@@ -2,6 +2,7 @@
   <div class="message">
     <div class="avatar avatar-"></div>
     <div class="user-info">
+      <span class="vip"> 管理员</span>
       <span class="user">彭于晏</span>
       <span class="time">20:11:38</span>
     </div>
@@ -38,6 +39,13 @@ export default {
   .user-info {
     overflow: hidden;
     display: flex;
+        align-items: center;
+    .vip{
+        font-size:.28rem;
+        margin-right: .3rem;
+font-weight:500;
+color:@primary;
+    }
     .user {
       font-size: 0.24rem;
       font-weight: 700;
