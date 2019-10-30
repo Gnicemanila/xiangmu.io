@@ -1,26 +1,26 @@
 <template>
   <div class="chat">
     <div class="notice">
-    <Header msg="聊天室" serve="true" />
-    <div class="notice-nav">
-                <van-notice-bar
-      mode="closeable"
-      text="足协杯战线连续第2年上演广州德比战，上赛季半决赛上恒大以两回合5-3的总比分淘汰富力。"
-      background="#ECECEC"
-      color="#333333"
-    ></van-notice-bar>
-    </div>
+      <Header msg="聊天室" serve="true" />
+      <div class="notice-nav">
+        <van-notice-bar
+          mode="closeable"
+          text="足协杯战线连续第2年上演广州德比战，上赛季半决赛上恒大以两回合5-3的总比分淘汰富力。"
+          background="#ECECEC"
+          color="#333333"
+        ></van-notice-bar>
+      </div>
     </div>
     <div class="content">
-    <Message />
-    <Message />
-    <Message />
-    <Message />
-    <Message />
-    <Message />
-    <Message />
-    <Message />
-    <Message />
+      <Message />
+      <Message />
+      <Message />
+      <Message />
+      <Message />
+      <Message />
+      <Message />
+      <Message />
+      <Message />
     </div>
     <div class="chat-bottom">
       <div class="chat-function">
@@ -51,7 +51,7 @@ export default {
   },
   data() {
     return {
-    message:"",
+      message: ""
     };
   },
   computed: {
@@ -60,22 +60,21 @@ export default {
     })
   },
   methods: {
-    ...mapActions(["runName"]),
+    ...mapActions(["runName"])
   }
 };
 </script>
 <style lang="less">
 .chat {
   padding-bottom: 1.98rem;
-  .notice{
- 
-    .notice-nav{
-      height:.88rem;
-      .van-notice-bar{
-            position: fixed;
-    left: 0;
-    right: 0;
-    z-index: 2;
+  .notice {
+    .notice-nav {
+      height: 0.88rem;
+      .van-notice-bar {
+        position: fixed;
+        left: 0;
+        right: 0;
+        z-index: 2;
       }
     }
   }
