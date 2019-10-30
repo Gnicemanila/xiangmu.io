@@ -40,7 +40,7 @@ import { mapState, mapActions } from "vuex";
 import Header from "@/components/Header";
 import { Toast } from 'vant';
 export default {
-  name: "login",
+  name: "Login",
   data() {
     return {
       name: "",

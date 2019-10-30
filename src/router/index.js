@@ -105,9 +105,8 @@ const routes = [
     redirect: '/home'
   }
 ]
-console.log( process.env.BASE_URL)
 const router = new VueRouter({
-  mode: 'history',
+  mode: 'hash',
   base: process.env.PUBLIC_PATH,
   routes
 })

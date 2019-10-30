@@ -104,7 +104,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FansLike from "@/components/FansLike";
 export default {
-  name: "home",
+  name: "Home",
   components: {
     Header,
     Footer,

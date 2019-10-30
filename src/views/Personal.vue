@@ -65,7 +65,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FansLike from "@/components/FansLike";
 export default {
-  name: "personal",
+  name: "Personal",
   components: {
     Header,
     Footer,

@@ -16,7 +16,7 @@
 
 <script>
 export default {
-  name: "message",
+  name: "Message",
 //   props:['user'],
   methods: {}
 };

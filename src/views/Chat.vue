@@ -43,7 +43,7 @@ import Header from "@/components/Header";
 import Message from "@/components/Message";
 import { mapState, mapActions } from "vuex";
 export default {
-  name: "chat",
+  name: "Chat",
   components: {
     Footer,
     Header,

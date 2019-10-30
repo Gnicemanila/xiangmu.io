@@ -33,7 +33,7 @@ import { mapState, mapActions } from "vuex";
 import Header from "@/components/Header";
 import QRCode from "qrcodejs2";
 export default {
-  name: "shareMe",
+  name: "ShareMe",
   components: {
     Header
   },

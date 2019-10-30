@@ -16,7 +16,7 @@ import { mapState, mapActions } from "vuex";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 export default {
-  name: "play",
+  name: "Play",
   components: {
     Footer,
     Header

@@ -36,7 +36,7 @@ import { mapState, mapActions } from "vuex";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 export default {
-  name: "more",
+  name: "More",
   components: {
     Footer,
     Header
