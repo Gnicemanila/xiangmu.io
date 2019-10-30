@@ -1,6 +1,6 @@
 <template>
   <div class="personal">
-    <Header msg="个人中心" serve="true"/>
+      <Header msg="个人中心" serve="true"/>
     <ul class="head-portrait" @click="goRouter('/info')">
       <div class="head logo"></div>
       <ul>
@@ -86,6 +86,9 @@ export default {
 </script>
 <style lang="less">
 .personal {
+  .header{
+    height: .88rem;
+  }
   .head-portrait {
     background: #ffffff;
     height: 2.28rem;

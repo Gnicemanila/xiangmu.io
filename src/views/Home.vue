@@ -162,9 +162,6 @@ export default {
         font-size: 0.3rem;
         text-align: center;
       }
-      &.next-time {
-        //  text-align: center;
-      }
     }
   }
   .news {

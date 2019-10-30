@@ -1,5 +1,6 @@
 <template>
-  <div class="header">
+  <div class="header-nav">
+      <div class="header">
     <span class="left" >
       <span @click="goBack()" class='go-back' v-if="goback"></span>
       <span  v-if="left" v-html="left"></span>
@@ -11,6 +12,7 @@
       <i  @click="goBack('/serve')" class="go-serve" v-if="serve"> </i>
       <span  v-if="right" v-html="right"></span>
     </span>
+  </div>
   </div>
 </template>
 
@@ -28,12 +30,18 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="less">
+
+.header-nav{
+  height: .88rem;
 .header {
   width: 7.5rem;
   height: 0.88rem;
   background: @primary;
   display: flex;
   align-items: center;
+  position: fixed;
+  left: 0;
+      z-index: 2;
   .left {
     margin-left: 0.11rem;
     flex: 1 1;
@@ -65,5 +73,6 @@ export default {
     display: flex;
     margin-right: 0.3rem;
   }
+}
 }
 </style>
