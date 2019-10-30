@@ -1,6 +1,6 @@
 module.exports = {
    //webpack配置
-  publicPath: process.env.NODE_ENV === 'production'?'./xiangmu/docs':'/',// 部署应用包时的基本 URL
+  publicPath: process.env.NODE_ENV === 'production'?'./docs/':'/',// 部署应用包时的基本 URL
   assetsDir: 'static',
   outputDir:'docs',
   configureWebpack: {
