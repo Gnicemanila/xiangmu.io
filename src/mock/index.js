@@ -36,10 +36,17 @@ Mock.mock('/getlogin','post',function(opttion){
 })
 
 Mock.mock('/register','post',function(opttion){
-    console.log(opttion)
+    let user = JSON.parse(opttion.body)
+    console.log(user)
     return {
         status:200,
         message:"登录成功",
-        // data:'123'
+        data:{
+         'id': '9527',
+        'name': user.name,
+        'integral': 580,
+        'coin': 690,
+        isBoss:false
+        }
     }
 })

@@ -42,7 +42,7 @@
     </ul>
     <div class="have-invitation-code fr" @click="haveInvitation()" v-if="!have_invitation">我有注册邀请码</div>
 
-    <button class="submit-btn">注册并登录</button>
+    <button class="submit-btn" @click="goregister">注册并登录</button>
     <button class="go-login-btn">
       <router-link to="/login">
         已有账号？
@@ -79,13 +79,28 @@ export default {
     })
   },
   methods: {
+    ...mapActions(['runName']),
     getCode() {
       this.verificationCode = 985236;
+      this.$http('')
       console.log("===获取验证码");
     },
     haveInvitation() {
       this.have_invitation = true;
-    }
+    },
+    async goregister() {
+      let parameter = {};
+      parameter.name = this.name;
+      parameter.psd = this.psd;
+      parameter.phone = this.phone;
+      let res = await this.$http("/register",parameter,'post');
+      if(res.status==200){
+        console.log(res)
+        this.runName(res.data);
+        sessionStorage.setItem('user',JSON.stringify(res.data))
+        this.$router.push({ path: '/home' })
+      };
+    },    
   }
 };
 </script>
