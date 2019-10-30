@@ -21,6 +21,7 @@
       <Message />
       <Message />
       <Message />
+      <Me />
     </div>
     <div class="chat-bottom">
       <div class="chat-function">
@@ -41,13 +42,15 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Message from "@/components/Message";
+import Me from "@/components/Me";
 import { mapState, mapActions } from "vuex";
 export default {
   name: "Chat",
   components: {
     Footer,
     Header,
-    Message
+    Message,
+    Me
   },
   data() {
     return {

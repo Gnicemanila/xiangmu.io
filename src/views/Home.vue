@@ -15,9 +15,9 @@
     </div>
     <ul class="paly">
       <li class="tittle">昨日大事件</li>
-      <li class="hot">恒博举办菊花会活动现场活动激烈</li>
-      <li>武汉十七中门事件参与者感言</li>
-      <li>黄鳝鱼事件活动举办完美收官</li>
+      <li class="hot">武汉圆满举办完成军运会大武汉新气象</li>
+      <li>武汉船舶职业技术学校完美升级</li>
+      <li>钉钉一下不在回来。打卡下班</li>
       <li class="next-time">下次活动时间：2019年11月01日 00时00分 星期一</li>
     </ul>
     <div class="news">
