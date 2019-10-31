@@ -52,8 +52,8 @@
 <script>
 import { mapState, mapActions } from "vuex";
 import Header from "@/components/Header";
-import areaList from "../../api/area";
-import list from "../../api/banklist";
+import areaList from "../../../api/area";
+import list from "../../../api/banklist";
 export default {
   name: "BindCard",
   components: {

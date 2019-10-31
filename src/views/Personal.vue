@@ -1,7 +1,7 @@
 <template>
   <div class="personal">
       <Header msg="个人中心" serve="true"/>
-    <ul class="head-portrait" @click="goRouter('/info')">
+    <ul class="head-portrait" @click="goNext('/info')">
       <div class="head logo"></div>
       <ul>
         <li>{{user.name}}</li>
@@ -19,7 +19,7 @@
     <ul class="all-function">
       <li v-show="user.isBoss">
         <i class="i-function icon-boss"></i>
-        <span>申请成为专家</span>
+        <span>申请成为大V</span>
         <i class="icon-next fr"></i>
       </li>
             <li v-show="!user.isBoss">
@@ -27,7 +27,7 @@
         <span>我的发布</span>
         <i class="icon-next fr"></i>
       </li>
-      <li class="make-money">
+      <li class="make-money" @click="goNext('/makeMoney')">
         <i class="i-function icon-make-money"></i>
         <span>我要赚钱</span>
         <i class="icon-next fr"></i>
@@ -78,7 +78,7 @@ export default {
   },
   methods: {
     ...mapActions(["runName"]),
-    goRouter(path){
+    goNext(path){
        this.$router.push({ path: path })
     }
   }

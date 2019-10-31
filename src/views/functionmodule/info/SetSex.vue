@@ -78,15 +78,15 @@ export default {
       width: 0.3rem;
       height: 0.3rem;
       &.icon-boy {
-        background: url("../../assets/imgs/personal/boy.png") no-repeat;
+        background: url("../../../assets/imgs/personal/boy.png") no-repeat;
         background-size: 100%;
       }
       &.icon-girl {
-        background: url("../../assets/imgs/personal/girl.png") no-repeat;
+        background: url("../../../assets/imgs/personal/girl.png") no-repeat;
         background-size: 100%;
       }
       &.icon-sure {
-        background: url("../../assets/imgs/personal/sure.png") no-repeat;
+        background: url("../../../assets/imgs/personal/sure.png") no-repeat;
         background-size: 100%;
       }
     }

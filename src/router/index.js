@@ -1,11 +1,11 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-//更多关于个人中心的'../views/personal/Personal.vue'
-import Info from '../views/personal/Info.vue'
-import Set from '../views/personal/Set.vue'
-import SetSex from '../views/personal/SetSex.vue'
-import BindCard from '../views/personal/BindCard.vue'
-import ChoicePsd from '../views/personal/ChoicePsd.vue'
+//更多关于个人中心的Info
+import Info from '../views/functionmodule/info/Info.vue'
+import Set from '../views/functionmodule/info/Set.vue'
+import SetSex from '../views/functionmodule/info/SetSex.vue'
+import BindCard from '../views/functionmodule/info/BindCard.vue'
+import ChoicePsd from '../views/functionmodule/info/ChoicePsd.vue'
 //主功能
 import Play from '../views/Play.vue'
 import Chat from '../views/Chat.vue'
@@ -13,6 +13,9 @@ import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
 import Register from '../views/Register.vue'
 import Personal from '../views/Personal.vue'
+//makemoney功能模块的
+import MakeMoney from '../views/functionmodule/makemoney/MakeMoney.vue'
+import MyNum from '../views/functionmodule/makemoney/MyNum.vue'
 //更多关于系统的
 import More from '../views/More.vue'
 import AboutMe from '../views/more/AboutMe.vue'
@@ -71,6 +74,16 @@ const routes = [
     path: '/choicePsd',
     name: 'choicePsd',
     component: ChoicePsd
+  },
+  {
+    path: '/makeMoney',
+    name: 'makeMoney',
+    component: MakeMoney
+  },
+  {
+    path: '/myNum',
+    name: 'myNum',
+    component: MyNum
   },
   {
     path:'/serve',
