@@ -2,6 +2,10 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 //更多关于个人中心的'../views/personal/Personal.vue'
 import Info from '../views/personal/Info.vue'
+import Set from '../views/personal/Set.vue'
+import SetSex from '../views/personal/SetSex.vue'
+import BindCard from '../views/personal/BindCard.vue'
+import ChoicePsd from '../views/personal/ChoicePsd.vue'
 //主功能
 import Play from '../views/Play.vue'
 import Chat from '../views/Chat.vue'
@@ -47,6 +51,26 @@ const routes = [
     path: '/info',
     name: 'info',
     component: Info
+  },
+  {
+    path: '/set/:type',
+    name: 'set',
+    component: Set
+  },
+  {
+    path: '/setSex',
+    name: 'setSex',
+    component: SetSex
+  },
+  {
+    path: '/bindCard',
+    name: 'bindCard',
+    component: BindCard
+  },
+  {
+    path: '/choicePsd',
+    name: 'choicePsd',
+    component: ChoicePsd
   },
   {
     path:'/serve',

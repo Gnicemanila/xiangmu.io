@@ -33,8 +33,8 @@ export default {
 
 .header-nav{
   height: .88rem;
-.header {
-  width: 7.5rem;
+.header { 
+  width: 100%;
   height: 0.88rem;
   background: @primary;
   display: flex;

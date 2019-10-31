@@ -38,6 +38,10 @@ Mock.mock('/getlogin','post',function(opttion){
         data:{
          'id': '9527',
         'name': user.name,
+        'real_name':'胡歌',
+        'sex':0,
+        'phone':'188****8888',
+        'card':"6222********1234",
         'integral': 580,
         'coin': 690,
         isBoss:false

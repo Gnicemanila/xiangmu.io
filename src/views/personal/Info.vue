@@ -6,38 +6,50 @@
       <span class="name">欢迎您,{{user.name}}</span>
     </div>
     <ul class="default-deatil">
-      <li class="have-bottom">
-        <span class="info-fun">
+      <li class="have-bottom" >
+        <span class="info-fun"  >
           真实姓名
-          <span class="write fr">未填写</span>
+          <span class="write fr"  v-if="!user" @click="goNext('/set/name')">未填写</span>
+          <span class="write fr" v-if="user">
+          {{user.real_name}}
+          </span>
         </span>
         <i></i>
       </li>
-      <li class="have-bottom">
+      <li class="have-bottom" >
         <span class="info-fun">
           手机号码
-          <span class="write fr">未填写</span>
+          <span class="write fr"  v-if="!user" @click="goNext('/set/phone')">未填写</span>
+          <span class="write fr" v-if="user">
+          {{user.phone}}
+          </span>
         </span>
         <i></i>
       </li>
       <li class="have-bottom">
         <span class="info-fun">
           性别
-          <span class="write fr">未填写</span>
+          <span class="write fr" v-if="!user">未填写</span>
+          <span class="write fr" v-if="user">
+          {{user.sex==0?'男':"女"}}
+          </span>
         </span>
-        <i class="icon-next fr"></i>
+        <i class="icon-next fr"  @click="goNext('/setSex')"></i>
       </li>
-      <li class="have-bottom">
+      <li class="have-bottom" @click="goNext('/bindCard')">
         <span class="info-fun">
           银行卡号
-          <span class="write fr">未填写</span>
+          <span class="write fr" v-if="!user">未填写</span>
+          <span class="write fr" v-if="user">
+          {{user.card}}
+          </span>
         </span>
         <i class="icon-next fr"></i>
       </li>
-      <li class="have-bottom">
+      <li class="have-bottom" @click="goNext('/choicePsd')">
         <span class="info-fun">
           修改密码
-          <span class="write fr">未填写</span>
+          <!-- <span class="write fr">未填写</span> -->
         </span>
         <i class="icon-next fr"></i>
       </li>
@@ -65,6 +77,9 @@ export default {
       sessionStorage.removeItem("user");
       this.runName(null);
       this.$router.push({ path: "/home" });
+    },
+    goNext(path){
+       this.$router.push({ path: path });
     }
   }
 };
