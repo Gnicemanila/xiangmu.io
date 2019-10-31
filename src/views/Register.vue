@@ -25,7 +25,7 @@
         <div class="form-input">
           <van-field v-model="phone" placeholder="请输入11位手机号码" type="number" />
         </div>
-        <span class="get-code fr" @click="getCode()">{{verificationCode?verificationCode:'获取验证码'}}</span>
+        <span class="get-code fr" @click="getphonecode()">{{verificationCode?verificationCode:'获取验证码'}}</span>
       </li>
       <li>
         <span class="form-message"></span>
@@ -75,18 +75,20 @@ export default {
   },
   computed: {
     ...mapState({
-      //   name: state => state.name
+        // name1: state => state.chat.name
     })
   },
   methods: {
     ...mapActions(['runName']),
-    getCode() {
-      this.verificationCode = 985236;
-      this.$http('')
-      console.log("===获取验证码");
-    },
     haveInvitation() {
       this.have_invitation = true;
+    },
+    async getphonecode(){
+       let res = await this.$http("/getphonecode");
+          if(res.status==200){
+          // console.log(res)
+        this.verificationCode = res.data.code;
+      };
     },
     async goregister() {
       let parameter = {};

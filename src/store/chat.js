@@ -1,6 +1,6 @@
 const state={
     name:"王者荣耀",
-    vip:"1",
+    vip:"99",
     time:'20:11:38'
 }
 const getters ={
@@ -16,8 +16,8 @@ const mutations ={
     changeName(state,name){
         state.game=name
     },
-    changePosition(state,position){
-        state.position=position
+    changePosition(state,vip){
+        state.vip=vip
     }
 }
 
@@ -25,8 +25,8 @@ const actions ={
     cgame(context,name){
         context.commit('changeName',name)
     },
-    cposition(context,position){
-        context.commit('changePosition',position)
+    cposition(context,vip){
+        context.commit('changePosition',vip)
     }
 }
 

@@ -7,34 +7,42 @@
     </div>
     <ul class="default-deatil">
       <li class="have-bottom">
-        <span class="info-fun">真实姓名 <span class="write fr">未填写</span></span>
+        <span class="info-fun">
+          真实姓名
+          <span class="write fr">未填写</span>
+        </span>
+        <i></i>
+      </li>
+      <li class="have-bottom">
+        <span class="info-fun">
+          手机号码
+          <span class="write fr">未填写</span>
+        </span>
+        <i></i>
+      </li>
+      <li class="have-bottom">
+        <span class="info-fun">
+          性别
+          <span class="write fr">未填写</span>
+        </span>
         <i class="icon-next fr"></i>
       </li>
-      <li  class="have-bottom">
-        <span class="info-fun">手机号码 <span class="write fr">未填写</span></span>
-       
+      <li class="have-bottom">
+        <span class="info-fun">
+          银行卡号
+          <span class="write fr">未填写</span>
+        </span>
         <i class="icon-next fr"></i>
       </li>
-      <li  class="have-bottom">
-        <span class="info-fun">性别 <span class="write fr">未填写</span></span>
-       
-        <i class="icon-next fr"></i>
-      </li>
-      <li  class="have-bottom">
-        <span class="info-fun">银行卡号 <span class="write fr">未填写</span></span>
-       
-        <i class="icon-next fr"></i>
-      </li>
-      <li  class="have-bottom">
-        <span class="info-fun">修改密码
-             <span class="write fr">未填写</span>
+      <li class="have-bottom">
+        <span class="info-fun">
+          修改密码
+          <span class="write fr">未填写</span>
         </span>
         <i class="icon-next fr"></i>
       </li>
     </ul>
-    <button class="logout" @click="getOut()">
-        退出当前账号
-    </button>
+    <button class="logout" @click="getOut()">退出当前账号</button>
   </div>
 </template>
 
@@ -53,17 +61,17 @@ export default {
   },
   methods: {
     ...mapActions(["runName"]),
-    getOut(){
-        sessionStorage.removeItem("user")
-        this.runName(null)
-       this.$router.push({ path: '/home' })
+    getOut() {
+      sessionStorage.removeItem("user");
+      this.runName(null);
+      this.$router.push({ path: "/home" });
     }
   }
 };
 </script>
 <style lang="less">
 .info {
-    background: #ffffff;
+  background: #ffffff;
   .picture {
     height: 2.38rem;
     padding: 0.36rem 0 0.33rem 0;
@@ -85,15 +93,15 @@ export default {
       margin: auto;
     }
   }
-  .logout{
-        width:5.8rem;
-        height:.88rem;
-        background:@primary;
-        border-radius:10px;
-        font-size:.3rem;
-font-weight:500;
- color:rgba(255,255,255,1);
-margin: .80rem .85rem 0 .85rem;
+  .logout {
+    width: 5.8rem;
+    height: 0.88rem;
+    background: @primary;
+    border-radius: 10px;
+    font-size: 0.3rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 1);
+    margin: 0.8rem 0.85rem 0 0.85rem;
   }
 }
 </style>

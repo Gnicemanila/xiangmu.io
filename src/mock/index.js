@@ -11,7 +11,9 @@ for (var i = 0; i < 15; i++) {
     }))
 }
 
-// 登录
+
+//验证码
+
 Mock.mock('/getcode','get',{
     status:200,
     message:"我是王五",
@@ -19,7 +21,15 @@ Mock.mock('/getcode','get',{
         code:/[0-9]{4}$/
     }
 })
-
+///手机验证码
+Mock.mock('/getphonecode','get',{
+    status:200,
+    message:"我是王五",
+    'data':{
+        code:/[0-9]{4}$/
+    }
+})
+// 登录
 Mock.mock('/getlogin','post',function(opttion){
     let user = JSON.parse(opttion.body)
     return {
@@ -37,7 +47,6 @@ Mock.mock('/getlogin','post',function(opttion){
 
 Mock.mock('/register','post',function(opttion){
     let user = JSON.parse(opttion.body)
-    console.log(user)
     return {
         status:200,
         message:"登录成功",
@@ -46,7 +55,8 @@ Mock.mock('/register','post',function(opttion){
         'name': user.name,
         'integral': 580,
         'coin': 690,
-        isBoss:false
+        'isBoss':false,
+        'phone':user.phone,
         }
     }
 })
