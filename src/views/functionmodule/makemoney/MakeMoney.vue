@@ -7,11 +7,11 @@
         <van-icon name="arrow" size="20px" class="fr" />
       </li>
 
-      <li>
+      <li @click="goNext('/getIntegral')">
         <span>领取积分</span>
         <van-icon name="arrow" size="20px" class="fr" />
       </li>
-      <li>
+      <li @click="goNext('/myPartner')">
         <span>我的助力伙伴</span>
         <van-icon name="arrow" size="20px" class="fr" />
       </li>
@@ -34,8 +34,8 @@ export default {
   },
   methods: {
     ...mapActions(["runName"]),
-        goNext(path){
-       this.$router.push({ path: path })
+    goNext(path) {
+      this.$router.push({ path: path });
     }
   }
 };

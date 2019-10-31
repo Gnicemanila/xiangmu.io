@@ -3,95 +3,91 @@
     <Header left="会员" msg="武汉交友计划" serve="true" v-if="user" />
     <Header left="游客" msg="武汉交友计划" serve="true" v-if="!user" />
     <div class="home-body">
-          <div class="swipe">
+      <div class="swipe">
         <van-swipe :autoplay="3000">
-        <van-swipe-item>
-          <img :src="imgUrl" />
-        </van-swipe-item>
-        <van-swipe-item>
-          <img :src="imgUrl2" />
-        </van-swipe-item>
-      </van-swipe>
-    </div>
-    <ul class="paly">
-      <li class="tittle">昨日大事件</li>
-      <li class="hot">武汉圆满举办完成军运会大武汉新气象</li>
-      <li>武汉船舶职业技术学校完美升级</li>
-      <li>钉钉一下不在回来。打卡下班</li>
-      <li class="next-time">下次活动时间：2019年11月01日 00时00分 星期一</li>
-    </ul>
-    <div class="news">
-      <div class="notice">
-        <span class="notice-ico fl"></span>
-        <van-notice-bar
-          text="足协杯战线连续第2年上演广州德比战，上赛季半决赛上恒大以两回合5-3的总比分淘汰富力。"
-          background="#ffffff"
-          color="#333333"
-        />
-      </div>
-      <ul class="news-deatil">
-        <li class="win-1">
-          <div class="header">科技榜</div>
-          <div class="content">学子高手 各显神通</div>
-          <div class="count">当前参与人数：123456</div>
-        </li>
-        <li class="win-2">
-          <div class="header">IT创业</div>
-          <div class="content">学子高手 各显神通</div>
-          <div class="count">当前参与人数：123456</div>
-        </li>
-        <li class="win-3">
-          <div class="header">汉正街淘宝</div>
-          <div class="content">学子高手 各显神通</div>
-          <div class="count">当前参与人数：123456</div>
-        </li>
-        <li class="win-4">
-          <div class="header">武汉站趣闻</div>
-          <div class="content">学子高手 各显神通</div>
-          <div class="count">当前参与人数：123456</div>
-        </li>
-      </ul>
-    </div>
-    <div class="video-content">
-      <div class="video-swipe">
-        <div class="tittle">
-            <div class="head-message">
-                武汉头条
-            </div>
-            <ul class="content">
-              <li>
-                江汉路出现大面积采光江汉路出现大面积采光江汉路出现大面积采光江汉路出现大面积采光江汉路出现大面积采光江汉路出现大面积采光
-              </li>
-              <li>江汉路出现大面积采光</li>
-            </ul>
-        </div>
-         <van-swipe :loop="false" :width="300">
           <van-swipe-item>
-            <img :src="video1" />
+            <img :src="imgUrl" />
           </van-swipe-item>
           <van-swipe-item>
-            <img :src="video2" />
-          </van-swipe-item>
-          <van-swipe-item>
-            <img :src="video3" />
-          </van-swipe-item>
-          <van-swipe-item>
-            <img :src="video4" />
+            <img :src="imgUrl2" />
           </van-swipe-item>
         </van-swipe>
       </div>
-    </div>
-    <div class="tourist" v-if="!user">
-      <button>
-        <router-link to="/login">登录</router-link>
-      </button>
-      <button>
-        <router-link to="/register">注册</router-link>
-      </button>
-    </div>
-    <div v-if="user">
-      <FansLike />
-    </div>
+      <ul class="paly">
+        <li class="tittle">昨日大事件</li>
+        <li class="hot">武汉圆满举办完成军运会大武汉新气象</li>
+        <li>武汉船舶职业技术学校完美升级</li>
+        <li>钉钉一下不在回来。打卡下班</li>
+        <li class="next-time">下次活动时间：2019年11月01日 00时00分 星期一</li>
+      </ul>
+      <div class="news">
+        <div class="notice">
+          <span class="notice-ico fl"></span>
+          <van-notice-bar
+            text="足协杯战线连续第2年上演广州德比战，上赛季半决赛上恒大以两回合5-3的总比分淘汰富力。"
+            background="#ffffff"
+            color="#333333"
+          />
+        </div>
+        <ul class="news-deatil">
+          <li class="win-1">
+            <div class="header">科技榜</div>
+            <div class="content">学子高手 各显神通</div>
+            <div class="count">当前参与人数：123456</div>
+          </li>
+          <li class="win-2">
+            <div class="header">IT创业</div>
+            <div class="content">学子高手 各显神通</div>
+            <div class="count">当前参与人数：123456</div>
+          </li>
+          <li class="win-3">
+            <div class="header">汉正街淘宝</div>
+            <div class="content">学子高手 各显神通</div>
+            <div class="count">当前参与人数：123456</div>
+          </li>
+          <li class="win-4">
+            <div class="header">武汉站趣闻</div>
+            <div class="content">学子高手 各显神通</div>
+            <div class="count">当前参与人数：123456</div>
+          </li>
+        </ul>
+      </div>
+      <div class="video-content">
+        <div class="video-swipe">
+          <div class="tittle">
+            <div class="head-message">武汉头条</div>
+            <ul class="content">
+              <li>江汉路出现大面积采光江汉路出现大面积采光江汉路出现大面积采光江汉路出现大面积采光江汉路出现大面积采光江汉路出现大面积采光</li>
+              <li>江汉路出现大面积采光</li>
+            </ul>
+          </div>
+          <van-swipe :loop="false" :width="300">
+            <van-swipe-item>
+              <img :src="video1" />
+            </van-swipe-item>
+            <van-swipe-item>
+              <img :src="video2" />
+            </van-swipe-item>
+            <van-swipe-item>
+              <img :src="video3" />
+            </van-swipe-item>
+            <van-swipe-item>
+              <img :src="video4" />
+            </van-swipe-item>
+          </van-swipe>
+        </div>
+      </div>
+      <div class="tourist" v-if="!user">
+        <button>
+          <router-link to="/login">登录</router-link>
+        </button>
+        <button>
+          <router-link to="/register">注册</router-link>
+        </button>
+      </div>
+      <div v-if="user">
+        <FansLike />
+      </div>
     </div>
     <Footer message="首页" />
   </div>
@@ -232,32 +228,32 @@ export default {
     margin-top: 0.16rem;
     height: 4.26rem;
     background: #ffffff;
-    .tittle{
+    .tittle {
       height: 1.26rem;
       display: flex;
-      padding: .3rem .3rem .29rem 0.3rem;
-        align-items: center;
-      .head-message{
+      padding: 0.3rem 0.3rem 0.29rem 0.3rem;
+      align-items: center;
+      .head-message {
         width: 1.57rem;
         display: inline-block;
-            border-right: 1px solid rgba(215,215,215,1);
-            text-align: left;
-            font-size:.36rem;
-        font-weight:800;
-        color:rgba(51,51,51,1);
+        border-right: 1px solid rgba(215, 215, 215, 1);
+        text-align: left;
+        font-size: 0.36rem;
+        font-weight: 800;
+        color: rgba(51, 51, 51, 1);
       }
-      .content{
+      .content {
         display: inline-block;
         width: 5.31rem;
-          padding-left: .16rem;
-        li{
-              text-align: left;
-              white-space: nowrap;
-              overflow: hidden;
-              text-overflow: ellipsis;
-              &:first-child{
-                border-bottom:2px solid rgba(245,245,245,1);
-              }
+        padding-left: 0.16rem;
+        li {
+          text-align: left;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          &:first-child {
+            border-bottom: 2px solid rgba(245, 245, 245, 1);
+          }
         }
       }
     }

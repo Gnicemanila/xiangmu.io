@@ -14,53 +14,53 @@ for (var i = 0; i < 15; i++) {
 
 //验证码
 
-Mock.mock('/getcode','get',{
-    status:200,
-    message:"我是王五",
-    'data':{
-        code:/[0-9]{4}$/
+Mock.mock('/getcode', 'get', {
+    status: 200,
+    message: "我是王五",
+    'data': {
+        code: /[0-9]{4}$/
     }
 })
 ///手机验证码
-Mock.mock('/getphonecode','get',{
-    status:200,
-    message:"我是王五",
-    'data':{
-        code:/[0-9]{4}$/
+Mock.mock('/getphonecode', 'get', {
+    status: 200,
+    message: "我是王五",
+    'data': {
+        code: /[0-9]{4}$/
     }
 })
 // 登录
-Mock.mock('/getlogin','post',function(opttion){
+Mock.mock('/getlogin', 'post', function (opttion) {
     let user = JSON.parse(opttion.body)
     return {
-        status:200,
-        message:"登录成功",
-        data:{
-         'id': '9527',
-        'name': user.name,
-        'real_name':'胡歌',
-        'sex':0,
-        'phone':'188****8888',
-        'card':"6222********1234",
-        'integral': 580,
-        'coin': 690,
-        isBoss:false
+        status: 200,
+        message: "登录成功",
+        data: {
+            'id': '9527',
+            'name': user.name,
+            'real_name': '胡歌',
+            'sex': 0,
+            'phone': '188****8888',
+            'card': "6222********1234",
+            'integral': 580,
+            'coin': 690,
+            isBoss: false
         }
     }
 })
 
-Mock.mock('/register','post',function(opttion){
+Mock.mock('/register', 'post', function (opttion) {
     let user = JSON.parse(opttion.body)
     return {
-        status:200,
-        message:"登录成功",
-        data:{
-         'id': '9527',
-        'name': user.name,
-        'integral': 580,
-        'coin': 690,
-        'isBoss':false,
-        'phone':user.phone,
+        status: 200,
+        message: "登录成功",
+        data: {
+            'id': '9527',
+            'name': user.name,
+            'integral': 580,
+            'coin': 690,
+            'isBoss': false,
+            'phone': user.phone,
         }
     }
 })

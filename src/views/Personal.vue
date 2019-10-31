@@ -1,6 +1,6 @@
 <template>
   <div class="personal">
-      <Header msg="个人中心" serve="true"/>
+    <Header msg="个人中心" serve="true" />
     <ul class="head-portrait" @click="goNext('/info')">
       <div class="head logo"></div>
       <ul>
@@ -22,7 +22,7 @@
         <span>申请成为大V</span>
         <i class="icon-next fr"></i>
       </li>
-            <li v-show="!user.isBoss">
+      <li v-show="!user.isBoss">
         <i class="i-function icon-my-send"></i>
         <span>我的发布</span>
         <i class="icon-next fr"></i>
@@ -47,14 +47,13 @@
         <span>账户清单</span>
         <i class="icon-next fr"></i>
       </li>
-
     </ul>
     <FansLike />
-      <div class="message">
-      <i class="i-function icon-message"> </i>
-        <span>站内信</span>
-        <i class="icon-next fr"></i>
-      </div>
+    <div class="message">
+      <i class="i-function icon-message"></i>
+      <span>站内信</span>
+      <i class="icon-next fr"></i>
+    </div>
     <Footer message="个人中心" />
   </div>
 </template>
@@ -78,16 +77,16 @@ export default {
   },
   methods: {
     ...mapActions(["runName"]),
-    goNext(path){
-       this.$router.push({ path: path })
+    goNext(path) {
+      this.$router.push({ path: path });
     }
   }
 };
 </script>
 <style lang="less">
 .personal {
-  .header{
-    height: .88rem;
+  .header {
+    height: 0.88rem;
   }
   .head-portrait {
     background: #ffffff;
@@ -151,8 +150,8 @@ export default {
       font-weight: 500;
       color: rgba(51, 51, 51, 1);
       display: flex;
-      &.have-bottom{
-        border-bottom: 2px solid rgba(245,245,245,1);
+      &.have-bottom {
+        border-bottom: 2px solid rgba(245, 245, 245, 1);
       }
       span {
         display: inline-block;
@@ -169,56 +168,55 @@ export default {
         height: 0.4rem;
         &.icon-boss {
           background: url("../assets/imgs/personal/boss.png") no-repeat;
-          background-size:100%;
+          background-size: 100%;
         }
-        &.icon-my-send{
-                    background: url("../assets/imgs/personal/my_send.png") no-repeat;
-          background-size:100%;
+        &.icon-my-send {
+          background: url("../assets/imgs/personal/my_send.png") no-repeat;
+          background-size: 100%;
         }
         &.icon-make-money {
           background: url("../assets/imgs/personal/make_money.png") no-repeat;
-          background-size:100%;
+          background-size: 100%;
         }
         &.icon-integral {
           background: url("../assets/imgs/personal/integral.png") no-repeat;
-           background-size:100%;
+          background-size: 100%;
         }
         &.icon-gold_coin {
           background: url("../assets/imgs/personal/gold_coin.png") no-repeat;
-           background-size:100%;
+          background-size: 100%;
         }
         &.icon-bill {
           background: url("../assets/imgs/personal/bill.png") no-repeat;
-          background-size:100%;
+          background-size: 100%;
         }
-
       }
     }
   }
-  .message{
-          height: 0.88rem;
-      padding: 0 0.3rem;
-      align-items: center;
-      background: #ffffff;
-      font-size: 0.3rem;
-      font-weight: 500;
-      color: rgba(51, 51, 51, 1);
-      display: flex;
-      margin-top: .16rem;
-        span{
-            width: 100%;
-            padding-left: .4rem;
-            text-align: left;
-        }
-        .i-function {
-        display: inline-block;
-        width: 0.4rem;
-        height: 0.4rem;
-                &.icon-message {
-          background: url("../assets/imgs/personal/message.png") no-repeat;
-          background-size:100%;
-        }
-        }
+  .message {
+    height: 0.88rem;
+    padding: 0 0.3rem;
+    align-items: center;
+    background: #ffffff;
+    font-size: 0.3rem;
+    font-weight: 500;
+    color: rgba(51, 51, 51, 1);
+    display: flex;
+    margin-top: 0.16rem;
+    span {
+      width: 100%;
+      padding-left: 0.4rem;
+      text-align: left;
+    }
+    .i-function {
+      display: inline-block;
+      width: 0.4rem;
+      height: 0.4rem;
+      &.icon-message {
+        background: url("../assets/imgs/personal/message.png") no-repeat;
+        background-size: 100%;
+      }
+    }
   }
 }
 </style>
