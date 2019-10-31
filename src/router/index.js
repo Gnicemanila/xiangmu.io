@@ -135,7 +135,7 @@ const router = new VueRouter({
   routes
 })
 
-const blackList = ['/personal'] // 路由黑名单需要登录的界面
+const blackList = ['/home','/play','/chat','/register','/more'] // 路由白名单不需要登录的界面
 
 router.beforeEach((to, from, next) => {
     // console.log('进入守卫');
@@ -144,12 +144,12 @@ router.beforeEach((to, from, next) => {
         next();
         return  //以下的代码不执行
     } else {
-        if (blackList.indexOf(to.path) >= 0) { // 在免登录黑名单，直接进入登录界面
-          next('/login'); 
+        if (blackList.indexOf(to.path) !== -1) { // 在免登录白名单，直接进入
+          next()//记得当所有程序执行完毕后要进行next()，不然是无法继续进行的;
         }else if(to.path == '/login'){
           next(); 
-        } else {        
-          next()//记得当所有程序执行完毕后要进行next()，不然是无法继续进行的;
+        } else { 
+          next('/login');        
         }
     }
 
