@@ -6,11 +6,9 @@
       <span class="user">彭于晏</span>
       <span class="time">20:11:38</span>
     </div>
-    <div class="msg-content">qweqweqw金合欢花
-        或或或或或或或或或或或或或或或或或或或或或或
-        或或或或或或或或或或或或或或或或或或或或或或或
-        或或或或或或或或或或或或或或或回国过过过过过过
-        过过过过过过过过过过过过过过过</div>
+    <div class="msg-content">
+      大家都是知道的我的名字就是一个形容词！primary
+    </div>
   </div>
 </template>
 
@@ -34,7 +32,8 @@ export default {
     width: 0.9rem;
     height: 0.9rem;
     margin-right: 0.15rem;
-    background: #ddd;
+    background: url('../assets/imgs/chat/avatar.png') no-repeat;
+    background-size: 100%;
   }
   .user-info {
     overflow: hidden;
