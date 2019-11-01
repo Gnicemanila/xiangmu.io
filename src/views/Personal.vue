@@ -17,12 +17,12 @@
       <i class="icon-next fr"></i>
     </ul>
     <ul class="all-function">
-      <li v-show="user.isBoss">
+      <!-- <li v-show="user.isBoss">
         <i class="i-function icon-boss"></i>
         <span>申请成为大V</span>
         <i class="icon-next fr"></i>
-      </li>
-      <li v-show="!user.isBoss">
+      </li>-->
+      <li @click="goNext('/mySay')">
         <i class="i-function icon-my-send"></i>
         <span>我的发布</span>
         <i class="icon-next fr"></i>
@@ -51,7 +51,15 @@
     <FansLike />
     <div class="message">
       <i class="i-function icon-message"></i>
-      <span>站内信</span>
+      <span>
+        站内信
+        <i class="red"></i>
+      </span>
+      <i class="icon-next fr"></i>
+    </div>
+    <div class="message" @click="goNext('/more')">
+      <i class="i-function icon-more"></i>
+      <span>更多</span>
       <i class="icon-next fr"></i>
     </div>
     <Footer message="个人中心" />
@@ -207,6 +215,16 @@ export default {
       width: 100%;
       padding-left: 0.4rem;
       text-align: left;
+      position: relative;
+      .red {
+        display: inline-block;
+        position: relative;
+        top: -0.15rem;
+        width: 0.16rem;
+        height: 0.16rem;
+        background: @primary;
+        border-radius: 50%;
+      }
     }
     .i-function {
       display: inline-block;
@@ -214,6 +232,10 @@ export default {
       height: 0.4rem;
       &.icon-message {
         background: url("../assets/imgs/personal/message.png") no-repeat;
+        background-size: 100%;
+      }
+      &.icon-more {
+        background: url("../assets/imgs/personal/more.png") no-repeat;
         background-size: 100%;
       }
     }

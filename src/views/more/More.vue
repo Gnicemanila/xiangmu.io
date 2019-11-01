@@ -1,6 +1,6 @@
 <template>
   <div class="about">
-    <Header msg="更多" />
+    <Header msg="更多" goback="true"/>
     <ul class="default-deatil">
       <li class="have-bottom" @click="goRouter('/aboutMe')">
         <span class="info-fun">
@@ -27,7 +27,7 @@
         <i class="icon-next fr"></i>
       </li>
     </ul>
-    <Footer message="更多" />
+    <!-- <Footer message="更多" /> -->
   </div>
 </template>
 

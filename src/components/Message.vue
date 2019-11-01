@@ -2,7 +2,7 @@
   <div class="message">
     <div class="avatar avatar-"></div>
     <div class="user-info">
-      <span class="vip"> 管理员</span>
+      <span class="vip"> 大V</span>
       <span class="user">彭于晏</span>
       <span class="time">20:11:38</span>
     </div>

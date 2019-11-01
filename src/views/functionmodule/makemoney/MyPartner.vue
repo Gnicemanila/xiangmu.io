@@ -25,6 +25,11 @@ export default {
   components: {
     Header
   },
+  data(){
+      return {
+          value:""
+      }
+  },
   computed: {
     ...mapState({
       name: state => state.name

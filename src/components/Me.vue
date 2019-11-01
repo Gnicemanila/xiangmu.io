@@ -4,7 +4,7 @@
     <div class="user-info fr">
       <span class="time">20:11:38</span>
       <span class="user">胡歌</span>
-      <span class="vip">管理员</span>
+      <span class="vip">大V</span>
     </div>
     <div class="msg-content fr">
       qweqweqw金合欢花

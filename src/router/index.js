@@ -13,13 +13,17 @@ import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
 import Register from '../views/Register.vue'
 import Personal from '../views/Personal.vue'
+import WeiBo from '../views/WeiBo.vue'
 //makemoney功能模块的
 import MakeMoney from '../views/functionmodule/makemoney/MakeMoney.vue'
 import MyNum from '../views/functionmodule/makemoney/MyNum.vue'
 import GetIntegral from '../views/functionmodule/makemoney/GetIntegral.vue'
 import MyPartner from '../views/functionmodule/makemoney/MyPartner.vue'
+
+//我的发布
+import MySay from '../views/functionmodule/mysay/MySay.vue'
 //更多关于系统的
-import More from '../views/More.vue'
+import More from '../views/more/More.vue'
 import AboutMe from '../views/more/AboutMe.vue'
 import Help from '../views/more/Help.vue'
 import ShareMe from '../views/more/ShareMe.vue'
@@ -51,6 +55,11 @@ const routes = [
     path: '/personal',
     name: 'personal',
     component: Personal
+  },
+  {
+    path: '/weiBo',
+    name: 'weiBo',
+    component: WeiBo
   },
   {
     path: '/info',
@@ -96,6 +105,11 @@ const routes = [
     path: '/myPartner',
     name: 'myPartner',
     component: MyPartner
+  },
+  {
+    path: '/mySay',
+    name: 'mySay',
+    component: MySay
   },
   {
     path: '/serve',
@@ -160,7 +174,7 @@ const router = new VueRouter({
   routes
 })
 
-const blackList = ['/home', '/play', '/chat', '/register', '/more'] // 路由白名单不需要登录的界面
+const blackList = ['/home', '/play', '/chat', '/register'] // 路由白名单不需要登录的界面
 
 router.beforeEach((to, from, next) => {
   // console.log('进入守卫');

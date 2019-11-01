@@ -16,9 +16,9 @@
       <i class="icon_play"></i>
       <router-link to="/play">活动</router-link>
     </li>
-    <li v-bind:class="{ active: this.message=='更多' }">
-      <i class="icon_more"></i>
-      <router-link to="/more">更多</router-link>
+    <li v-bind:class="{ active: this.message=='动态' }">
+      <i class="icon_weibo"></i>
+      <router-link to="/weiBo">动态</router-link>
     </li>
   </ul>
 </template>
@@ -62,8 +62,8 @@ export default {
         background: url("../assets/imgs/home/personal.png") no-repeat;
         background-size: 0.4rem 0.4rem;
       }
-      &.icon_more {
-        background: url("../assets/imgs/home/more.png") no-repeat;
+      &.icon_weibo {
+        background: url("../assets/imgs/home/weibo.png") no-repeat;
         background-size: 0.4rem 0.4rem;
       }
       &.icon_chat {
@@ -75,26 +75,26 @@ export default {
       color: #333333;
     }
     &.active {
-        .icon_home {
-          background: url("../assets/imgs/home/home_active.png") no-repeat;
-           background-size: 0.4rem 0.4rem;
-        }
-        .icon_play {
-          background: url("../assets/imgs/home/play_active.png") no-repeat;
-           background-size: 0.4rem 0.4rem;
-        }
-        .icon_personal {
-          background: url("../assets/imgs/home/personal_active.png") no-repeat;
-           background-size: 0.4rem 0.4rem;
-        }
-        .icon_more {
-          background: url("../assets/imgs/home/more_active.png") no-repeat;
-           background-size: 0.4rem 0.4rem;
-        }
-        .icon_chat {
-          background: url("../assets/imgs/home/chat_active.png") no-repeat;
-           background-size: 0.4rem 0.4rem;
-        }
+      .icon_home {
+        background: url("../assets/imgs/home/home_active.png") no-repeat;
+        background-size: 0.4rem 0.4rem;
+      }
+      .icon_play {
+        background: url("../assets/imgs/home/play_active.png") no-repeat;
+        background-size: 0.4rem 0.4rem;
+      }
+      .icon_personal {
+        background: url("../assets/imgs/home/personal_active.png") no-repeat;
+        background-size: 0.4rem 0.4rem;
+      }
+      &.icon_weibo {
+        background: url("../assets/imgs/home/weibo_active.png") no-repeat;
+        background-size: 0.4rem 0.4rem;
+      }
+      .icon_chat {
+        background: url("../assets/imgs/home/chat_active.png") no-repeat;
+        background-size: 0.4rem 0.4rem;
+      }
       a {
         color: @primary;
       }
