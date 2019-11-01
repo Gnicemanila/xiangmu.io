@@ -1,6 +1,6 @@
 <template>
   <div class="weibo">
-    <Header goback="true" msg="动态" serve="true" />
+    <Header goback="true" msg="动态"/>
     <div class="content">
       <Message />
       <Message />
