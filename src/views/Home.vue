@@ -30,25 +30,25 @@
           />
         </div>
         <ul class="news-deatil">
-          <li class="win-1">
+          <li class="win-1" @click="goNext('/hotList/1')">
             <div class="header">科技榜</div>
             <div class="content">学子高手 各显神通</div>
             <div class="count">当前参与人数：123456</div>
           </li>
-          <li class="win-2">
+          <li class="win-2" @click="goNext('/hotList/2')">
             <div class="header">IT创业</div>
-            <div class="content">学子高手 各显神通</div>
-            <div class="count">当前参与人数：123456</div>
+            <div class="content">码农大侠 各显神通</div>
+            <div class="count">当前参与人数：30269</div>
           </li>
-          <li class="win-3">
+          <li class="win-3" @click="goNext('/hotList/3')">
             <div class="header">汉正街淘宝</div>
-            <div class="content">学子高手 各显神通</div>
-            <div class="count">当前参与人数：123456</div>
+            <div class="content">逛街购物 舒心放心</div>
+            <div class="count">当前参与人数：3659</div>
           </li>
-          <li class="win-4">
-            <div class="header">武汉站趣闻</div>
-            <div class="content">学子高手 各显神通</div>
-            <div class="count">当前参与人数：123456</div>
+          <li class="win-4" @click="goNext('/hotList/4')">
+            <div class="header">奇闻异事</div>
+            <div class="content">民间趣味 说来有趣</div>
+            <div class="count">当前参与人数：9999</div>
           </li>
         </ul>
       </div>
@@ -120,6 +120,11 @@ export default {
     ...mapState({
       user: state => state.user
     })
+  },
+  methods:{
+    goNext(path){
+       this.$router.push({ path: path })
+    }
   }
 };
 </script>

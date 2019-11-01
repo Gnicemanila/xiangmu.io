@@ -19,7 +19,8 @@ import MakeMoney from '../views/functionmodule/makemoney/MakeMoney.vue'
 import MyNum from '../views/functionmodule/makemoney/MyNum.vue'
 import GetIntegral from '../views/functionmodule/makemoney/GetIntegral.vue'
 import MyPartner from '../views/functionmodule/makemoney/MyPartner.vue'
-
+//热门模块
+import HotList from '../views/functionmodule/hotlist/HotList.vue'
 //我的发布
 import MySay from '../views/functionmodule/mysay/MySay.vue'
 //更多关于系统的
@@ -105,6 +106,11 @@ const routes = [
     path: '/myPartner',
     name: 'myPartner',
     component: MyPartner
+  },
+  {
+    path: '/hotList/:type',
+    name: 'hotList',
+    component: HotList
   },
   {
     path: '/mySay',
