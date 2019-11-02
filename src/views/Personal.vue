@@ -37,19 +37,19 @@
         <span>积分充值/兑换</span>
         <i class="icon-next fr"></i>
       </li>
-      <li class="have-bottom">
+      <li class="have-bottom" @click="goNext('/goldcoin')">
         <i class="i-function icon-gold_coin"></i>
         <span>金币提现</span>
         <i class="icon-next fr"></i>
       </li>
-      <li>
+      <li @click="goNext('/account')">
         <i class="i-function icon-bill"></i>
         <span>账户清单</span>
         <i class="icon-next fr"></i>
       </li>
     </ul>
-    <FansLike />
-    <div class="message">
+    <FansLike /> 
+    <div class="message" @click="goNext('/mail')">
       <i class="i-function icon-message"></i>
       <span>
         站内信

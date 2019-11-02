@@ -122,15 +122,15 @@ export default {
       padding: 0.22rem;
       text-align: left;
     }
-    .btn{
-        width:5.8rem;
-height:.86rem;
-background:@primary;
-border-radius:.1rem;
-font-size:.3rem;
-font-weight:500;
-color:rgba(255,255,255,1);
-margin-top: 1rem;
+    .btn {
+      width: 5.8rem;
+      height: 0.86rem;
+      background: @primary;
+      border-radius: 0.1rem;
+      font-size: 0.3rem;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 1);
+      margin-top: 1rem;
     }
   }
 }

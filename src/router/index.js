@@ -31,6 +31,12 @@ import Integral from '../views/functionmodule/integral/Integral.vue'
 import Pay from '../views/functionmodule/pay/Pay.vue'
 //积分兑换
 import Exchange from '../views/functionmodule/exchange/Exchange.vue'
+//金币兑现
+import Goldcoin from '../views/functionmodule/exchange/Goldcoin.vue'
+//账户清单
+import Account from '../views/functionmodule/account/Account.vue'
+//站内信息
+import Mail from '../views/functionmodule/mail/Mail.vue'
 //更多关于系统的
 import More from '../views/more/More.vue'
 import AboutMe from '../views/more/AboutMe.vue'
@@ -119,6 +125,21 @@ const routes = [
     path: '/exchange',
     name: 'exchange',
     component: Exchange
+  },
+  {
+    path: '/goldcoin',
+    name: 'goldcoin',
+    component: Goldcoin
+  },
+  {
+    path: '/account',
+    name: 'account',
+    component: Account
+  },
+  {
+    path: '/mail',
+    name: 'mail',
+    component: Mail
   },
   {
     path: '/myPartner',
