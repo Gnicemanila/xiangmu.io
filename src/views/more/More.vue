@@ -2,7 +2,7 @@
   <div class="about">
     <Header msg="更多" goback="true" />
     <ul class="default-deatil">
-      <li class="have-bottom" @click="goRouter('/aboutMe')">
+      <li class="have-bottom" @click="goNext('/aboutMe')">
         <span class="info-fun">
           关于本站
           <span class="write fr">版本1.0.0</span>
@@ -10,19 +10,19 @@
 
         <i class="icon-next fr"></i>
       </li>
-      <li class="have-bottom" @click="goRouter('/help')">
+      <li class="have-bottom" @click="goNext('/help')">
         <span class="info-fun">帮助中心</span>
         <i class="icon-next fr"></i>
       </li>
-      <li class="have-bottom have-margin" @click="goRouter('/opinion')">
+      <li class="have-bottom have-margin" @click="goNext('/opinion')">
         <span class="info-fun">意见反馈</span>
         <i class="icon-next fr"></i>
       </li>
-      <li class="have-bottom have-margin">
+      <li class="have-bottom have-margin"  @click="goNext('/serve')">
         <span class="info-fun">联系我们</span>
         <i class="icon-next fr"></i>
       </li>
-      <li class="have-bottom" @click="goRouter('/shareMe')">
+      <li class="have-bottom" @click="goNext('/shareMe')">
         <span class="info-fun">软件分享</span>
         <i class="icon-next fr"></i>
       </li>
@@ -48,7 +48,7 @@ export default {
   },
   methods: {
     ...mapActions(["runName"]),
-    goRouter(path) {
+    goNext(path) {
       this.$router.push({ path: path });
     }
   }
