@@ -32,7 +32,7 @@
         <span>我要赚钱</span>
         <i class="icon-next fr"></i>
       </li>
-      <li class="have-bottom">
+      <li class="have-bottom" @click="goNext('/integral')">
         <i class="i-function icon-integral"></i>
         <span>积分充值/兑换</span>
         <i class="icon-next fr"></i>

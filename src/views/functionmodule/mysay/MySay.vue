@@ -27,28 +27,60 @@
         <i class="icon-screen"></i>
       </span>
     </div>
-    <div class="time">
+    <div class="say-time">
       <i class="icon-date" @click="showDate()"></i>
       <span>{{currentdate}}</span>
     </div>
-    <van-datetime-picker v-model="currentDate" type="date"  v-if="show_date" @cancel="cancelXX" @confirm="confirmXX"/>
+    <ul class="old-say-say">
+      <li>
+        <Message />
+      </li>
+      <li>
+        <Message />
+      </li>
+      <li>
+        <Message />
+      </li>
+      <li>
+        <Message />
+      </li>
+            <li>
+        <Message />
+      </li>
+      <li>
+        <Message />
+      </li>
+      <li>
+        <Message />
+      </li>
+    </ul>
+    <div v-if="show_date" class="date">
+            <van-datetime-picker
+      v-model="currentDate"
+      type="date"
+      @cancel="cancelXX"
+      @confirm="confirmXX"
+    />
+    </div>
   </div>
 </template>
 
 <script>
 import { mapState, mapActions } from "vuex";
 import Header from "@/components/Header";
-import {transDate} from '../../../api/publicFuction.js'
+import Message from "@/components/Message.vue";
+import { transDate } from "../../../api/publicFuction.js";
 export default {
   name: "MySay",
   components: {
-    Header
+    Header,
+    Message
   },
   data() {
     return {
       show_date: false,
-      currentDate:new Date(),
-      currentdate:transDate(new Date(),true),
+      currentDate: new Date(),
+      currentdate: transDate(new Date(), true)
     };
   },
   computed: {
@@ -61,12 +93,12 @@ export default {
     showDate() {
       this.show_date = !this.show_date;
     },
-    cancelXX(){
-      this.show_date=false;  
+    cancelXX() {
+      this.show_date = false;
     },
-    confirmXX(date){
-    this.currentdate =transDate(date)
-    this.show_date=false;  
+    confirmXX(date) {
+      this.currentdate = transDate(date);
+      this.show_date = false;
     }
   }
 };
@@ -136,7 +168,7 @@ export default {
       width: 30%;
     }
   }
-  .time {
+  .say-time {
     height: 0.68rem;
     align-items: center;
     display: flex;
@@ -153,6 +185,20 @@ export default {
     span {
       margin-left: 0.3rem;
     }
+  }
+  .old-say-say {
+      background: #f5f5f5;
+    li {
+      border-top: 1px solid #f5f5f5;
+      background: #ffffff;
+      margin-top: .1rem;
+    }
+  }
+  .date{
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
   }
 }
 </style>

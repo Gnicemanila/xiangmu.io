@@ -25,6 +25,12 @@ import HotList from '../views/functionmodule/hotlist/HotList.vue'
 import FansAndLike from '../views/functionmodule/fanslike/FansAndLike.vue'
 //我的发布
 import MySay from '../views/functionmodule/mysay/MySay.vue'
+//关于金钱系统的积分充值兑换
+import Integral from '../views/functionmodule/integral/Integral.vue'
+//关于支付界面
+import Pay from '../views/functionmodule/pay/Pay.vue'
+//积分兑换
+import Exchange from '../views/functionmodule/exchange/Exchange.vue'
 //更多关于系统的
 import More from '../views/more/More.vue'
 import AboutMe from '../views/more/AboutMe.vue'
@@ -105,6 +111,16 @@ const routes = [
     component: GetIntegral
   },
   {
+    path: '/pay',
+    name: 'pay',
+    component: Pay
+  },
+  {
+    path: '/exchange',
+    name: 'exchange',
+    component: Exchange
+  },
+  {
     path: '/myPartner',
     name: 'myPartner',
     component: MyPartner
@@ -123,6 +139,11 @@ const routes = [
     path: '/mySay',
     name: 'mySay',
     component: MySay
+  },
+  {
+    path: '/integral',
+    name: 'integral',
+    component: Integral
   },
   {
     path: '/serve',
