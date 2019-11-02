@@ -1,6 +1,6 @@
 <template>
     <ul class="fans-like">
-      <li class="like">
+      <li class="like" @click="goNext('/fansAndLike/likes')">
         <i class="icon-like fl"></i>
         <span class="name fl">我的关注</span>
         <i class="icon-next fr"></i>
@@ -13,7 +13,7 @@
           <i class="icon-fans-ico fr"></i>
         </div>
       </li>
-      <li class="fans">
+      <li class="fans"  @click="goNext('/fansAndLike/fans')">
         <i class="icon-fans fl"></i>
         <span class="name fl">我的粉丝</span>
         <i class="icon-next fr"></i>
@@ -32,7 +32,11 @@
 <script>
 export default {
   name: "FansLike",
-  methods: {}
+  methods: {
+    goNext(path){
+       this.$router.push({ path: path })
+    }
+  }
 };
 </script>
 

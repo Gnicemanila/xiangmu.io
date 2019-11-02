@@ -27,7 +27,7 @@
         <i class="icon-next fr"></i>
       </li>
       <li class="have-bottom">
-        <span class="info-fun">什么是专家？</span>
+        <span class="info-fun">什么是大V？</span>
         <i class="icon-next fr"></i>
       </li>
       <li class="have-bottom">

@@ -57,8 +57,8 @@
           <div class="tittle">
             <div class="head-message">武汉头条</div>
             <ul class="content">
-              <li>江汉路出现大面积采光江汉路出现大面积采光江汉路出现大面积采光江汉路出现大面积采光江汉路出现大面积采光江汉路出现大面积采光</li>
-              <li>江汉路出现大面积采光</li>
+              <li>光谷房价暴跌</li>
+              <li>江汉路改名韩红江路</li>
             </ul>
           </div>
           <van-swipe :loop="false" :width="300">

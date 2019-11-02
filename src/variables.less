@@ -41,6 +41,23 @@
     background: url('./assets/imgs/show_psd.png') no-repeat;
     background-size: 100%;
   }
+
+  //性别男女
+  &.icon-boy {
+    display: inline-block;
+    width: 0.3rem;
+    height: 0.3rem;
+    background: url("./assets/imgs/personal/boy.png") no-repeat;
+    background-size: 100%;
+  }
+  &.icon-girl {
+    display: inline-block;
+    width: 0.3rem;
+    height: 0.3rem;
+    background: url("./assets/imgs/personal/girl.png") no-repeat;
+    background-size: 100%;
+  }
+
       //不显示密码 
   .form-hide-psd{
     display: inline-block;
@@ -200,4 +217,11 @@
       height: .3rem;
     }
   }
+}
+
+//w文本溢出隐藏
+.text-over{
+  overflow: hidden;
+text-overflow:ellipsis;
+white-space: nowrap;
 }

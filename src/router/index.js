@@ -21,6 +21,8 @@ import GetIntegral from '../views/functionmodule/makemoney/GetIntegral.vue'
 import MyPartner from '../views/functionmodule/makemoney/MyPartner.vue'
 //热门模块
 import HotList from '../views/functionmodule/hotlist/HotList.vue'
+//粉丝和我的关注
+import FansAndLike from '../views/functionmodule/fanslike/FansAndLike.vue'
 //我的发布
 import MySay from '../views/functionmodule/mysay/MySay.vue'
 //更多关于系统的
@@ -111,6 +113,11 @@ const routes = [
     path: '/hotList/:type',
     name: 'hotList',
     component: HotList
+  },
+  {
+    path: '/fansAndLike/:type',
+    name: 'fansAndLike',
+    component: FansAndLike
   },
   {
     path: '/mySay',
