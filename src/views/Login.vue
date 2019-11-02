@@ -28,7 +28,7 @@
         </span>
       </li>
     </ul>
-    <div class="forget-psd fr">忘记密码?</div>
+    <div class="forget-psd fr" @click="goNext('/serve')">忘记密码?</div>
     <button class="submit-btn" @click="gologin()">登录</button>
     <button class="register-btn">
       <router-link to="/register">注册</router-link>
@@ -73,9 +73,8 @@ export default {
         this.type = "password";
       }
     },
-    goHome() {
-      // this.runName(true);
-      // this.$router.push({ path: '/home' })
+    goNext(path) {
+      this.$router.push({ path: path });
     },
     async gologin() {
       let parameter = {};

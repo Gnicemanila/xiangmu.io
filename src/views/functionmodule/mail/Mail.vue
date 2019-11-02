@@ -2,57 +2,57 @@
   <div class="mail">
     <Header goback="true" msg="站内信" serve="true" />
     <ul class="mail-list">
-      <li>
+      <li @click="goNext('/mailMessage/15')">
         <i class="icon-mail"></i>
         <span class="mail-list-title text-over">站内信标题</span>
         <span class="mail-list-time">2019-01-01</span>
         <van-icon name="arrow" size="20px" />
       </li>
-      <li>
+      <li @click="goNext('/mailMessage/15')">
         <i class="icon-mail-active"></i>
         <span class="mail-list-title text-over">站内信标题</span>
         <span class="mail-list-time">2019-01-01</span>
         <van-icon name="arrow" size="20px" class="fr" />
       </li>
-      <li>
+      <li @click="goNext('/mailMessage/15')">
         <i class="icon-mail-active"></i>
         <span class="mail-list-title text-over">站内信标题</span>
         <span class="mail-list-time">2019-01-01</span>
         <van-icon name="arrow" size="20px" class="fr" />
       </li>
-      <li>
+      <li @click="goNext('/mailMessage/15')">
         <i class="icon-mail-active"></i>
         <span class="mail-list-title text-over">站内信标题</span>
         <span class="mail-list-time">2019-01-01</span>
         <van-icon name="arrow" size="20px" class="fr" />
       </li>
-      <li>
-        <i class="icon-mail-active"></i>
-        <span class="mail-list-title text-over">站内信标题</span>
-        <span class="mail-list-time">2019-01-01</span>
-        <van-icon name="arrow" size="20px" class="fr" />
-      </li>
-
-      <li>
-        <i class="icon-mail-active"></i>
-        <span class="mail-list-title text-over">站内信标题</span>
-        <span class="mail-list-time">2019-01-01</span>
-        <van-icon name="arrow" size="20px" class="fr" />
-      </li>
-      <li>
-        <i class="icon-mail-active"></i>
-        <span class="mail-list-title text-over">站内信标题</span>
-        <span class="mail-list-time">2019-01-01</span>
-        <van-icon name="arrow" size="20px" class="fr" />
-      </li>
-      <li>
+      <li @click="goNext('/mailMessage/15')">
         <i class="icon-mail-active"></i>
         <span class="mail-list-title text-over">站内信标题</span>
         <span class="mail-list-time">2019-01-01</span>
         <van-icon name="arrow" size="20px" class="fr" />
       </li>
 
-      <li>
+      <li @click="goNext('/mailMessage/15')">
+        <i class="icon-mail-active"></i>
+        <span class="mail-list-title text-over">站内信标题</span>
+        <span class="mail-list-time">2019-01-01</span>
+        <van-icon name="arrow" size="20px" class="fr" />
+      </li>
+      <li @click="goNext('/mailMessage/15')">
+        <i class="icon-mail-active"></i>
+        <span class="mail-list-title text-over">站内信标题</span>
+        <span class="mail-list-time">2019-01-01</span>
+        <van-icon name="arrow" size="20px" class="fr" />
+      </li>
+      <li @click="goNext('/mailMessage/15')">
+        <i class="icon-mail-active"></i>
+        <span class="mail-list-title text-over">站内信标题</span>
+        <span class="mail-list-time">2019-01-01</span>
+        <van-icon name="arrow" size="20px" class="fr" />
+      </li>
+
+      <li @click="goNext('/mailMessage/15')">
         <i class="icon-mail-active"></i>
         <span class="mail-list-title text-over">站内信标题</span>
         <span class="mail-list-time">2019-01-01</span>
@@ -72,11 +72,14 @@ export default {
   },
   computed: {
     ...mapState({
-      name: state => state.name
+      // name: state => state.name
     })
   },
   methods: {
-    ...mapActions(["runName"])
+    ...mapActions(["runName"]),
+    goNext(path) {
+      this.$router.push({ path: path });
+    }
   }
 };
 </script>

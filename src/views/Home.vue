@@ -1,7 +1,7 @@
 <template>
   <div class="home">
-    <Header left="会员" msg="武汉交友计划" serve="true" v-if="user" />
-    <Header left="游客" msg="武汉交友计划" serve="true" v-if="!user" />
+    <Header left="会员" msg="媛宝佼佼者" serve="true" v-if="user" />
+    <Header left="游客" msg="媛宝佼佼者" serve="true" v-if="!user" />
     <div class="home-body">
       <div class="swipe">
         <van-swipe :autoplay="3000">
@@ -15,16 +15,16 @@
       </div>
       <ul class="paly">
         <li class="tittle">昨日大事件</li>
-        <li class="hot">武汉圆满举办完成军运会大武汉新气象</li>
-        <li>武汉船舶职业技术学校完美升级</li>
-        <li>钉钉一下不在回来。打卡下班</li>
-        <li class="next-time">下次活动时间：2019年11月01日 00时00分 星期一</li>
+        <li class="hot">86版西游师徒同框</li>
+        <li>王思聪清空微博</li>
+        <li>安徽定远3.3级地震</li>
+        <li class="next-time">下次活动时间：2019年12月01日 00时00分 星期一</li>
       </ul>
       <div class="news">
         <div class="notice">
           <span class="notice-ico fl"></span>
           <van-notice-bar
-            text="足协杯战线连续第2年上演广州德比战，上赛季半决赛上恒大以两回合5-3的总比分淘汰富力。"
+            text="爱情就像在海滩上捡贝壳，不要捡最大的，也不要捡最漂亮的，要捡就捡自己最喜欢的，最重要的是捡到了自己喜欢的 就永远不要再去海边了。"
             background="#ffffff"
             color="#333333"
           />

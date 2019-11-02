@@ -37,6 +37,8 @@ import Goldcoin from '../views/functionmodule/exchange/Goldcoin.vue'
 import Account from '../views/functionmodule/account/Account.vue'
 //站内信息
 import Mail from '../views/functionmodule/mail/Mail.vue'
+//站内信详情
+import MailMessage from '../views/functionmodule/mail/MailMessage.vue'
 //更多关于系统的
 import More from '../views/more/More.vue'
 import AboutMe from '../views/more/AboutMe.vue'
@@ -142,6 +144,11 @@ const routes = [
     component: Mail
   },
   {
+    path: '/mailMessage/:id',
+    name: 'mailMessage',
+    component: MailMessage
+  },
+  {
     path: '/myPartner',
     name: 'myPartner',
     component: MyPartner
@@ -229,7 +236,7 @@ const router = new VueRouter({
   routes
 })
 
-const blackList = ['/home', '/play', '/chat', '/register'] // 路由白名单不需要登录的界面
+const blackList = ['/home', '/play', '/chat', '/register','/serve'] // 路由白名单不需要登录的界面
 
 router.beforeEach((to, from, next) => {
   // console.log('进入守卫');
