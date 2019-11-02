@@ -99,6 +99,7 @@ export default {
             .mail-list-time{
                display: inline-block;  
                 margin-left: .1rem;
+                    width: 2rem;
             }
             .icon-mail{
                 display: inline-block;
