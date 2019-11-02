@@ -113,7 +113,9 @@ export default {
     .picture {
       width: 1.2rem;
       height: 1.2rem;
-      background: rgba(188, 188, 188, 1);
+      background: url('../../../assets/imgs/chat/avatar.png') no-repeat;
+      background-size: 100%;
+      
       border-radius: 50%;
     }
     .content {
