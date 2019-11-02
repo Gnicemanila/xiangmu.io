@@ -24,8 +24,7 @@
         <van-icon name="arrow" size="25px" class="fr" />
       </li>
     </ul>
-    <button class="btn" >提交新的反馈</button>
-   
+    <button class="btn">提交新的反馈</button>
   </div>
 </template>
 
@@ -37,10 +36,10 @@ export default {
   components: {
     Header
   },
-  data(){
+  data() {
     return {
-      sure:false
-    }
+      sure: false
+    };
   },
   computed: {
     ...mapState({
@@ -48,8 +47,7 @@ export default {
     })
   },
   methods: {
-    ...mapActions(["runName"]),
-
+    ...mapActions(["runName"])
   }
 };
 </script>

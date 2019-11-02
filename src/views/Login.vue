@@ -24,7 +24,8 @@
           <van-field v-model="code" placeholder="请输入验证码" />
         </div>
         <span class="verification-code fr" @click="getcode">
-          <canvas className='rgyzm' id='canvas' width='140' height='40' @click="getcode()"></canvas></span>
+          <canvas class="rgyzm" id="canvas" width="140" height="40" @click="getcode()"></canvas>
+        </span>
       </li>
     </ul>
     <div class="forget-psd fr">忘记密码?</div>
@@ -38,7 +39,7 @@
 <script>
 import { mapState, mapActions } from "vuex";
 import Header from "@/components/Header";
-import { Toast } from 'vant';
+import { Toast } from "vant";
 export default {
   name: "Login",
   data() {
@@ -47,9 +48,9 @@ export default {
       psd: "",
       code: "",
       type: "password",
-      verificationCode:"",
+      verificationCode: "",
       show_psd: false,
-      cangetcode:false,//放重复点击
+      cangetcode: false //放重复点击
     };
   },
   components: {
@@ -60,8 +61,8 @@ export default {
       //   name:state=>state.name
     })
   },
-  created(){
-    this.getcode()
+  created() {
+    this.getcode();
   },
   methods: {
     changeType() {
@@ -81,79 +82,85 @@ export default {
       parameter.name = this.name;
       parameter.psd = this.psd;
       parameter.code = this.code;
-      let res = await this.$http("/getlogin",parameter,'post');
-      if(res.status==200){
+      let res = await this.$http("/getlogin", parameter, "post");
+      if (res.status == 200) {
         this.runName(res.data);
-        sessionStorage.setItem('user',JSON.stringify(res.data))
-        this.$router.push({ path: '/home' })
-      };
+        sessionStorage.setItem("user", JSON.stringify(res.data));
+        this.$router.push({ path: "/home" });
+      }
     },
-    async getcode(){
-        if(this.cangetcode){
-          return
-        }
-        this.cangetcode=true
-        let res = await this.$http("/getcode");
-           if(res.status==200){
-           this.verificationCode=res.data.code;
-            this.cangetcode=false;
-            this.drawPic()
-           };
+    async getcode() {
+      if (this.cangetcode) {
+        return;
+      }
+      this.cangetcode = true;
+      let res = await this.$http("/getcode");
+      if (res.status == 200) {
+        this.verificationCode = res.data.code;
+        this.cangetcode = false;
+        this.drawPic();
+      }
     },
     ...mapActions(["runName"]),
-        //绘制验证码图片
+    //绘制验证码图片
     drawPic() {
-        let canvas = document.getElementById('canvas');
-        let width = canvas.width;
-        let height = canvas.height;
-        let ctx = canvas.getContext('2d');
-        ctx.textBaseline = 'bottom';
-        /*绘制背景颜色*/
-        ctx.fillStyle = '#cccccc';
-        ctx.fillRect(0, 0, width, height);
-        /*绘制文字*/
-        let str = this.verificationCode;
-        for (let i = 0; i < 4; i++) {
-            let txt = str[i];
-            ctx.fillStyle = '#000000';//随机生成的字体颜色
-            ctx.font = this.randomNum(30, 40) + 'px SimHei';//随机生成字体大小
-            let x = 10 + i * 25;
-            let y = this.randomNum(40, 40);
-            let deg = this.randomNum(-10, 10);
-            //修改坐标原点合旋转角度
-            ctx.translate(x, y);
-            ctx.rotate(deg * Math.PI / 180);
-            ctx.fillText(txt, 0, 0);
-            //恢复坐标原点和旋转角度
-            ctx.rotate(-deg * Math.PI / 180);
-            ctx.translate(-x, -y);
-        }
-        /**绘制干扰线**/
-        for (var i = 0; i < 4; i++) {
-            ctx.strokeStyle = this.randomColor(40, 180);
-            ctx.beginPath();
-            ctx.moveTo(this.randomNum(0, width), this.randomNum(0, height));
-            ctx.lineTo(this.randomNum(0, width), this.randomNum(0, height));
-            ctx.stroke();
-        }
-        /**绘制干扰点**/
-        for (var i = 0; i < 100; i++) {
-            ctx.fillStyle = this.randomColor(0, 255);
-            ctx.beginPath();
-            ctx.arc(this.randomNum(0, width), this.randomNum(0, height), 1, 0, 2 * Math.PI);
-            ctx.fill();
-        }
+      let canvas = document.getElementById("canvas");
+      let width = canvas.width;
+      let height = canvas.height;
+      let ctx = canvas.getContext("2d");
+      ctx.textBaseline = "bottom";
+      /*绘制背景颜色*/
+      ctx.fillStyle = "#cccccc";
+      ctx.fillRect(0, 0, width, height);
+      /*绘制文字*/
+      let str = this.verificationCode;
+      for (let i = 0; i < 4; i++) {
+        let txt = str[i];
+        ctx.fillStyle = "#000000"; //随机生成的字体颜色
+        ctx.font = this.randomNum(30, 40) + "px SimHei"; //随机生成字体大小
+        let x = 10 + i * 25;
+        let y = this.randomNum(40, 40);
+        let deg = this.randomNum(-10, 10);
+        //修改坐标原点合旋转角度
+        ctx.translate(x, y);
+        ctx.rotate((deg * Math.PI) / 180);
+        ctx.fillText(txt, 0, 0);
+        //恢复坐标原点和旋转角度
+        ctx.rotate((-deg * Math.PI) / 180);
+        ctx.translate(-x, -y);
+      }
+      /**绘制干扰线**/
+      for (var i = 0; i < 4; i++) {
+        ctx.strokeStyle = this.randomColor(40, 180);
+        ctx.beginPath();
+        ctx.moveTo(this.randomNum(0, width), this.randomNum(0, height));
+        ctx.lineTo(this.randomNum(0, width), this.randomNum(0, height));
+        ctx.stroke();
+      }
+      /**绘制干扰点**/
+      for (var i = 0; i < 100; i++) {
+        ctx.fillStyle = this.randomColor(0, 255);
+        ctx.beginPath();
+        ctx.arc(
+          this.randomNum(0, width),
+          this.randomNum(0, height),
+          1,
+          0,
+          2 * Math.PI
+        );
+        ctx.fill();
+      }
     },
-        //验证码
+    //验证码
     randomNum(min, max) {
-        return Math.floor(Math.random() * (max - min) + min);
+      return Math.floor(Math.random() * (max - min) + min);
     },
     //生成一个随机颜色
     randomColor(min, max) {
-        let r = this.randomNum(min, max);
-        let g = this.randomNum(min, max);
-        let b = this.randomNum(min, max);
-        return 'rgb(' + r + ',' + g + ',' + b + ')';
+      let r = this.randomNum(min, max);
+      let g = this.randomNum(min, max);
+      let b = this.randomNum(min, max);
+      return "rgb(" + r + "," + g + "," + b + ")";
     }
   }
 };
@@ -170,12 +177,12 @@ export default {
       align-items: center;
       .form-input {
         width: 85%;
-        &.rgyzm{
-           width: 50%;
+        &.rgyzm {
+          width: 50%;
         }
       }
-      .verification-code{
-        margin-top: .12rem;
+      .verification-code {
+        margin-top: 0.12rem;
       }
     }
   }

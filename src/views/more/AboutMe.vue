@@ -58,11 +58,10 @@ export default {
     padding-top: 0.43rem;
     align-items: center;
     .picture {
-    display: block;
-    width: 1.2rem;
-    height: 1.2rem;
-    margin: auto;
-
+      display: block;
+      width: 1.2rem;
+      height: 1.2rem;
+      margin: auto;
     }
   }
 }

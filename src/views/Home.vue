@@ -121,9 +121,9 @@ export default {
       user: state => state.user
     })
   },
-  methods:{
-    goNext(path){
-       this.$router.push({ path: path })
+  methods: {
+    goNext(path) {
+      this.$router.push({ path: path });
     }
   }
 };

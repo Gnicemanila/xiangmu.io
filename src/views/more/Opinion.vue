@@ -5,7 +5,7 @@
     <ul class="opinion-operation">
       <li>
         <span>我的反馈</span>
-        <van-icon name="bars fr" size="25px" @click="goRouter('/myopinion')"/>
+        <van-icon name="bars fr" size="25px" @click="goRouter('/myopinion')" />
       </li>
       <li>
         <span>选择反馈类型</span>
@@ -36,7 +36,7 @@
 <script>
 import { mapState, mapActions } from "vuex";
 import Header from "@/components/Header";
-import { Toast } from 'vant';
+import { Toast } from "vant";
 export default {
   name: "Opinion",
   components: {
@@ -47,7 +47,7 @@ export default {
       message: "",
       qq: "",
       email: "",
-      phone: "",
+      phone: ""
     };
   },
   computed: {
@@ -59,9 +59,10 @@ export default {
     ...mapActions(["runName"]),
     goRouter(path) {
       this.$router.push({ path: path });
-    },    submitMyopinion(){
+    },
+    submitMyopinion() {
       Toast.loading({
-        message: '提交中...',
+        message: "提交中..."
       });
     }
   }

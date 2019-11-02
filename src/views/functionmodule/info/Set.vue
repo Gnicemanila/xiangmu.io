@@ -74,21 +74,21 @@ export default {
     padding-left: 0.3rem;
     align-items: center;
     display: flex;
-    background: rgba(255,255,255,1);
-    .form-input{
+    background: rgba(255, 255, 255, 1);
+    .form-input {
       width: 80%;
     }
   }
-  button{
+  button {
     justify-content: center;
-    margin-top: .8rem;
-    width:5.8rem;
-    height:.88rem;
-    background:@primary;
-    border-radius:.1rem;
-    font-size:.3rem;
-    font-weight:500;
-    color:rgba(255,255,255,1);
+    margin-top: 0.8rem;
+    width: 5.8rem;
+    height: 0.88rem;
+    background: @primary;
+    border-radius: 0.1rem;
+    font-size: 0.3rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 1);
   }
 }
 </style>

@@ -44,7 +44,7 @@
       <li>
         <Message />
       </li>
-            <li>
+      <li>
         <Message />
       </li>
       <li>
@@ -55,12 +55,12 @@
       </li>
     </ul>
     <div v-if="show_date" class="date">
-            <van-datetime-picker
-      v-model="currentDate"
-      type="date"
-      @cancel="cancelXX"
-      @confirm="confirmXX"
-    />
+      <van-datetime-picker
+        v-model="currentDate"
+        type="date"
+        @cancel="cancelXX"
+        @confirm="confirmXX"
+      />
     </div>
   </div>
 </template>
@@ -113,9 +113,9 @@ export default {
     .picture {
       width: 1.2rem;
       height: 1.2rem;
-      background: url('../../../assets/imgs/chat/avatar.png') no-repeat;
+      background: url("../../../assets/imgs/chat/avatar.png") no-repeat;
       background-size: 100%;
-      
+
       border-radius: 50%;
     }
     .content {
@@ -189,18 +189,18 @@ export default {
     }
   }
   .old-say-say {
-      background: #f5f5f5;
+    background: #f5f5f5;
     li {
       border-top: 1px solid #f5f5f5;
       background: #ffffff;
-      margin-top: .1rem;
+      margin-top: 0.1rem;
     }
   }
-  .date{
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
+  .date {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
   }
 }
 </style>

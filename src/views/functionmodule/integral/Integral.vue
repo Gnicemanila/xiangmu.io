@@ -38,7 +38,7 @@ export default {
   },
   methods: {
     ...mapActions(["runName"]),
-        goNext(path) {
+    goNext(path) {
       this.$router.push({ path: path });
     }
   }

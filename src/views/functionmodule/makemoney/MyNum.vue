@@ -5,10 +5,9 @@
       <div id="qrcode" ref="qrcode"></div>
     </div>
     <p class="web-site">邀请码：888888888</p>
-    <p class="my-num-info">
-        您可以将您的邀请码分享给他人，对方在本站注册时或 注册登录后通过个人中心-我要赚钱-领取积分成功绑定 您的邀请码成为您的助力伙伴，对方可免费获得10元积 分。领取成功后他们每花费积分查看一次计划，您可获 得花费积分数量10%的金币收入。
-        
-    </p>
+    <p
+      class="my-num-info"
+    >您可以将您的邀请码分享给他人，对方在本站注册时或 注册登录后通过个人中心-我要赚钱-领取积分成功绑定 您的邀请码成为您的助力伙伴，对方可免费获得10元积 分。领取成功后他们每花费积分查看一次计划，您可获 得花费积分数量10%的金币收入。</p>
     <p class="share">分享到</p>
     <ul>
       <li>
@@ -55,7 +54,7 @@ export default {
 };
 </script>
 <style lang="less">
-.my-num{
+.my-num {
   background: #ffffff;
   .picture {
     margin: 1.49rem 2.87rem 0.67rem 2.87rem;
@@ -78,21 +77,21 @@ export default {
   .web-site {
     margin-top: 0.29rem;
   }
-  .my-num-info{
-      margin-top: 0.29rem;  
-          padding: .75rem;
+  .my-num-info {
+    margin-top: 0.29rem;
+    padding: 0.75rem;
   }
   .share {
-              position: fixed;
-      bottom:1.81rem;
-          left: 0;
+    position: fixed;
+    bottom: 1.81rem;
+    left: 0;
     right: 0;
   }
   ul {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
     margin-top: 0.3rem;
     border-top: 2px solid rgba(215, 215, 215, 1);
     background: rgba(255, 255, 255, 1);
@@ -102,8 +101,8 @@ export default {
       width: 25%;
       justify-content: center;
       align-items: center;
-      padding-top: .3rem;
-      span{
+      padding-top: 0.3rem;
+      span {
         display: block;
       }
       i {

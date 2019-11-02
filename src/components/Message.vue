@@ -2,20 +2,18 @@
   <div class="message">
     <div class="avatar avatar-"></div>
     <div class="user-info">
-      <span class="vip"> 大V</span>
+      <span class="vip">大V</span>
       <span class="user">彭于晏</span>
       <span class="time">20:11:38</span>
     </div>
-    <div class="msg-content">
-      大家都是知道的我的名字就是一个形容词！primary
-    </div>
+    <div class="msg-content">大家都是知道的我的名字就是一个形容词！primary</div>
   </div>
 </template>
 
 <script>
 export default {
   name: "Message",
-//   props:['user'],
+  //   props:['user'],
   methods: {}
 };
 </script>
@@ -32,18 +30,18 @@ export default {
     width: 0.9rem;
     height: 0.9rem;
     margin-right: 0.15rem;
-    background: url('../assets/imgs/chat/avatar.png') no-repeat;
+    background: url("../assets/imgs/chat/avatar.png") no-repeat;
     background-size: 100%;
   }
   .user-info {
     overflow: hidden;
     display: flex;
-        align-items: center;
-    .vip{
-        font-size:.28rem;
-        margin-right: .3rem;
-font-weight:500;
-color:@primary;
+    align-items: center;
+    .vip {
+      font-size: 0.28rem;
+      margin-right: 0.3rem;
+      font-weight: 500;
+      color: @primary;
     }
     .user {
       font-size: 0.24rem;
@@ -58,30 +56,31 @@ color:@primary;
       color: #c3c3c3;
     }
   }
-      .msg-content {
-      float: left;
-      position: relative;
-      margin-left: 0.117rem;
-      margin-top: 0.094rem;
-      padding: 0.117rem;
-      max-width: 5.273rem;
-      font-size: 0.281rem;
-      line-height: 0.329rem;
-      word-break: break-word;
-      background: #fff;
-      color: #333;
-      border-radius: 0 0.117rem 0.117rem 0.117rem;
-      &:before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: -0.117rem;
-        width: 0;
-        height: 0;
-        border-width: 0.117rem;
-        border-style: solid;
-        border-color: #fff transparent transparent;
-      }
+  .msg-content {
+    float: left;
+    position: relative;
+    margin-left: 0.117rem;
+    margin-top: 0.094rem;
+    padding: 0.117rem;
+    max-width: 5.273rem;
+    font-size: 0.281rem;
+    line-height: 0.329rem;
+    word-break: break-word;
+    background: #fff;
+    color: #333;
+    border-radius: 0 0.117rem 0.117rem 0.117rem;
+    text-align: left;
+    &:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -0.117rem;
+      width: 0;
+      height: 0;
+      border-width: 0.117rem;
+      border-style: solid;
+      border-color: #fff transparent transparent;
     }
+  }
 }
 </style>

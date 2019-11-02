@@ -6,25 +6,23 @@
       <li>
         <i class="form-psd"></i>
         <div class="psd">
-          <van-field v-model="old_psd" placeholder="请输入原始登录密码" type="password"/>
+          <van-field v-model="old_psd" placeholder="请输入原始登录密码" type="password" />
         </div>
       </li>
       <li class="have-margin have-bottom">
         <i class="form-psd"></i>
         <div class="psd">
-          <van-field v-model="psd" placeholder="请输入新登录密码" type="password"/>
+          <van-field v-model="psd" placeholder="请输入新登录密码" type="password" />
         </div>
       </li>
       <li class="have-bottom">
         <i class="form-psd"></i>
         <div class="psd">
-          <van-field v-model="psd_two" placeholder="请确认登录密码" type="password"/>
+          <van-field v-model="psd_two" placeholder="请确认登录密码" type="password" />
         </div>
       </li>
     </ul>
-    <button>
-        确认修改
-    </button>
+    <button>确认修改</button>
   </div>
 </template>
 
@@ -77,21 +75,21 @@ export default {
       }
       .psd {
         width: 100%;
-                .van-cell {
+        .van-cell {
           padding: 0 0.4rem;
         }
       }
     }
   }
-  button{
-      font-size:.3rem;
-       margin-top: 0.8rem;
-font-weight:500;
-color:rgba(255,255,255,1);
-width:5.8rem;
-height:.88rem;
-background:@primary;
-border-radius:.1rem;
+  button {
+    font-size: 0.3rem;
+    margin-top: 0.8rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 1);
+    width: 5.8rem;
+    height: 0.88rem;
+    background: @primary;
+    border-radius: 0.1rem;
   }
 }
 </style>

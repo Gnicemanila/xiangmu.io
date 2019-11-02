@@ -43,7 +43,7 @@
         <div class="pay-form">
           <van-field v-model="me_bank" placeholder="转入账号" />
         </div>
-         <button class="copy">复制</button>
+        <button class="copy">复制</button>
       </li>
       <li>
         <span>汇款姓名：</span>
@@ -59,7 +59,7 @@
       </li>
     </ul>
     <button class="pay-btn">提交</button>
-        <van-action-sheet v-model="showlist" :actions="banklist" @select="onSelect" />
+    <van-action-sheet v-model="showlist" :actions="banklist" @select="onSelect" />
   </div>
 </template>
 
@@ -72,7 +72,7 @@ export default {
   components: {
     Header
   },
-    mounted() {
+  mounted() {
     this.banklist = banklist;
   },
   data() {
@@ -96,9 +96,9 @@ export default {
       this.showlist = false;
       this.bank = item.name;
     },
-        isShowList() {
+    isShowList() {
       this.showlist = !this.showlist;
-    },
+    }
   }
 };
 </script>
@@ -122,24 +122,24 @@ export default {
       align-items: center;
       padding-left: 0.31rem;
       border-bottom: 1px solid rgba(245, 245, 245, 1);
-              .fun{
-            margin-left: .58rem;
-        }
+      .fun {
+        margin-left: 0.58rem;
+      }
       .pay-form {
         width: 58%;
         .van-cell {
           padding: 0 0.16rem;
         }
       }
-      .copy{
-          width:1.2rem;
-height:.5rem;
-background:@primary;
-border-radius:.05rem;
-margin-right: .3rem;
-font-size:.26rem;
-font-weight:500;
-color:rgba(255,255,255,1);
+      .copy {
+        width: 1.2rem;
+        height: 0.5rem;
+        background: @primary;
+        border-radius: 0.05rem;
+        margin-right: 0.3rem;
+        font-size: 0.26rem;
+        font-weight: 500;
+        color: rgba(255, 255, 255, 1);
       }
     }
   }

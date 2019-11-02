@@ -25,10 +25,10 @@ export default {
   components: {
     Header
   },
-  data(){
-      return {
-          value:""
-      }
+  data() {
+    return {
+      value: ""
+    };
   },
   computed: {
     ...mapState({

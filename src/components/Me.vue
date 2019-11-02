@@ -60,30 +60,31 @@ export default {
       }
     }
   }
-      .msg-content {
-      position: relative;
-      margin-left: 0.117rem;
-      margin-top: 0.094rem;
-      padding: 0.117rem;
-      max-width: 5.273rem;
-      font-size: 0.281rem;
-      line-height: 0.329rem;
-      word-break: break-word;
-      background: #fff;
-      color: #333;
-      border-radius: 0 0.117rem 0.117rem 0.117rem;
-      &:before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: auto;
-        right: -0.117rem;
-        width: 0;
-        height: 0;
-        border-width: 0.117rem;
-        border-style: solid;
-        border-color: #fff transparent transparent;
-      }
+  .msg-content {
+    position: relative;
+    margin-left: 0.117rem;
+    margin-top: 0.094rem;
+    padding: 0.117rem;
+    max-width: 5.273rem;
+    font-size: 0.281rem;
+    line-height: 0.329rem;
+    word-break: break-word;
+    background: #fff;
+    color: #333;
+    border-radius: 0 0.117rem 0.117rem 0.117rem;
+    text-align: left;
+    &:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: auto;
+      right: -0.117rem;
+      width: 0;
+      height: 0;
+      border-width: 0.117rem;
+      border-style: solid;
+      border-color: #fff transparent transparent;
     }
+  }
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div class="about">
-    <Header msg="更多" goback="true"/>
+    <Header msg="更多" goback="true" />
     <ul class="default-deatil">
       <li class="have-bottom" @click="goRouter('/aboutMe')">
         <span class="info-fun">

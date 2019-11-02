@@ -48,7 +48,7 @@
         <i class="icon-next fr"></i>
       </li>
     </ul>
-    <FansLike /> 
+    <FansLike />
     <div class="message" @click="goNext('/mail')">
       <i class="i-function icon-message"></i>
       <span>

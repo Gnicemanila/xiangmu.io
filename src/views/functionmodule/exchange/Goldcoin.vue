@@ -30,11 +30,11 @@
       </li>
     </ul>
     <div class="goldcoin-submit">
-        <div class="info">
-            温馨提示：当金币数量达到100个时，方可提现。
-1个金币=1元。
-        </div>
-        <button class="btn">提交</button>
+      <div class="info">
+        温馨提示：当金币数量达到100个时，方可提现。
+        1个金币=1元。
+      </div>
+      <button class="btn">提交</button>
     </div>
   </div>
 </template>
@@ -47,10 +47,10 @@ export default {
   components: {
     Header
   },
-  data(){
-      return {
-          num:""
-      }
+  data() {
+    return {
+      num: ""
+    };
   },
   computed: {
     ...mapState({
@@ -85,25 +85,25 @@ export default {
       }
     }
   }
-  &-submit{
-      background: #ffffff;
-      .info{
-          padding: .18rem 1rem;
-          font-size:.26rem;
-font-weight:500;
-color:rgba(102,102,102,1);
-text-align: left;
-      }
-      .btn{
-          width:5.8rem;
-height:.86rem;
-background:@primary;
-border-radius:.1rem;
-font-size:.3rem;
-font-weight:500;
-color:rgba(255,255,255,1);
-margin-top: .75rem;
-      }
+  &-submit {
+    background: #ffffff;
+    .info {
+      padding: 0.18rem 1rem;
+      font-size: 0.26rem;
+      font-weight: 500;
+      color: rgba(102, 102, 102, 1);
+      text-align: left;
+    }
+    .btn {
+      width: 5.8rem;
+      height: 0.86rem;
+      background: @primary;
+      border-radius: 0.1rem;
+      font-size: 0.3rem;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 1);
+      margin-top: 0.75rem;
+    }
   }
 }
 </style>

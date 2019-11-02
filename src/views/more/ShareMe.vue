@@ -89,8 +89,8 @@ export default {
       width: 25%;
       justify-content: center;
       align-items: center;
-      padding-top: .3rem;
-      span{
+      padding-top: 0.3rem;
+      span {
         display: block;
       }
       i {

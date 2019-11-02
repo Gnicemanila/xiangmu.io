@@ -25,7 +25,10 @@
         <div class="form-input">
           <van-field v-model="phone" placeholder="请输入11位手机号码" type="number" />
         </div>
-        <span class="get-code fr" @click="getphonecode()">{{verificationCode?verificationCode:'获取验证码'}}</span>
+        <span
+          class="get-code fr"
+          @click="getphonecode()"
+        >{{verificationCode?verificationCode:'获取验证码'}}</span>
       </li>
       <li>
         <span class="form-message"></span>
@@ -75,34 +78,34 @@ export default {
   },
   computed: {
     ...mapState({
-        // name1: state => state.chat.name
+      // name1: state => state.chat.name
     })
   },
   methods: {
-    ...mapActions(['runName']),
+    ...mapActions(["runName"]),
     haveInvitation() {
       this.have_invitation = true;
     },
-    async getphonecode(){
-       let res = await this.$http("/getphonecode");
-          if(res.status==200){
-          // console.log(res)
+    async getphonecode() {
+      let res = await this.$http("/getphonecode");
+      if (res.status == 200) {
+        // console.log(res)
         this.verificationCode = res.data.code;
-      };
+      }
     },
     async goregister() {
       let parameter = {};
       parameter.name = this.name;
       parameter.psd = this.psd;
       parameter.phone = this.phone;
-      let res = await this.$http("/register",parameter,'post');
-      if(res.status==200){
-        console.log(res)
+      let res = await this.$http("/register", parameter, "post");
+      if (res.status == 200) {
+        console.log(res);
         this.runName(res.data);
-        sessionStorage.setItem('user',JSON.stringify(res.data))
-        this.$router.push({ path: '/home' })
-      };
-    },    
+        sessionStorage.setItem("user", JSON.stringify(res.data));
+        this.$router.push({ path: "/home" });
+      }
+    }
   }
 };
 </script>
