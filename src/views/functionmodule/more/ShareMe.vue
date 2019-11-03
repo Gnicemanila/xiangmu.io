@@ -98,19 +98,19 @@ export default {
         width: 0.68rem;
         height: 0.68rem;
         &.friends {
-          background: url("../../assets/imgs/more/friends.png") no-repeat;
+          background: url("../../../assets/imgs/more/friends.png") no-repeat;
           background-size: 100%;
         }
         &.wechat {
-          background: url("../../assets/imgs/more/wechat.png") no-repeat;
+          background: url("../../../assets/imgs/more/wechat.png") no-repeat;
           background-size: 100%;
         }
         &.qq {
-          background: url("../../assets/imgs/more/qq.png") no-repeat;
+          background: url("../../../assets/imgs/more/qq.png") no-repeat;
           background-size: 100%;
         }
         &.message {
-          background: url("../../assets/imgs/more/message.png") no-repeat;
+          background: url("../../../assets/imgs/more/message.png") no-repeat;
           background-size: 100%;
         }
       }

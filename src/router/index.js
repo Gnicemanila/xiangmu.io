@@ -40,12 +40,13 @@ import Mail from '../views/functionmodule/mail/Mail.vue'
 //站内信详情
 import MailMessage from '../views/functionmodule/mail/MailMessage.vue'
 //更多关于系统的
-import More from '../views/more/More.vue'
-import AboutMe from '../views/more/AboutMe.vue'
-import Help from '../views/more/Help.vue'
-import ShareMe from '../views/more/ShareMe.vue'
-import Opinion from '../views/more/Opinion.vue'
-import Myopinion from '../views/more/Myopinion.vue'
+import More from '../views/functionmodule/more/More.vue'
+import AboutMe from '../views/functionmodule/more/AboutMe.vue'
+import Help from '../views/functionmodule/more/Help.vue'
+import ShareMe from '../views/functionmodule/more/ShareMe.vue'
+import Opinion from '../views/functionmodule/more/Opinion.vue'
+import Myopinion from '../views/functionmodule/more/Myopinion.vue'
+import Myfeedback from '../views/functionmodule/more/Myfeedback'
 //在线客服
 import Serve from '../views/Serve.vue'
 //
@@ -207,6 +208,11 @@ const routes = [
     path: '/myopinion',
     name: 'myopinion',
     component: Myopinion
+  },
+  {
+    path: '/myfeedback',
+    name: 'myfeedback',
+    component: Myfeedback
   },
   {
     path: '/play',

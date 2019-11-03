@@ -5,7 +5,7 @@
     <ul class="opinion-operation">
       <li>
         <span>我的反馈</span>
-        <van-icon name="bars fr" size="25px" @click="goRouter('/myopinion')" />
+        <van-icon name="bars fr" size="25px" @click="goNext('/myopinion')" />
       </li>
       <li>
         <span>选择反馈类型</span>
@@ -29,7 +29,7 @@
         <van-field v-model="email" placeholder="请输入邮箱地址" />
       </li>
     </ul>
-    <button class="submit" @click="submitMyopinion">提交</button>
+    <button class="submit" @click="goNext('/myfeedback')">提交</button>
   </div>
 </template>
 
@@ -57,7 +57,7 @@ export default {
   },
   methods: {
     ...mapActions(["runName"]),
-    goRouter(path) {
+    goNext(path) {
       this.$router.push({ path: path });
     },
     submitMyopinion() {

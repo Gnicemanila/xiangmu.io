@@ -1,11 +1,11 @@
 <template>
   <div class="chat">
     <div class="notice">
-      <Header msg="聊天室" serve="true" />
+      <Header goback="true" msg="聊天室" serve="true" />
       <div class="notice-nav">
         <van-notice-bar
           mode="closeable"
-          text="足协杯战线连续第2年上演广州德比战，上赛季半决赛上恒大以两回合5-3的总比分淘汰富力。"
+          text="爱情就像在海滩上捡贝壳，不要捡最大的，也不要捡最漂亮的，要捡就捡自己最喜欢的，最重要的是捡到了自己喜欢的 就永远不要再去海边了。"
           background="#ECECEC"
           color="#333333"
         ></van-notice-bar>
@@ -31,9 +31,9 @@
         <div class="chat-content">
           <van-field v-model="message" rows="1" type="textarea" />
         </div>
-        <span class="send">发送</span>
+        <span class="send " @click="send()">发送</span>
       </div>
-      <Footer message="聊天室" />
+      <!-- <Footer message="聊天室" /> -->
     </div>
   </div>
 </template>
@@ -59,17 +59,20 @@ export default {
   },
   computed: {
     ...mapState({
-      name: state => state.name
+      chatList: state => state.chat.chatList
     })
   },
   methods: {
-    ...mapActions(["runName"])
+    ...mapActions('chat',["updateList"]),
+    send(){
+      console.log(this.chatList)
+    }
   }
 };
 </script>
 <style lang="less">
 .chat {
-  padding-bottom: 1.98rem;
+  padding-bottom: 1rem;
   .notice {
     .notice-nav {
       height: 0.88rem;
@@ -89,7 +92,7 @@ export default {
     box-shadow: 0 1px 0 0 rgba(45, 45, 45, 0.21);
     border-top: 1px solid #c2c3c7;
     background: #fff;
-    height: 1.98rem;
+    // height: 1.98rem;
     .chat-function {
       height: 1rem;
       background: #fff;

@@ -1,33 +1,39 @@
 const state = {
-    name: "王者荣耀",
-    vip: "99",
-    time: '20:11:38'
+    chatList: [
+        {
+            name: "彭于晏",
+            avatar: "1",
+            vip: "-1",
+            time: '20:11:38',
+            message: "大家都是知道的我的名字就是一个形容词！primary",
+            isme: false,
+        },
+        {
+            name: "胡歌",
+            avatar: "2",
+            vip: "-1",
+            time: '20:13:38',
+            message: "大家都是知道的我的名字就是一个形容词！primary",
+            isme: true,
+        },
+    ],
 }
 const getters = {
     getGame(state) {
-        return state.game
+        return state.chatList
     },
-    getPosition(state) {
-        return state.position
-    }
 }
 
 const mutations = {
-    changeName(state, name) {
-        state.game = name
+    changeName(state, List) {
+        state.chatList.push(List)
     },
-    changePosition(state, vip) {
-        state.vip = vip
-    }
 }
 
 const actions = {
-    cgame(context, name) {
-        context.commit('changeName', name)
+    updateList(context, List) {
+        context.commit('changeList', List)
     },
-    cposition(context, vip) {
-        context.commit('changePosition', vip)
-    }
 }
 
 export default {

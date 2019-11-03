@@ -4,27 +4,13 @@
       <i class="icon-like fl"></i>
       <span class="name fl">我的关注</span>
       <i class="icon-next fr"></i>
-      <div class="fans-all fr">
-        <i class="icon-fans-ico fr"></i>
-        <i class="icon-fans-ico fr"></i>
-        <i class="icon-fans-ico fr"></i>
-        <i class="icon-fans-ico fr"></i>
-        <i class="icon-fans-ico fr"></i>
-        <i class="icon-fans-ico fr"></i>
-      </div>
+      <div class="fans-all fr"></div>
     </li>
     <li class="fans" @click="goNext('/fansAndLike/fans')">
       <i class="icon-fans fl"></i>
       <span class="name fl">我的粉丝</span>
       <i class="icon-next fr"></i>
-      <div class="fans-all fr">
-        <i class="icon-fans-ico fr"></i>
-        <i class="icon-fans-ico fr"></i>
-        <i class="icon-fans-ico fr"></i>
-        <i class="icon-fans-ico fr"></i>
-        <i class="icon-fans-ico fr"></i>
-        <i class="icon-fans-ico fr"></i>
-      </div>
+      <div class="fans-all fr"></div>
     </li>
   </ul>
 </template>
