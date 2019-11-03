@@ -13,7 +13,7 @@
       <li>
         <span>账户姓名</span>
         <div class="choice">
-          <van-field v-model="name" placeholder="请输入本人真实姓名绑定后无法修改" />
+          <van-field v-model="name" placeholder="请输入本人真实姓名绑定" />
         </div>
       </li>
       <li>
