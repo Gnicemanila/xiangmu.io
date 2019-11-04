@@ -27,8 +27,16 @@
         </div>
         <span
           class="get-code fr"
+          v-if="!show"
           @click="getphonecode()"
-        >{{verificationCode?verificationCode:'获取验证码'}}</span>
+        >获取验证码</span>
+        <span   class="get-code fr" v-if="show">
+            <van-count-down :time="time">
+              <template v-slot="timeData">
+                <span class="item">{{ timeData.seconds }}获取中</span>
+              </template>
+            </van-count-down>
+        </span>
       </li>
       <li>
         <span class="form-message"></span>
@@ -70,7 +78,9 @@ export default {
       message: "",
       invitation: "",
       have_invitation: false,
-      verificationCode: ""
+      verificationCode: "",
+      show:false,
+      time:60000,
     };
   },
   components: {
@@ -90,6 +100,11 @@ export default {
       let res = await this.$http("/getphonecode");
       if (res.status == 200) {
         // console.log(res)
+        this.show=true;
+        let _this=this;
+        setTimeout(function(){
+          _this.show=false;
+        },60000)
         this.verificationCode = res.data.code;
       }
     },
@@ -134,6 +149,10 @@ export default {
         height: 0.58rem;
         line-height: 0.58rem;
         border-radius: 0.05rem;
+        .van-count-down, .van-divider{
+          line-height: 0.58rem;
+          color: #ffffff;
+        }
       }
     }
   }
