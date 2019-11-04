@@ -15,9 +15,11 @@
       </div>
       <ul class="paly">
         <li class="tittle">昨日大事件</li>
-        <li class="hot">86版西游师徒同框</li>
-        <li>王思聪清空微博</li>
-        <li>安徽定远3.3级地震</li>
+       <!-- <audio src="../assets/videoandmp3/zhangyu.mp3" controls autoplay></audio> -->
+
+        <!-- <li class="hot">86版西游师徒同框</li> -->
+        <!-- <li>王思聪清空微博</li> -->
+        <!-- <li>安徽定远3.3级地震</li> -->
         <li class="next-time">下次活动时间：2019年12月01日 00时00分 星期一</li>
       </ul>
       <div class="news">

@@ -8,6 +8,8 @@ import 'vant/lib/index.css';
 import './assets/style/reset.less'
 import './variables.less';
 import Api from './api/api'
+import VueClipboard from 'vue-clipboard2'
+Vue.use(VueClipboard)
 Vue.prototype.$http=Api
 import './mock/index'
 Vue.use(Vant)

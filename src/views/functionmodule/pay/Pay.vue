@@ -2,8 +2,7 @@
   <div class="pay">
     <Header goback="true" msg="线下充值" serve="true" />
     <div class="pay-remind">
-      温馨提示：入款前请查看最新银行账号，若转入停用账户造成损失
-      我司概不负责，如有疑问请查看帮助或咨询客服。
+      温馨提示：入款转换积分的时候如有疑问请查看帮助或咨询客服。
     </div>
     <ul class="pay-form">
       <li>
@@ -36,14 +35,24 @@
         <div class="pay-form">
           <van-field v-model="me_name" placeholder="转入户名" />
         </div>
-        <button class="copy">复制</button>
+        <button
+          class="copy"
+          v-clipboard:copy="me_name"
+          v-clipboard:success="onCopy"
+          v-clipboard:error="onError"
+        >复制</button>
       </li>
       <li>
         <span>转入账号：</span>
         <div class="pay-form">
           <van-field v-model="me_bank" placeholder="转入账号" />
         </div>
-        <button class="copy">复制</button>
+        <button
+          class="copy"
+          v-clipboard:copy="me_bank"
+          v-clipboard:success="onCopy"
+          v-clipboard:error="onError"
+        >复制</button>
       </li>
       <li>
         <span>汇款姓名：</span>
@@ -67,6 +76,7 @@
 import { mapState, mapActions } from "vuex";
 import Header from "@/components/Header";
 import banklist from "../../../api/banklist";
+import { Toast } from "vant";
 export default {
   name: "Pay",
   components: {
@@ -98,6 +108,18 @@ export default {
     },
     isShowList() {
       this.showlist = !this.showlist;
+    },
+    onCopy() {
+      Toast.success({
+        duration: 1500,
+        message: "复制成功"
+      });
+    },
+    onError() {
+      Toast.fail({
+        duration: 1500,
+        message: "复制失败"
+      });
     }
   }
 };
@@ -126,7 +148,7 @@ export default {
         margin-left: 0.58rem;
       }
       .pay-form {
-        width: 58%;
+        width: 56%;
         .van-cell {
           padding: 0 0.16rem;
         }
