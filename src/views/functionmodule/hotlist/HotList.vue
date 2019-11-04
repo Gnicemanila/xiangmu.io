@@ -129,6 +129,7 @@ export default {
     align-items: center;
     background: #ffffff;
     padding: 0 0.3rem;
+    border-top: 1px solid #f5f5f5;
     i {
       display: inline-block;
       width: 0.4rem;

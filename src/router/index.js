@@ -43,6 +43,7 @@ import MailMessage from '../views/functionmodule/mail/MailMessage.vue'
 import More from '../views/functionmodule/more/More.vue'
 import AboutMe from '../views/functionmodule/more/AboutMe.vue'
 import Help from '../views/functionmodule/more/Help.vue'
+import HelpDeatil from '../views/functionmodule/more/HelpDeatil.vue'
 import ShareMe from '../views/functionmodule/more/ShareMe.vue'
 import Opinion from '../views/functionmodule/more/Opinion.vue'
 import Myopinion from '../views/functionmodule/more/Myopinion.vue'
@@ -193,6 +194,11 @@ const routes = [
     path: '/help',
     name: 'help',
     component: Help
+  },
+  {
+    path: '/helpDeatil/:type',
+    name: 'helpDeatil',
+    component: HelpDeatil
   },
   {
     path: '/shareMe',

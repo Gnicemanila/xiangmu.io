@@ -6,25 +6,25 @@
       <span class="version">当前版本V1.0.0</span>
     </div>
     <ul class="default-deatil">
-      <li class="have-bottom">
+      <li class="have-bottom" @click="goNext('/helpDeatil/11')">
         <span class="info-fun">本站简介</span>
         <i class="icon-next fr"></i>
       </li>
-      <li class="have-bottom">
+      <li class="have-bottom" @click="goNext('/helpDeatil/12')">
         <span class="info-fun">关于我们</span>
 
         <i class="icon-next fr"></i>
       </li>
-      <li>
+      <li @click="goNext('/serve')">
         <span class="info-fun">联系我们</span>
         <i class="icon-next fr"></i>
       </li>
-      <li class="have-bottom have-margin">
+      <li class="have-bottom have-margin" @click="goNext('/helpDeatil/13')">
         <span class="info-fun">功能介绍</span>
 
         <i class="icon-next fr"></i>
       </li>
-      <li>
+      <li @click="goNext('/shareMe')">
         <span class="info-fun">软件分享</span>
         <i class="icon-next fr"></i>
       </li>
@@ -46,7 +46,10 @@ export default {
     })
   },
   methods: {
-    ...mapActions(["runName"])
+    ...mapActions(["runName"]),
+    goNext(path) {
+      this.$router.push({ path: path });
+    }
   }
 };
 </script>
