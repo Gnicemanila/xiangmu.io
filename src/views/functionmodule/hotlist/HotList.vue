@@ -1,11 +1,7 @@
 <template>
   <div class="hot-list">
     <Header goback="true" :msg="hot" serve="true" />
-    <div class="search">
-      <van-search v-model="value" placeholder="请输入搜索关键词" show-action @search="onSearch">
-        <div slot="action" @click="onSearch">搜索</div>
-      </van-search>
-    </div>
+    <Search/>
     <ul>
       <li class="list">
         <i class="icon-one"></i>
@@ -78,14 +74,15 @@
 <script>
 import { mapState, mapActions } from "vuex";
 import Header from "@/components/Header";
+import Search from "@/components/Search";
 export default {
   name: "HotList",
   components: {
-    Header
+    Header,
+    Search
   },
   data() {
     return {
-      value: "",
       placeholder: "",
       hot: ""
     };
@@ -115,9 +112,6 @@ export default {
   },
   methods: {
     ...mapActions(["runName"]),
-    onSearch() {
-      console.log(this.value);
-    }
   }
 };
 </script>

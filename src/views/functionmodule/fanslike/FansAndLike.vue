@@ -1,11 +1,7 @@
 <template>
   <div class="fans-and-like">
     <Header goback="true" :msg="msg" serve="true" />
-    <div class="search">
-      <van-search v-model="value" placeholder="搜索用户名" show-action @search="onSearch">
-        <div slot="action" @click="onSearch">搜索</div>
-      </van-search>
-    </div>
+    <Search/>
     <ul>
       <li class="list">
         <div class="head"></div>
@@ -89,10 +85,12 @@
 <script>
 import { mapState, mapActions } from "vuex";
 import Header from "@/components/Header";
+import Search from "@/components/Search";
 export default {
   name: "FansAndLike",
   components: {
-    Header
+    Header,
+    Search
   },
   data() {
     return {
@@ -120,9 +118,6 @@ export default {
   },
   methods: {
     ...mapActions(["runName"]),
-    onSearch() {
-      console.log(this.value);
-    }
   }
 };
 </script>
