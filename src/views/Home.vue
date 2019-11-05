@@ -14,12 +14,11 @@
         </van-swipe>
       </div>
       <ul class="paly">
-        <li class="tittle">昨日大事件</li>
-       <!-- <audio src="../../assets/video/yelang.mp3" controls autoplay></audio> -->
-       <audio src="../assets/video/yelang.mp3" autoplay loop controls></audio>
-        <!-- <li class="hot">86版西游师徒同框</li> -->
-        <!-- <li>王思聪清空微博</li> -->
+        <li class="tittle" @click="play()">播放当前网站音乐</li>
+        <li class="hot">86版西游师徒同框</li>
+        <li>王思聪清空微博</li>
         <!-- <li>安徽定远3.3级地震</li> -->
+        <audio src="" id="buttonAudio"></audio>
         <li class="next-time">下次活动时间：2019年12月01日 00时00分 星期一</li>
       </ul>
       <div class="news">
@@ -126,7 +125,11 @@ export default {
   methods: {
     goNext(path) {
       this.$router.push({ path: path });
-    }
+    },
+        play() {
+          this.clickButton();
+          console.log('我发生了点击事件')
+        },       
   }
 };
 </script>
