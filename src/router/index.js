@@ -8,7 +8,7 @@ import BindCard from '../views/functionmodule/info/BindCard.vue'
 import ChoicePsd from '../views/functionmodule/info/ChoicePsd.vue'
 //主功能
 import Play from '../views/Play.vue'
-import Chat from '../views/Chat.vue'
+import Chat from '../views/functionmodule/chat/Chat.vue'
 import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
 import Register from '../views/Register.vue'
