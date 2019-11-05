@@ -14,7 +14,7 @@
         </van-swipe>
       </div>
       <ul class="paly">
-        <li class="tittle" @click="play()">播放当前网站音乐</li>
+        <li class="tittle" @click="play()">点我播放当前网站音乐</li>
         <li class="hot">86版西游师徒同框</li>
         <li>王思聪清空微博</li>
         <!-- <li>安徽定远3.3级地震</li> -->
