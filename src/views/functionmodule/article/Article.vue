@@ -98,7 +98,8 @@ export default {
     &-head {
       width: 0.7rem;
       height: 0.7rem;
-      background: rgba(204, 204, 204, 1);
+      background: url("../../../assets/imgs/acticle/70.png") no-repeat;
+      background-size: 100%;
       border-radius: 50%;
     }
     &-title {
@@ -202,7 +203,6 @@ export default {
     padding: 0.1rem 0.3rem;
     .article-input-content {
       background: rgba(255, 255, 255, 1);
-      height: 0.8rem;
       width: 5.8rem;
       margin-right: 0.2rem;
       .van-cell {

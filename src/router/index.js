@@ -25,6 +25,10 @@ import HotList from '../views/functionmodule/hotlist/HotList.vue'
 import FansAndLike from '../views/functionmodule/fanslike/FansAndLike.vue'
 //我的发布
 import MySay from '../views/functionmodule/mysay/MySay.vue'
+//发表说说
+import SayOther from '../views/functionmodule/mysay/SayOther.vue'
+//获取位置
+import Position from '../views/functionmodule/mysay/Position.vue'
 //首页文章相关跳转
 
 import Article from '../views/functionmodule/article/Article.vue'
@@ -172,6 +176,16 @@ const routes = [
     path: '/mySay',
     name: 'mySay',
     component: MySay
+  },
+  {
+    path: '/sayOther',
+    name: 'sayOther',
+    component: SayOther
+  },
+  {
+    path: '/position',
+    name: 'position',
+    component: Position
   },
   {
     path: '/article',

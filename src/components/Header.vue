@@ -71,6 +71,9 @@ export default {
       justify-content: flex-end;
       display: flex;
       margin-right: 0.3rem;
+            font-size: 0.3rem;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 1);
     }
   }
 }
