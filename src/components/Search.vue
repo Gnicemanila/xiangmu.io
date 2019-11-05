@@ -1,7 +1,7 @@
 <template>
   <div class="search">
       <div class="search-input">
-            <van-search v-model="value" placeholder="搜索用户名" show-action @search="onSearch">
+            <van-search v-model="value" :placeholder="placeholder" show-action @search="onSearch">
             <div slot="action" @click="onSearch">搜索</div>
         </van-search>
       </div>
@@ -12,6 +12,7 @@
 import { mapState, mapActions } from "vuex";
 export default {
   name: "Search",
+  props:['placeholder'],
   components: {
   },
   data(){

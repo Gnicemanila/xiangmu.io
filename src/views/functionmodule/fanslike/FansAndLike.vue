@@ -1,7 +1,7 @@
 <template>
   <div class="fans-and-like">
     <Header goback="true" :msg="msg" serve="true" />
-    <Search/>
+    <Search placeholder='搜索用户名'/>
     <ul>
       <li class="list">
         <div class="head"></div>
