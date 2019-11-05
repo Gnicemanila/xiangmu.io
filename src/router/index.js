@@ -25,6 +25,9 @@ import HotList from '../views/functionmodule/hotlist/HotList.vue'
 import FansAndLike from '../views/functionmodule/fanslike/FansAndLike.vue'
 //我的发布
 import MySay from '../views/functionmodule/mysay/MySay.vue'
+//首页文章相关跳转
+
+import Article from '../views/functionmodule/article/Article.vue'
 //关于金钱系统的积分充值兑换
 import Integral from '../views/functionmodule/integral/Integral.vue'
 //关于支付界面
@@ -169,6 +172,11 @@ const routes = [
     path: '/mySay',
     name: 'mySay',
     component: MySay
+  },
+  {
+    path: '/article',
+    name: 'article',
+    component: Article
   },
   {
     path: '/integral',

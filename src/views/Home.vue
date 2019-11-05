@@ -15,11 +15,11 @@
       </div>
       <ul class="paly">
         <li class="tittle" @click="play()">点我播放当前网站音乐</li>
-        <li class="hot">86版西游师徒同框</li>
+        <li class="hot" @click="goNext('/article')">86版西游师徒同框</li>
         <li>王思聪清空微博</li>
         <!-- <li>安徽定远3.3级地震</li> -->
         <audio src="" id="buttonAudio"></audio>
-        <li class="next-time">下次活动时间：2019年12月01日 00时00分 星期一</li>
+        <li class="next-time" @click="goNext('/article')">下次活动时间：2019年12月01日 00时00分 星期一</li>
       </ul>
       <div class="news">
         <div class="notice">
@@ -58,8 +58,8 @@
           <div class="tittle">
             <div class="head-message">武汉头条</div>
             <ul class="content">
-              <li>光谷房价暴跌</li>
-              <li>江汉路改名韩红江路</li>
+              <li @click="goNext('/article')">光谷房价暴跌</li>
+              <li @click="goNext('/article')">江汉路改名韩红江路</li>
             </ul>
           </div>
           <van-swipe :loop="false" :width="300">
@@ -121,6 +121,9 @@ export default {
     ...mapState({
       user: state => state.user
     })
+  },
+  updated(){
+    this.play()
   },
   methods: {
     goNext(path) {
