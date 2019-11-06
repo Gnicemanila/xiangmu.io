@@ -3,19 +3,23 @@
     <div class="notice">
       <Header goback="true" msg="聊天室" serve="true" />
       <div class="notice-nav">
-        <van-notice-bar
-          mode="closeable"
-          text="爱情就像在海滩上捡贝壳，不要捡最大的，也不要捡最漂亮的，要捡就捡自己最喜欢的，最重要的是捡到了自己喜欢的 就永远不要再去海边了。"
-          background="#ECECEC"
-          color="#333333"
-        ></van-notice-bar>
+        <div class="notice-nav-text">
+          <van-notice-bar
+            text="爱情就像在海滩上捡贝壳，不要捡最大的，也不要捡最漂亮的，要捡就捡自己最喜欢的，最重要的是捡到了自己喜欢的 就永远不要再去海边了。"
+            background="#ECECEC"
+            color="#333333"
+          ></van-notice-bar>
+        </div>
+        <div class="close">x</div>
       </div>
     </div>
-    <div class="content">
-      <div v-for="(item,i) in chatList" :key="i">
-      <Message  :list.sync="item" v-if="!item.isme"/>
-      <Me :list.sync="item" v-if="item.isme"/>
+    <div class="content"  ref="search">
+        <div>
+          <div v-for="(item,i) in chatList" :key="i">
+        <Message :list="item" v-if="!item.isme" />
+        <Me :list="item" v-if="item.isme" />
       </div>
+        </div>
     </div>
     <div class="chat-bottom">
       <div class="chat-function">
@@ -25,7 +29,7 @@
         <div class="chat-content">
           <van-field v-model="message" rows="1" type="textarea" />
         </div>
-        <span class="send " @click="send()">发送</span>
+        <span class="send" @click="send()">发送</span>
       </div>
     </div>
   </div>
@@ -37,6 +41,7 @@ import Header from "@/components/Header";
 import Message from "@/components/Message";
 import Me from "@/components/Me";
 import { mapState, mapActions } from "vuex";
+import {getElementViewTop} from '../../../api/publicFuction'
 export default {
   name: "Chat",
   components: {
@@ -50,30 +55,42 @@ export default {
       message: ""
     };
   },
+  mounted(){
+        let ele = document.querySelector('.content');
+        ele.style.height=document.body.offsetHeight - getElementViewTop(ele) +"px";
+    document.addEventListener("keydown", this.onKeyDown);
+  },
+  beforeDestroy(){
+      document.removeEventListener("keydown", this.onKeyDown);//卸载绑定事件
+  },
   computed: {
     ...mapState({
       chatList: state => state.chat.chatList,
-      user:state=>state.user
+      user: state => state.user
     })
   },
   methods: {
-    ...mapActions('chat',["updateList"]),
-    send(){
-      console.log(this.user.name)
-      if(!this.message){
-        return 
+    ...mapActions("chat", ["updateList"]),
+    send() {
+      // console.log(this.user.name)
+      if (!this.message) {
+        return;
       }
-      let say ={
-            name: this.user.name,
-            avatar: "2",
-            vip: "1",
-            time: '20:13:38',
-            message:this.message,
-            isme: true,
-      }
-      this.updateList(say)
+      let say = {
+        name: this.user.name,
+        avatar: "2",
+        vip: "1",
+        time: "20:13:38",
+        message: this.message,
+        isme: true
+      };
+      this.updateList(say);
       this.message = "";
-      // console.log(this.chatList)
+    },
+    onKeyDown (e) {
+        if (e.keyCode == 13 && !e.shiftKey) {
+            this.send()
+        }
     }
   }
 };
@@ -84,11 +101,13 @@ export default {
   .notice {
     .notice-nav {
       height: 0.88rem;
-      .van-notice-bar {
-        position: fixed;
-        left: 0;
-        right: 0;
-        z-index: 2;
+      &-text {
+        .van-notice-bar {
+          position: fixed;
+          left: 0;
+          right: 0;
+          z-index: 2;
+        }
       }
     }
   }
