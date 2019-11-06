@@ -29,6 +29,10 @@ import MySay from '../views/functionmodule/mysay/MySay.vue'
 import SayOther from '../views/functionmodule/mysay/SayOther.vue'
 //获取位置
 import Position from '../views/functionmodule/mysay/Position.vue'
+//提醒给谁看
+import Remind from '../views/functionmodule/mysay/Remind.vue'
+//给谁看
+import IsPublic from '../views/functionmodule/mysay/IsPublic.vue'
 //首页文章相关跳转
 
 import Article from '../views/functionmodule/article/Article.vue'
@@ -186,6 +190,16 @@ const routes = [
     path: '/position',
     name: 'position',
     component: Position
+  },
+  {
+    path: '/remind',
+    name: 'remind',
+    component: Remind
+  },
+  {
+    path: '/isPublic',
+    name: 'isPublic',
+    component: IsPublic
   },
   {
     path: '/article',

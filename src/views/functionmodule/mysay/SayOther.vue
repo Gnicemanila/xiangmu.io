@@ -1,18 +1,6 @@
 <template>
   <div class="say-other">
-    <div class="header-nav">
-      <div class="header">
-        <span class="left">
-          <span @click="goBack()">取消</span>
-        </span>
-        <span class="tittle">
-          <span>发表说说</span>
-        </span>
-        <span class="right">
-          <span>发表</span>
-        </span>
-      </div>
-    </div>
+     <Header lefttext="取消" msg="发表说说" righttext="发表"  />
     <div class="say-other-content">
       <div class="say-other-content-message">
         <van-field
@@ -32,12 +20,12 @@
         <span class="name">所在位置</span>
         <van-icon name="arrow" />
       </li>
-      <li>
+      <li @click="goBack('/remind')">
         <i class="icon-at"></i>
         <span  class="name">提醒谁看</span>
         <van-icon name="arrow" />
       </li>
-      <li>
+      <li @click="goBack('/isPublic')">
         <i class="icon-people"></i>
         <span  class="name">谁可以看 <span class="fr">公开</span></span>
         <van-icon name="arrow" />
@@ -48,9 +36,12 @@
 
 <script>
 import { mapState, mapActions } from "vuex";
+import Header from "@/components/Header";
 export default {
   name: "SayOther",
-  components: {},
+  components: {
+      Header
+  },
   computed: {
     ...mapState({
       //   name: state => state.name
@@ -71,53 +62,6 @@ export default {
 </script>
 <style lang="less">
 .say-other {
-  .header-nav {
-    height: 0.88rem;
-    .header {
-      width: 100%;
-      height: 0.88rem;
-      background: @primary;
-      display: flex;
-      align-items: center;
-      position: fixed;
-      left: 0;
-      z-index: 2;
-      .left {
-        margin-left: 0.11rem;
-        flex: 1 1;
-        height: 100%;
-        align-items: center;
-        white-space: nowrap;
-        display: flex;
-        font-size: 0.3rem;
-        font-weight: 500;
-        color: rgba(255, 255, 255, 1);
-      }
-      .tittle {
-        font-size: 0.34rem;
-        justify-content: center;
-        font-weight: 600;
-        display: flex;
-        flex: 1 1;
-        height: 100%;
-        align-items: center;
-        white-space: nowrap;
-        color: #fff;
-      }
-      .right {
-        flex: 1 1;
-        height: 100%;
-        align-items: center;
-        white-space: nowrap;
-        justify-content: flex-end;
-        display: flex;
-        margin-right: 0.3rem;
-        font-weight: 500;
-        font-size: 0.3rem;
-        color: rgba(255, 255, 255, 1);
-      }
-    }
-  }
   &-content {
     padding: 0 0.65rem;
     background: #ffffff;
