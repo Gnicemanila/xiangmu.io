@@ -38,26 +38,8 @@
       </div>
     </div>
     <ul class="old-say-say">
-      <li>
-        <Message />
-      </li>
-      <li>
-        <Message />
-      </li>
-      <li>
-        <Message />
-      </li>
-      <li>
-        <Message />
-      </li>
-      <li>
-        <Message />
-      </li>
-      <li>
-        <Message />
-      </li>
-      <li>
-        <Message />
+      <li  v-for="(item,i) in weiboList" :key="i">
+         <Message  :list.sync="item" v-if="item.isme"/>
       </li>
     </ul>
     <div v-if="show_date" class="date">
@@ -76,11 +58,13 @@ import { mapState, mapActions } from "vuex";
 import Header from "@/components/Header";
 import Message from "@/components/Message.vue";
 import { transDate } from "../../../api/publicFuction.js";
+import Me from "@/components/Me";
 export default {
   name: "MySay",
   components: {
     Header,
-    Message
+    Message,
+    Me
   },
   data() {
     return {
@@ -91,7 +75,7 @@ export default {
   },
   computed: {
     ...mapState({
-      //   name: state => state.name
+       weiboList: state => state.weibo.weiboList,
     })
   },
   methods: {

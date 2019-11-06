@@ -53,7 +53,7 @@ export default {
     };
   },
   methods: {
-    // ...mapActions(["runName"])
+    ...mapActions('weibo',["updateList"]),
     goBack(path) {
       path ? this.$router.push({ path: path }) : this.$router.history.go(-1);
     }

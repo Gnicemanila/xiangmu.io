@@ -12,21 +12,10 @@
       </div>
     </div>
     <div class="content">
-      <Message />
-      <Message />
-      <Message />
-      <Message />
-      <Message />
-      <Message />
-      <Message />
-      <Message />
-      <Message />
-      <Message />
-      <Message />
-      <Message />
-      <Message />
-      <Message />
-      <Me />
+      <div v-for="(item,i) in chatList" :key="i">
+      <Message  :list.sync="item" v-if="!item.isme"/>
+      <Me :list.sync="item" v-if="item.isme"/>
+      </div>
     </div>
     <div class="chat-bottom">
       <div class="chat-function">
@@ -38,7 +27,6 @@
         </div>
         <span class="send " @click="send()">发送</span>
       </div>
-      <!-- <Footer message="聊天室" /> -->
     </div>
   </div>
 </template>
@@ -64,13 +52,28 @@ export default {
   },
   computed: {
     ...mapState({
-      chatList: state => state.chat.chatList
+      chatList: state => state.chat.chatList,
+      user:state=>state.user
     })
   },
   methods: {
     ...mapActions('chat',["updateList"]),
     send(){
-      console.log(this.chatList)
+      console.log(this.user.name)
+      if(!this.message){
+        return 
+      }
+      let say ={
+            name: this.user.name,
+            avatar: "2",
+            vip: "1",
+            time: '20:13:38',
+            message:this.message,
+            isme: true,
+      }
+      this.updateList(say)
+      this.message = "";
+      // console.log(this.chatList)
     }
   }
 };

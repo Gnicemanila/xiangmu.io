@@ -2,10 +2,10 @@
   <div class="weibo">
     <Header goback="true" msg="动态" />
     <div class="content">
-      <div v-for="(item,i) in list" :key="i">
-        <Message />
+      <div v-for="(item,i) in weiboList" :key="i">
+      <Message  :list.sync="item" v-if="!item.isme"/>
+      <Me :list.sync="item" v-if="item.isme"/>
       </div>
-      <Me />
     </div>
   </div>
 </template>
@@ -24,16 +24,16 @@ export default {
   },
   data() {
     return {
-      list: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
     };
   },
   computed: {
     ...mapState({
-      name: state => state.name
+      weiboList: state => state.weibo.weiboList,
+      user:state=>state.user
     })
   },
   methods: {
-    ...mapActions(["runName"])
+       ...mapActions('weibo',["updateList"]),
   }
 };
 </script>
