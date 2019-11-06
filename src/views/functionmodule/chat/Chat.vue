@@ -13,14 +13,17 @@
         <div class="close">x</div>
       </div>
     </div>
-    <div class="content"  ref="search">
-        <div>
-          <div v-for="(item,i) in chatList" :key="i">
-        <Message :list="item" v-if="!item.isme" />
-        <Me :list="item" v-if="item.isme" />
-      </div>
-        </div>
+    <div class="content">
+      <Myscroll ref="scroll" class="recommend-content" :data="chatList" >
+          <div>
+              <div v-for="(item,i) in chatList" :key="i">
+            <Message :list="item" v-if="!item.isme" />
+            <Me :list="item" v-if="item.isme" />
+          </div>
+          </div>
+      </Myscroll>
     </div>
+
     <div class="chat-bottom">
       <div class="chat-function">
         <i class="chat-btn-func"></i>
@@ -40,28 +43,30 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Message from "@/components/Message";
 import Me from "@/components/Me";
+import Myscroll from "@/components/Myscroll";
 import { mapState, mapActions } from "vuex";
-import {getElementViewTop} from '../../../api/publicFuction'
+import { getElementViewTop } from "../../../api/publicFuction";
 export default {
   name: "Chat",
   components: {
     Footer,
     Header,
     Message,
-    Me
+    Me,
+    Myscroll
   },
   data() {
     return {
       message: ""
     };
   },
-  mounted(){
-        let ele = document.querySelector('.content');
-        ele.style.height=document.body.offsetHeight - getElementViewTop(ele) +"px";
+  mounted() {
+    let ele = document.querySelector(".content");
+    ele.style.height =document.body.offsetHeight - getElementViewTop(ele) + "px";
     document.addEventListener("keydown", this.onKeyDown);
   },
-  beforeDestroy(){
-      document.removeEventListener("keydown", this.onKeyDown);//卸载绑定事件
+  beforeDestroy() {
+    document.removeEventListener("keydown", this.onKeyDown); //卸载绑定事件
   },
   computed: {
     ...mapState({
@@ -87,10 +92,10 @@ export default {
       this.updateList(say);
       this.message = "";
     },
-    onKeyDown (e) {
-        if (e.keyCode == 13 && !e.shiftKey) {
-            this.send()
-        }
+    onKeyDown(e) {
+      if (e.keyCode == 13 && !e.shiftKey) {
+        this.send();
+      }
     }
   }
 };
@@ -111,6 +116,16 @@ export default {
       }
     }
   }
+  .content{
+    position: fixed;
+    left: 0;
+    right: 0;
+    padding-bottom: 1.1rem;
+    .recommend-content{
+          height: 100%;
+    overflow: hidden;
+    }
+  }
   .chat-bottom {
     position: fixed;
     bottom: 0;
@@ -121,7 +136,7 @@ export default {
     background: #fff;
     // height: 1.98rem;
     .chat-function {
-      height: 1rem;
+      height: 1.1rem;
       background: #fff;
       display: flex;
       align-items: center;

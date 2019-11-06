@@ -3,9 +3,9 @@
     <div class="avatar avatar-"></div>
     <div class="user-info-warp">
       <div class="user-info fr">
-      <span class="vip">{{list.vip>0?"大V":"会员"}}</span>
-      <span class="user">{{list.name}}</span>
       <span class="time">{{list.time}}</span>
+      <span class="user">{{list.name}}</span>
+      <span class="vip">{{list.vip>0?"大V":"会员"}}</span>
       </div>
     </div>
     <div class="msg-content fr">{{list.message}}</div>
