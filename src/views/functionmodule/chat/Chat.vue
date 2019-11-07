@@ -13,17 +13,14 @@
         <div class="close">x</div>
       </div>
     </div>
-    <div class="content">
-      <Myscroll ref="scroll" class="recommend-content" :data="chatList" >
-          <div>
-              <div v-for="(item,i) in chatList" :key="i">
-            <Message :list="item" v-if="!item.isme" />
-            <Me :list="item" v-if="item.isme" />
-          </div>
-          </div>
-      </Myscroll>
+    <div class="wrapper" ref="scroll">
+      <div class="content">
+        <div v-for="(item,i) in chatList" :key="i">
+          <Message :list="item" v-if="!item.isme" />
+          <Me :list="item" v-if="item.isme" />
+        </div>
+      </div>
     </div>
-
     <div class="chat-bottom">
       <div class="chat-function">
         <i class="chat-btn-func"></i>
@@ -43,17 +40,16 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Message from "@/components/Message";
 import Me from "@/components/Me";
-import Myscroll from "@/components/Myscroll";
 import { mapState, mapActions } from "vuex";
 import { getElementViewTop } from "../../../api/publicFuction";
+import BScroll from "@better-scroll/core";
 export default {
   name: "Chat",
   components: {
     Footer,
     Header,
     Message,
-    Me,
-    Myscroll
+    Me
   },
   data() {
     return {
@@ -61,9 +57,11 @@ export default {
     };
   },
   mounted() {
-    let ele = document.querySelector(".content");
-    ele.style.height =document.body.offsetHeight - getElementViewTop(ele) + "px";
+    let ele = document.querySelector(".wrapper");
+    ele.style.height =
+    document.body.offsetHeight - getElementViewTop(ele) + "px";
     document.addEventListener("keydown", this.onKeyDown);
+    this.init();
   },
   beforeDestroy() {
     document.removeEventListener("keydown", this.onKeyDown); //卸载绑定事件
@@ -96,13 +94,31 @@ export default {
       if (e.keyCode == 13 && !e.shiftKey) {
         this.send();
       }
+    },
+    init() {
+      let wrapper = document.querySelector('.wrapper');
+      this.bs = new BScroll(wrapper, {
+        scrollY: true,
+        click: true,
+        probeType: 3 // listening scroll hook
+      });
+      this._registerHooks(["scroll", "scrollEnd"], pos => {
+        console.log("done");
+      });
+    },
+    clickHandler(item) {
+      alert(item);
+    },
+    _registerHooks(hookNames, handler) {
+      hookNames.forEach(name => {
+        this.bs.on(name, handler);
+      });
     }
   }
 };
 </script>
 <style lang="less">
 .chat {
-  padding-bottom: 1rem;
   .notice {
     .notice-nav {
       height: 0.88rem;
@@ -116,14 +132,11 @@ export default {
       }
     }
   }
-  .content{
-    position: fixed;
-    left: 0;
-    right: 0;
-    padding-bottom: 1.1rem;
-    .recommend-content{
-          height: 100%;
+  .wrapper {
+    position: relative;
+    height: 100%;
     overflow: hidden;
+    .content {
     }
   }
   .chat-bottom {
