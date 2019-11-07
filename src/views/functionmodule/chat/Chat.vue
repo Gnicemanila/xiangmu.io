@@ -75,7 +75,6 @@ export default {
   methods: {
     ...mapActions("chat", ["updateList"]),
     send() {
-      // console.log(this.user.name)
       if (!this.message) {
         return;
       }
@@ -89,6 +88,7 @@ export default {
       };
       this.updateList(say);
       this.message = "";
+      this.scrollToBottom()
     },
     onKeyDown(e) {
       if (e.keyCode == 13 && !e.shiftKey) {
@@ -97,7 +97,7 @@ export default {
     },
     init() {
       let wrapper = document.querySelector('.wrapper');
-      this.bs = new BScroll(wrapper, {
+      this.scroll = new BScroll(wrapper, {
         scrollY: true,
         click: true,
         probeType: 3 // listening scroll hook
@@ -111,8 +111,12 @@ export default {
     },
     _registerHooks(hookNames, handler) {
       hookNames.forEach(name => {
-        this.bs.on(name, handler);
+        this.scroll.on(name, handler);
       });
+    },
+        scrollToBottom(time=1000){
+          console.log(this.scroll)
+        this.scroll&&this.scroll.scrollTo(0,this.scroll.maxScrollY,time)
     }
   }
 };
@@ -133,9 +137,10 @@ export default {
     }
   }
   .wrapper {
-    position: relative;
-    height: 100%;
-    overflow: hidden;
+    // position: relative;
+    // height: 100%;
+    // overflow: hidden;
+    // padding-bottom: 1.1rem;
     .content {
     }
   }
