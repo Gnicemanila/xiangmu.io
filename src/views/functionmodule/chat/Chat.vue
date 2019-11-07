@@ -61,7 +61,6 @@ export default {
     ele.style.height =
     document.body.offsetHeight - getElementViewTop(ele) + "px";
     document.addEventListener("keydown", this.onKeyDown);
-    this.init();
   },
   beforeDestroy() {
     document.removeEventListener("keydown", this.onKeyDown); //卸载绑定事件
@@ -137,10 +136,6 @@ export default {
     }
   }
   .wrapper {
-    // position: relative;
-    // height: 100%;
-    // overflow: hidden;
-    // padding-bottom: 1.1rem;
     .content {
     }
   }
