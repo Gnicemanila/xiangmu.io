@@ -94,6 +94,8 @@ export default {
       this.chatList.push(say);
       this.message = "";
       this.scroll.refresh();
+      console.log(this.scroll.maxScrollY)
+    // this.scroll.scrollTo(0,this.scroll.maxScrollY,1000)
     },
     onKeyDown(e) {
       if (e.keyCode == 13 && !e.shiftKey) {
@@ -111,34 +113,19 @@ export default {
               pullUpLoad: {
                 threshold: -30 // 负值是当上拉到超过低部 30px；正值是距离底部距离时，
               },
-              pullDownRefresh:{
-                  threshold: 50,
+              pullDownRefresh: {
+                threshold: 50
               }
             });
-            this.scroll.on("pullingUp", pos => {
-              document.querySelector(".loading-hook").innerText = "加载中...";
-              setTimeout(function() {
-                // 恢复文本值
-                document.querySelector(".loading-hook").innerText = "查看更多"; // 向列表添加数据
-                // self.loadData();
-                console.log("===上拉")
-              }, 1000);
-            });
-            this.scroll.on("pullingDown", pos => {
-              document.querySelector(".loading-down").innerText = "刷新中...";
-              setTimeout(function() {
-                // 恢复文本值
-                document.querySelector(".loading-down").innerText = "查看更多"; // 向列表添加数据
-                // self.loadData();
-                console.log("===下拉")
-              }, 1000);
-            }) 
+            this.scrollToBottom()
           } else {
-            this.scroll.finishPullUp();
             this.scroll.refresh();
           }
         });
       });
+    },
+    scrollToBottom(time=1000){
+       this.scroll.scrollTo(0,this.scroll.maxScrollY,time)
     }
   }
 };
@@ -171,15 +158,15 @@ export default {
       // }
       position: relative;
     }
-    .loading-down{
-    position: absolute;
-    top: 0rem;
-    left: 40%;
+    .loading-down {
+      position: absolute;
+      top: 0rem;
+      left: 40%;
     }
-    .loading-hook{
-    position: absolute;
-    bottom: 0rem;
-    left: 40%;
+    .loading-hook {
+      position: absolute;
+      bottom: 0rem;
+      left: 40%;
     }
   }
   .chat-bottom {

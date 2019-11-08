@@ -21,7 +21,6 @@ import Message from "@/components/Message";
 import Me from "@/components/Me";
 import BScroll from "@better-scroll/core";
 import { getElementViewTop } from "../api/publicFuction";
-let scroll ;
 export default {
   name: "WeiBo",
   components: {
@@ -57,8 +56,8 @@ export default {
           this.weiboList = res.data.concat(this.weiboList);
         }
         this.$nextTick(() => {
-          if (!scroll) {
-            scroll = new BScroll(this.$refs.wrapper, {
+          if (!self.scroll) {
+            self.scroll = new BScroll(this.$refs.wrapper, {
               pullDownRefresh: {
                 threshold: 50, // 当下拉到超过顶部 50px 时，触发 pullingDown 事件
                 stop: 20 // 刷新数据的过程中，回弹停留在距离顶部还有 20px 的位置
@@ -71,7 +70,7 @@ export default {
               startY: 0, //欢迎加入全栈开发交流圈一起学习交流：864305860
               scrollbar: true //面向1-3年前端人员
             });
-            scroll.on("pullingUp", pos => {
+            self.scroll.on("pullingUp", pos => {
               document.querySelector(".loading-hook").innerText = "加载中...";
               setTimeout(function() {
                 // 恢复文本值
@@ -79,7 +78,7 @@ export default {
                 self.loadData(true);
               }, 1000);
             });
-            scroll.on("pullingDown", pos => {
+            self.scroll.on("pullingDown", pos => {
               document.querySelector(".loading-down").innerText = "刷新中...";
               setTimeout(function() {
                 // 恢复文本值
@@ -88,13 +87,13 @@ export default {
               }, 1000);
             });
           } else {
-            scroll.finishPullUp();
-            scroll.refresh();
+            self.scroll.finishPullUp();
+            self.scroll.finishPullDown();
+            self.scroll.refresh();
           }
         });
       });
-    },
-
+    }
   }
 };
 </script>
