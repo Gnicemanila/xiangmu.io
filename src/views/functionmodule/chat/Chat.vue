@@ -13,13 +13,15 @@
         <div class="close">x</div>
       </div>
     </div>
-    <div class="wrapper" ref="scroll">
+    <div class="wrapper" ref="wrapper">
       <div class="content">
         <div v-for="(item,i) in chatList" :key="i">
           <Message :list="item" v-if="!item.isme" />
           <Me :list="item" v-if="item.isme" />
         </div>
       </div>
+      <div class="loading-hook"></div>
+      <div class="loading-down"></div>
     </div>
     <div class="chat-bottom">
       <div class="chat-function">
@@ -43,6 +45,10 @@ import Me from "@/components/Me";
 import { mapState, mapActions } from "vuex";
 import { getElementViewTop } from "../../../api/publicFuction";
 import BScroll from "@better-scroll/core";
+import PullDown from "@better-scroll/pull-down";
+import Pullup from "@better-scroll/pull-up";
+BScroll.use(Pullup);
+BScroll.use(PullDown);
 export default {
   name: "Chat",
   components: {
@@ -53,13 +59,14 @@ export default {
   },
   data() {
     return {
-      message: ""
+      message: "",
+      chatList: []
     };
   },
+  created() {
+    this.loadData();
+  },
   mounted() {
-    let ele = document.querySelector(".wrapper");
-    ele.style.height =
-    document.body.offsetHeight - getElementViewTop(ele) + "px";
     document.addEventListener("keydown", this.onKeyDown);
   },
   beforeDestroy() {
@@ -67,12 +74,11 @@ export default {
   },
   computed: {
     ...mapState({
-      chatList: state => state.chat.chatList,
       user: state => state.user
     })
   },
   methods: {
-    ...mapActions("chat", ["updateList"]),
+    // ...mapActions("chat", ["updateList"]),
     send() {
       if (!this.message) {
         return;
@@ -85,37 +91,54 @@ export default {
         message: this.message,
         isme: true
       };
-      this.updateList(say);
+      this.chatList.push(say);
       this.message = "";
-      this.scrollToBottom()
+      this.scroll.refresh();
     },
     onKeyDown(e) {
       if (e.keyCode == 13 && !e.shiftKey) {
         this.send();
       }
     },
-    init() {
-      let wrapper = document.querySelector('.wrapper');
-      this.scroll = new BScroll(wrapper, {
-        scrollY: true,
-        click: true,
-        probeType: 3 // listening scroll hook
+    loadData() {
+      var self = this;
+      let parameter = {};
+      this.$http("/getchatlist", parameter, "post").then(res => {
+        this.chatList = res.data.concat(this.chatList);
+        this.$nextTick(() => {
+          if (!this.scroll) {
+            this.scroll = new BScroll(this.$refs.wrapper, {
+              pullUpLoad: {
+                threshold: -30 // 负值是当上拉到超过低部 30px；正值是距离底部距离时，
+              },
+              pullDownRefresh:{
+                  threshold: 50,
+              }
+            });
+            this.scroll.on("pullingUp", pos => {
+              document.querySelector(".loading-hook").innerText = "加载中...";
+              setTimeout(function() {
+                // 恢复文本值
+                document.querySelector(".loading-hook").innerText = "查看更多"; // 向列表添加数据
+                // self.loadData();
+                console.log("===上拉")
+              }, 1000);
+            });
+            this.scroll.on("pullingDown", pos => {
+              document.querySelector(".loading-down").innerText = "刷新中...";
+              setTimeout(function() {
+                // 恢复文本值
+                document.querySelector(".loading-down").innerText = "查看更多"; // 向列表添加数据
+                // self.loadData();
+                console.log("===下拉")
+              }, 1000);
+            }) 
+          } else {
+            this.scroll.finishPullUp();
+            this.scroll.refresh();
+          }
+        });
       });
-      this._registerHooks(["scroll", "scrollEnd"], pos => {
-        console.log("done");
-      });
-    },
-    clickHandler(item) {
-      alert(item);
-    },
-    _registerHooks(hookNames, handler) {
-      hookNames.forEach(name => {
-        this.scroll.on(name, handler);
-      });
-    },
-        scrollToBottom(time=1000){
-          console.log(this.scroll)
-        this.scroll&&this.scroll.scrollTo(0,this.scroll.maxScrollY,time)
     }
   }
 };
@@ -136,7 +159,27 @@ export default {
     }
   }
   .wrapper {
+    top: 1.76rem;
+    bottom: 1.1rem;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    overflow: hidden;
     .content {
+      // li {
+      //   height: 1rem;
+      // }
+      position: relative;
+    }
+    .loading-down{
+    position: absolute;
+    top: 0rem;
+    left: 40%;
+    }
+    .loading-hook{
+    position: absolute;
+    bottom: 0rem;
+    left: 40%;
     }
   }
   .chat-bottom {
