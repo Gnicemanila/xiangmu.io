@@ -93,7 +93,7 @@ export default {
       };
       this.chatList.push(say);
       this.message = "";
-      this.scroll.refresh();
+      this.scrollToBottom()
       console.log(this.scroll.maxScrollY)
     // this.scroll.scrollTo(0,this.scroll.maxScrollY,1000)
     },
@@ -125,6 +125,7 @@ export default {
       });
     },
     scrollToBottom(time=1000){
+        this.scroll.refresh();
        this.scroll.scrollTo(0,this.scroll.maxScrollY,time)
     }
   }
