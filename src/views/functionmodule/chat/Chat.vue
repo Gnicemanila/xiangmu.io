@@ -10,7 +10,6 @@
             color="#333333"
           ></van-notice-bar>
         </div>
-        <div class="close">x</div>
       </div>
     </div>
     <div class="wrapper" ref="wrapper">
@@ -95,7 +94,6 @@ export default {
       this.message = "";
       this.scrollToBottom()
       console.log(this.scroll.maxScrollY)
-    // this.scroll.scrollTo(0,this.scroll.maxScrollY,1000)
     },
     onKeyDown(e) {
       if (e.keyCode == 13 && !e.shiftKey) {
@@ -126,7 +124,9 @@ export default {
     },
     scrollToBottom(time=1000){
         this.scroll.refresh();
-       this.scroll.scrollTo(0,this.scroll.maxScrollY,time)
+        setTimeout(()=>{
+          this.scroll.scrollTo(0,this.scroll.maxScrollY,time)
+        },time)
     }
   }
 };
