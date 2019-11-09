@@ -9,14 +9,19 @@ import './assets/style/reset.less'
 import './variables.less';
 
 
-import audio from "./assets/video/yelang.mp3";
-Vue.prototype.clickButton = () => {
+import audio1 from "./assets/video/m1.mp3";
+import audio2 from "./assets/video/m2.mp3";
+Vue.prototype.openMusic = () => {
     let buttonAudio = document.getElementById('buttonAudio');
-    buttonAudio.setAttribute('src', audio);
+    buttonAudio.setAttribute('src', audio1);
     buttonAudio.setAttribute('loop','loop');
     //重复播放
     buttonAudio.play();
     //开始播放
+}
+Vue.prototype.closeMusic = () => {
+  let buttonAudio = document.getElementById('buttonAudio');
+  buttonAudio.pause();
 }
 document.body.addEventListener('click', function(e) {
     let event = e || window.event;
