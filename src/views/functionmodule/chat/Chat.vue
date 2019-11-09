@@ -92,8 +92,11 @@ export default {
       };
       this.chatList.push(say);
       this.message = "";
-      this.scrollToBottom()
-      console.log(this.scroll.maxScrollY)
+      // this.scrollToBottom()
+      this.$nextTick(()=>{
+        this.scroll.refresh(); 
+        this.scroll.scrollTo(0,this.scroll.maxScrollY,100)
+      })
     },
     onKeyDown(e) {
       if (e.keyCode == 13 && !e.shiftKey) {
@@ -123,10 +126,7 @@ export default {
       });
     },
     scrollToBottom(time=1000){
-        this.scroll.refresh();
-        setTimeout(()=>{
-          this.scroll.scrollTo(0,this.scroll.maxScrollY,time)
-        },time)
+        this.scroll.scrollTo(0,this.scroll.maxScrollY,time)
     }
   }
 };
