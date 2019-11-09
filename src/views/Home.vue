@@ -139,7 +139,7 @@ export default {
 
 <style lang="less">
 .home {
-  padding-bottom: 0.98rem;
+  padding-bottom: 1.28rem;
   .info {
     margin-left: 0.19rem;
   }

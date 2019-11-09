@@ -58,6 +58,94 @@
         <span class="mail-list-time">2019-01-01</span>
         <van-icon name="arrow" size="20px" class="fr" />
       </li>
+      <li @click="goNext('/mailMessage/15')">
+        <i class="icon-mail-active"></i>
+        <span class="mail-list-title text-over">站内信标题</span>
+        <span class="mail-list-time">2019-01-01</span>
+        <van-icon name="arrow" size="20px" class="fr" />
+      </li>
+      <li @click="goNext('/mailMessage/15')">
+        <i class="icon-mail-active"></i>
+        <span class="mail-list-title text-over">站内信标题</span>
+        <span class="mail-list-time">2019-01-01</span>
+        <van-icon name="arrow" size="20px" class="fr" />
+      </li>
+      <li @click="goNext('/mailMessage/15')">
+        <i class="icon-mail-active"></i>
+        <span class="mail-list-title text-over">站内信标题</span>
+        <span class="mail-list-time">2019-01-01</span>
+        <van-icon name="arrow" size="20px" class="fr" />
+      </li>
+
+      <li @click="goNext('/mailMessage/15')">
+        <i class="icon-mail-active"></i>
+        <span class="mail-list-title text-over">站内信标题</span>
+        <span class="mail-list-time">2019-01-01</span>
+        <van-icon name="arrow" size="20px" class="fr" />
+      </li>
+      <li @click="goNext('/mailMessage/15')">
+        <i class="icon-mail-active"></i>
+        <span class="mail-list-title text-over">站内信标题</span>
+        <span class="mail-list-time">2019-01-01</span>
+        <van-icon name="arrow" size="20px" class="fr" />
+      </li>
+      <li @click="goNext('/mailMessage/15')">
+        <i class="icon-mail-active"></i>
+        <span class="mail-list-title text-over">站内信标题</span>
+        <span class="mail-list-time">2019-01-01</span>
+        <van-icon name="arrow" size="20px" class="fr" />
+      </li>
+
+      <li @click="goNext('/mailMessage/15')">
+        <i class="icon-mail-active"></i>
+        <span class="mail-list-title text-over">站内信标题</span>
+        <span class="mail-list-time">2019-01-01</span>
+        <van-icon name="arrow" size="20px" class="fr" />
+      </li>
+      <li @click="goNext('/mailMessage/15')">
+        <i class="icon-mail-active"></i>
+        <span class="mail-list-title text-over">站内信标题</span>
+        <span class="mail-list-time">2019-01-01</span>
+        <van-icon name="arrow" size="20px" class="fr" />
+      </li>
+      <li @click="goNext('/mailMessage/15')">
+        <i class="icon-mail-active"></i>
+        <span class="mail-list-title text-over">站内信标题</span>
+        <span class="mail-list-time">2019-01-01</span>
+        <van-icon name="arrow" size="20px" class="fr" />
+      </li>
+      <li @click="goNext('/mailMessage/15')">
+        <i class="icon-mail-active"></i>
+        <span class="mail-list-title text-over">站内信标题</span>
+        <span class="mail-list-time">2019-01-01</span>
+        <van-icon name="arrow" size="20px" class="fr" />
+      </li>
+
+      <li @click="goNext('/mailMessage/15')">
+        <i class="icon-mail-active"></i>
+        <span class="mail-list-title text-over">站内信标题</span>
+        <span class="mail-list-time">2019-01-01</span>
+        <van-icon name="arrow" size="20px" class="fr" />
+      </li>
+      <li @click="goNext('/mailMessage/15')">
+        <i class="icon-mail-active"></i>
+        <span class="mail-list-title text-over">站内信标题</span>
+        <span class="mail-list-time">2019-01-01</span>
+        <van-icon name="arrow" size="20px" class="fr" />
+      </li>
+      <li @click="goNext('/mailMessage/15')">
+        <i class="icon-mail-active"></i>
+        <span class="mail-list-title text-over">站内信标题</span>
+        <span class="mail-list-time">2019-01-01</span>
+        <van-icon name="arrow" size="20px" class="fr" />
+      </li>
+
+      <li @click="goNext('/mailMessage/15')">
+        <i class="icon-mail-active"></i>
+        <span class="mail-list-title text-over">站内信标题</span>
+        <span class="mail-list-time">2019-01-01</span>
+        <van-icon name="arrow" size="20px" class="fr" />
+      </li>            
     </ul>
   </div>
 </template>
@@ -86,6 +174,7 @@ export default {
 <style lang="less">
 .mail {
   background: #ffffff;
+  overflow: scroll;
   &-list {
     li {
       height: 0.88rem;

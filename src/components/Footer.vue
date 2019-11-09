@@ -39,7 +39,7 @@ export default {
   left: 0;
   bottom: 0;
   right: 0;
-  height: 1.1rem;
+  height: 1.28rem;
   background: rgba(245, 245, 245, 1);
   li {
     width: 20%;
@@ -47,7 +47,7 @@ export default {
     align-items: center;
     i {
       display: block;
-      margin:0.1rem auto 0.059rem;
+      margin:0.3rem auto 0.059rem;
       width: 0.4rem;
       height: 0.4rem;
       &.icon_home {
