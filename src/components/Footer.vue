@@ -1,5 +1,6 @@
 <template>
-  <ul class="footer">
+  <div class="footer">
+      <ul class="footer-function">
     <li v-bind:class="{ active: this.message=='首页' }">
       <i class="icon_home"></i>
       <router-link to="/home">首页</router-link>
@@ -21,25 +22,46 @@
       <router-link to="/weiBo">动态</router-link>
     </li>
   </ul>
+  <div class="jianrong" v-if="phone">
+
+  </div>
+  </div>
 </template>
 
 <script>
 export default {
   name: "Footer",
   props: ["message"],
-  methods: {}
-};
+  data(){
+    return {
+      phone:false
+    }
+  },
+  methods: {},
+    mounted(){
+    var u = navigator.userAgent;
+    var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端    
+      if (isIOS) {    	
+        if (screen.height == 812 && screen.width == 375){
+    	   this.phone=true
+        }else{
+         this.phone=false
+        } 
+    }
+  }
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="less">
-.footer {
-  display: flex;
-  position: fixed;
+  .footer{
+      position: fixed;
   left: 0;
   bottom: 0;
   right: 0;
-  height: 1.28rem;
+    .footer-function {
+  display: flex;
+  height: .98rem;
   background: rgba(245, 245, 245, 1);
   li {
     width: 20%;
@@ -47,7 +69,7 @@ export default {
     align-items: center;
     i {
       display: block;
-      margin:0.3rem auto 0.059rem;
+      margin:0.1rem auto 0.059rem;
       width: 0.4rem;
       height: 0.4rem;
       &.icon_home {
@@ -101,4 +123,10 @@ export default {
     }
   }
 }
+.jianrong{
+  height: .68rem;
+  width: 100%;
+    background: rgba(245, 245, 245, 1);
+}
+  }
 </style>
