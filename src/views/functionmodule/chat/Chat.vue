@@ -32,6 +32,7 @@
         </div>
         <span class="send" @click="send()">发送</span>
       </div>
+
     </div>
   </div>
 </template>
@@ -48,6 +49,7 @@ import PullDown from "@better-scroll/pull-down";
 import Pullup from "@better-scroll/pull-up";
 BScroll.use(Pullup);
 BScroll.use(PullDown);
+const emojiDefault = "😀 😃 😄 😁 😆 😅 😂 🤣 😊 😇 🙂 🙃 😉 😌 😍 😘 😗 😙 😚 😋 😛 😝 😜 😗 🤓 😎 😵 😏 😒 😞 😔 😟 😕 🙁 😣 😖 😫 😩 😢 😭 😤 😠 😡 😳 😱 😨 😰 😥 😓 🤗 🤔 🤥 😶 😐 😑 😬 🙄 😯 😦 😧 😮 😲 😴 🤤 😪 😵 🤐 🤢 🤧 😷 🤒 🤕 🤑 🤠 😈 👿 👹 👺 🤡 💩 👻 💀 ☠️ 👽 👾 🤖 🎃 🐣 🐔 🐛 🐤 💪 ✨ 🔔 ✊ ✋ 👇 👊 👍 👈 👆 💛 👐 👎 👌 💘".split(" ");
 export default {
   name: "Chat",
   components: {
@@ -59,7 +61,7 @@ export default {
   data() {
     return {
       message: "",
-      chatList: []
+      chatList: [],
     };
   },
   created() {
@@ -148,15 +150,12 @@ export default {
   }
   .wrapper {
     top: 1.76rem;
-    bottom: 1.1rem;
+    bottom: 1.28rem;
     width: 100%;
     position: absolute;
     left: 0;
     overflow: hidden;
     .content {
-      // li {
-      //   height: 1rem;
-      // }
       position: relative;
     }
     .loading-down {
@@ -178,9 +177,8 @@ export default {
     box-shadow: 0 1px 0 0 rgba(45, 45, 45, 0.21);
     border-top: 1px solid #c2c3c7;
     background: #fff;
-    // height: 1.98rem;
     .chat-function {
-      height: 1.1rem;
+      height: 1.28rem;
       background: #fff;
       display: flex;
       align-items: center;
