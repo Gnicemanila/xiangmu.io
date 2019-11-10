@@ -14,12 +14,9 @@
         </van-swipe>
       </div>
       <ul class="paly">
-        <li class="tittle">昨日大事件</li>
-       <!-- <audio src="../assets/videoandmp3/zhangyu.mp3" controls autoplay></audio> -->
-        <li class="hot">86版西游师徒同框</li>
-        <li>王思聪清空微博</li>
-        <li>安徽定远3.3级地震</li>
-        <li class="next-time">下次活动时间：2019年12月01日 00时00分 星期一</li>
+        <li class="tittle" @click="play()">
+          <i :class="{'icon-play':true, 'active':active}"></i>当前网站音乐野狼酒吧</li>
+        <audio src="" id="buttonAudio"></audio>
       </ul>
       <div class="news">
         <div class="notice">
@@ -58,8 +55,8 @@
           <div class="tittle">
             <div class="head-message">武汉头条</div>
             <ul class="content">
-              <li>光谷房价暴跌</li>
-              <li>江汉路改名韩红江路</li>
+              <li @click="goNext('/article')">光谷房价暴跌</li>
+              <li @click="goNext('/article')">江汉路改名韩红江路</li>
             </ul>
           </div>
           <van-swipe :loop="false" :width="300">
@@ -114,7 +111,8 @@ export default {
       video1: require("../assets/imgs/home/video1.png"),
       video2: require("../assets/imgs/home/video2.png"),
       video3: require("../assets/imgs/home/video3.png"),
-      video4: require("../assets/imgs/home/video4.png")
+      video4: require("../assets/imgs/home/video4.png"),
+      active:false
     };
   },
   computed: {
@@ -122,17 +120,37 @@ export default {
       user: state => state.user
     })
   },
+  mounted(){
+        var u = navigator.userAgent;
+        var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端    
+        if (isIOS) {    	
+        if (screen.height == 812 && screen.width == 375){
+        //  this.phone=true
+
+        }else{
+        //  this.phone=false
+        } 
+    }
+  },
   methods: {
     goNext(path) {
       this.$router.push({ path: path });
-    }
+    },
+        play() {
+          if(!this.active){
+          this.openMusic();
+          }else{
+              this.closeMusic();
+          }
+            this.active=!this.active;
+        },       
   }
 };
 </script>
 
 <style lang="less">
 .home {
-  padding-bottom: 0.98rem;
+  padding-bottom: 1.28rem;
   .info {
     margin-left: 0.19rem;
   }
@@ -144,7 +162,6 @@ export default {
     }
   }
   .paly {
-    height: 2.42rem;
     background: #ffffff;
     padding: 0.2rem 0.3rem;
     margin-bottom: 0.16rem;
@@ -152,17 +169,25 @@ export default {
       font-size: 0.28rem;
       font-weight: 500;
       color: rgba(51, 51, 51, 1);
-      justify-content: center;
-      text-align: left;
+      display: flex;
+      // text-align: left;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
-      &.hot {
-        color: yellowgreen;
-      }
+      height: 0.5rem;
       &.tittle {
-        font-size: 0.3rem;
-        text-align: center;
+        .icon-play{
+          display: inline-block;
+          width: .4rem;
+          height: .4rem;
+          background: url('./../assets/imgs/home/playvideo.png') no-repeat;
+          background-size: 100%;
+          margin: 0 .3rem;
+          &.active{
+             background: url('./../assets/imgs/home/playvideo_active.png') no-repeat;
+             background-size: 100%;
+          }
+        }
       }
     }
   }

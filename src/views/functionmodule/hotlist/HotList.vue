@@ -1,7 +1,7 @@
 <template>
   <div class="hot-list">
     <Header goback="true" :msg="hot" serve="true" />
-    <Search/>
+    <Search placeholder='搜索用户名'/>
     <ul>
       <li class="list">
         <i class="icon-one"></i>

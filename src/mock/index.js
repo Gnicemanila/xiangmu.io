@@ -64,3 +64,214 @@ Mock.mock('/register', 'post', function (opttion) {
         }
     }
 })
+
+Mock.mock('/getchatlist', 'post', function (opttion) {
+    let user = JSON.parse(opttion.body)
+    return {
+        status: 200,
+        message: "获取成功",
+        data:[
+            {
+                name: "彭于晏",
+                avatar: "1",
+                vip: "1",
+                time: '20:11:38',
+                message: "大家都是知道的我的名字就是一个形容词！primary",
+                isme: false,
+            },
+            {
+                name: "胡歌",
+                avatar: "2",
+                vip: "1",
+                time: '20:13:38',
+                message: "大家都是知道的我的名字就是一个形容词！primary",
+                isme: true,
+            },
+            {
+                name: "彭于晏",
+                avatar: "1",
+                vip: "1",
+                time: '20:11:38',
+                message: "大家都是知道的我的名字就是一个形容词！primary",
+                isme: false,
+            },
+            {
+                name: "胡歌",
+                avatar: "2",
+                vip: "1",
+                time: '20:13:38',
+                message: "大家都是知道的我的名字就是一个形容词！primary",
+                isme: true,
+            },
+            {
+                name: "彭于晏",
+                avatar: "1",
+                vip: "1",
+                time: '20:11:38',
+                message: "大家都是知道的我的名字就是一个形容词！primary",
+                isme: false,
+            },
+            {
+                name: "胡歌",
+                avatar: "2",
+                vip: "1",
+                time: '20:13:38',
+                message: "大家都是知道的我的名字就是一个形容词！primary",
+                isme: true,
+            },
+            {
+                name: "彭于晏",
+                avatar: "1",
+                vip: "1",
+                time: '20:11:38',
+                message: "大家都是知道的我的名字就是一个形容词！primary",
+                isme: false,
+            },
+            {
+                name: "胡歌",
+                avatar: "2",
+                vip: "1",
+                time: '20:13:38',
+                message: "大家都是知道的我的名字就是一个形容词！primary",
+                isme: true,
+            },
+            {
+                name: "彭于晏",
+                avatar: "1",
+                vip: "1",
+                time: '20:11:38',
+                message: "大家都是知道的我的名字就是一个形容词！primary",
+                isme: false,
+            },
+            {
+                name: "胡歌",
+                avatar: "2",
+                vip: "1",
+                time: '20:13:38',
+                message: "大家都是知道的我的名字就是一个形容词！primary",
+                isme: true,
+            },
+            {
+                name: "彭于晏",
+                avatar: "1",
+                vip: "1",
+                time: '20:11:38',
+                message: "大家都是知道的我的名字就是一个形容词！primary",
+                isme: false,
+            },
+            {
+                name: "胡歌",
+                avatar: "2",
+                vip: "1",
+                time: '20:13:38',
+                message: "大家都是知道的我的名字就是一个形容词！primary",
+                isme: true,
+            },
+        ]
+    }
+})
+Mock.mock('/getweibolist', 'post', function (opttion) {
+    let user = JSON.parse(opttion.body)
+    return {
+        status: 200,
+        message: "获取成功",
+        data:[
+            {
+                name: "彭于晏",
+                avatar: "1",
+                vip: "1",
+                time: '20:11:38',
+                message: "大家都是知道的我的名字就是一个形容词！primary",
+                isme: false,
+            },
+            {
+                name: "胡歌",
+                avatar: "2",
+                vip: "1",
+                time: '20:13:38',
+                message: "大家都是知道的我的名字就是一个形容词！primary",
+                isme: true,
+            },
+            {
+                name: "彭于晏",
+                avatar: "1",
+                vip: "1",
+                time: '20:11:38',
+                message: "大家都是知道的我的名字就是一个形容词！primary",
+                isme: false,
+            },
+            {
+                name: "胡歌",
+                avatar: "2",
+                vip: "1",
+                time: '20:13:38',
+                message: "大家都是知道的我的名字就是一个形容词！primary",
+                isme: true,
+            },
+            {
+                name: "彭于晏",
+                avatar: "1",
+                vip: "1",
+                time: '20:11:38',
+                message: "大家都是知道的我的名字就是一个形容词！primary",
+                isme: false,
+            },
+            {
+                name: "胡歌",
+                avatar: "2",
+                vip: "1",
+                time: '20:13:38',
+                message: "大家都是知道的我的名字就是一个形容词！primary",
+                isme: true,
+            },
+            {
+                name: "彭于晏",
+                avatar: "1",
+                vip: "1",
+                time: '20:11:38',
+                message: "大家都是知道的我的名字就是一个形容词！primary",
+                isme: false,
+            },
+            {
+                name: "胡歌",
+                avatar: "2",
+                vip: "1",
+                time: '20:13:38',
+                message: "大家都是知道的我的名字就是一个形容词！primary",
+                isme: true,
+            },
+            {
+                name: "彭于晏",
+                avatar: "1",
+                vip: "1",
+                time: '20:11:38',
+                message: "大家都是知道的我的名字就是一个形容词！primary",
+                isme: false,
+            },
+            {
+                name: "胡歌",
+                avatar: "2",
+                vip: "1",
+                time: '20:13:38',
+                message: "大家都是知道的我的名字就是一个形容词！primary",
+                isme: true,
+            },
+            {
+                name: "彭于晏",
+                avatar: "1",
+                vip: "1",
+                time: '20:11:38',
+                message: "大家都是知道的我的名字就是一个形容词！primary",
+                isme: false,
+            },
+            {
+                name: "胡歌",
+                avatar: "2",
+                vip: "1",
+                time: '20:13:38',
+                message: "大家都是知道的我的名字就是一个形容词！primary",
+                isme: true,
+            },
+        ]
+    }
+})

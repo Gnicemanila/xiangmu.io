@@ -3,19 +3,19 @@
     <div class="avatar avatar-"></div>
     <div class="user-info-warp">
       <div class="user-info fr">
-        <span class="time">20:11:38</span>
-        <span class="user">胡歌</span>
-        <span class="vip">大V</span>
+      <span class="time">{{list.time}}</span>
+      <span class="user">{{list.name}}</span>
+      <span class="vip">{{list.vip>0?"大V":"会员"}}</span>
       </div>
     </div>
-    <div class="msg-content fr">我也是个形容词 ！primary</div>
+    <div class="msg-content fr">{{list.message}}</div>
   </div>
 </template>
 
 <script>
 export default {
   name: "Me",
-  //   props:['user'],
+   props:['list'],
   methods: {}
 };
 </script>

@@ -2,18 +2,18 @@
   <div class="message">
     <div class="avatar avatar-"></div>
     <div class="user-info">
-      <span class="vip">大V</span>
-      <span class="user">彭于晏</span>
-      <span class="time">20:11:38</span>
+      <span class="vip">{{list.vip>0?"大V":"会员"}}</span>
+      <span class="user">{{list.name}}</span>
+      <span class="time">{{list.time}}</span>
     </div>
-    <div class="msg-content">大家都是知道的我的名字就是一个形容词！primary</div>
+    <div class="msg-content">{{list.message}}</div>
   </div>
 </template>
 
 <script>
 export default {
   name: "Message",
-  //   props:['user'],
+  props:['list'],
   methods: {}
 };
 </script>
