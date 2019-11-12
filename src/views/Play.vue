@@ -1,8 +1,12 @@
 <template>
-  <div class="play">
+  <div :class="{'play':true,'iphonex':iphonex}">
     <Header msg="活动" />
     <ul class="info">
       <li class="have-bottom play1"></li>
+      <li class="have-bottom play2"></li>
+      <li class="have-bottom play3"></li>
+      <li class="have-bottom play4"></li>
+            <li class="have-bottom play1"></li>
       <li class="have-bottom play2"></li>
       <li class="have-bottom play3"></li>
       <li class="have-bottom play4"></li>
@@ -21,10 +25,26 @@ export default {
     Footer,
     Header
   },
+  data(){
+    return {
+      iphonex:false
+    }
+  },
   computed: {
     ...mapState({
       name: state => state.name
     })
+  },
+    mounted() {
+    var u = navigator.userAgent;
+    var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+    if (isIOS) {
+      if (screen.height == 812 && screen.width == 375) {
+        this.iphonex = true;
+      } else {
+        this.iphonex = false;
+      }
+    }
   },
   methods: {
     ...mapActions(["runName"])
@@ -33,6 +53,10 @@ export default {
 </script>
 <style lang="less">
 .play {
+  padding-bottom: .98rem;
+  &.iphonex{
+     padding-bottom: 1.66rem;
+  }
   .info {
     background: #ffffff;
     padding: 0.16rem 0;

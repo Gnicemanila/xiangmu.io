@@ -1,7 +1,7 @@
 <template>
-  <div class="home">
-    <Header left="会员" msg="媛宝佼佼者" serve="true" v-if="user" />
-    <Header left="游客" msg="媛宝佼佼者" serve="true" v-if="!user" />
+  <div :class="{'home':true, 'iphonex':iphonex}">
+    <Header left="会员" msg="武汉交友群" serve="true" v-if="user" />
+    <Header left="游客" msg="武汉交友群" serve="true" v-if="!user" />
     <div class="home-body">
       <div class="swipe">
         <van-swipe :autoplay="3000">
@@ -104,6 +104,17 @@ export default {
     Footer,
     FansLike
   },
+      mounted(){
+    var u = navigator.userAgent;
+    var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端    
+      if (isIOS) {    	
+        if (screen.height == 812 && screen.width == 375){
+    	   this.iphonex=true
+        }else{
+         this.iphonex=false
+        } 
+    }
+  },
   data() {
     return {
       imgUrl: require("../assets/imgs/home/banner1.png"),
@@ -112,7 +123,8 @@ export default {
       video2: require("../assets/imgs/home/video2.png"),
       video3: require("../assets/imgs/home/video3.png"),
       video4: require("../assets/imgs/home/video4.png"),
-      active:false
+      active:false,
+      iphonex:false
     };
   },
   computed: {
@@ -125,10 +137,10 @@ export default {
         var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端    
         if (isIOS) {    	
         if (screen.height == 812 && screen.width == 375){
-        //  this.phone=true
+         this.iphonex=true
 
         }else{
-        //  this.phone=false
+         this.iphonex=false
         } 
     }
   },
@@ -150,7 +162,10 @@ export default {
 
 <style lang="less">
 .home {
-  padding-bottom: 1.28rem;
+  padding-bottom: .98rem;
+  &.iphonex{
+    padding-bottom: 1.66rem;
+  }
   .info {
     margin-left: 0.19rem;
   }

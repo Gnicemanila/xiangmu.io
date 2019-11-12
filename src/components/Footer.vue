@@ -126,7 +126,7 @@ export default {
 .jianrong{
   height: .68rem;
   width: 100%;
-    background: rgba(245, 245, 245, 1);
+  background: rgba(245, 245, 245, 1);
 }
   }
 </style>

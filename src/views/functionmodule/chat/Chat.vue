@@ -12,7 +12,7 @@
         </div>
       </div>
     </div>
-    <div class="wrapper" ref="wrapper">
+    <div :class="{'wrapper':true,'iphonex':iphonex}" ref="wrapper">
       <div class="content">
         <div v-for="(item,i) in chatList" :key="i">
           <Message :list="item" v-if="!item.isme" />
@@ -24,15 +24,22 @@
     </div>
     <div class="chat-bottom">
       <div class="chat-function">
-        <i class="chat-btn-func"></i>
-        <i class="chat-btn-emoji"></i>
+        <i class="chat-btn-func" ></i>
+        <i class="chat-btn-emoji" @click="showEmoji"></i>
         <i class="chat-btn-voice"></i>
         <div class="chat-content">
           <van-field v-model="message" rows="1" type="textarea" />
         </div>
         <span class="send" @click="send()">发送</span>
       </div>
-
+      <ul v-if="show_emoji" class="chat-emoji-content" >
+        <van-swipe :autoplay="3000">
+          <van-swipe-item v-for="(item,index) in list" :key="index">
+            <li  v-for="(emoji,i) in item" :key="i">{{emoji}}</li>
+          </van-swipe-item>
+        </van-swipe>
+      </ul>
+      <Footer message="聊天室" />
     </div>
   </div>
 </template>
@@ -62,12 +69,28 @@ export default {
     return {
       message: "",
       chatList: [],
+      iphonex: false,
+      show_emoji:false,
+      list:[],//表情
     };
   },
-  created() {
-    this.loadData();
+  beforeCreate(){
+
   },
-  mounted() {
+  created() {
+    let emojilist=[];
+    let itemSum =26;
+    let len = Math.ceil(emojiDefault.length /(26))
+    for(let i=0;i<this.len;i++){
+      let item = [];
+       for(let k=0;k<26;k++){
+        item.push(emojiDefault[itemSum*i +k])
+        item.push("x")
+       }
+      emojilist.push(item)
+    }
+    this.list = emojilist;
+    this.loadData();
     document.addEventListener("keydown", this.onKeyDown);
   },
   beforeDestroy() {
@@ -78,8 +101,18 @@ export default {
       user: state => state.user
     })
   },
+  mounted() {
+    var u = navigator.userAgent;
+    var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+    if (isIOS) {
+      if (screen.height == 812 && screen.width == 375) {
+        this.iphonex = true;
+      } else {
+        this.iphonex = false;
+      }
+    }
+  },
   methods: {
-    // ...mapActions("chat", ["updateList"]),
     send() {
       if (!this.message) {
         return;
@@ -95,10 +128,10 @@ export default {
       this.chatList.push(say);
       this.message = "";
       // this.scrollToBottom()
-      this.$nextTick(()=>{
-        this.scroll.refresh(); 
-        this.scroll.scrollTo(0,this.scroll.maxScrollY,100)
-      })
+      this.$nextTick(() => {
+        this.scroll.refresh();
+        this.scroll.scrollTo(0, this.scroll.maxScrollY, 100);
+      });
     },
     onKeyDown(e) {
       if (e.keyCode == 13 && !e.shiftKey) {
@@ -120,15 +153,18 @@ export default {
                 threshold: 50
               }
             });
-            this.scrollToBottom()
+            this.scrollToBottom();
           } else {
             this.scroll.refresh();
           }
         });
       });
     },
-    scrollToBottom(time=1000){
-        this.scroll.scrollTo(0,this.scroll.maxScrollY,time)
+    scrollToBottom(time = 1000) {
+      this.scroll.scrollTo(0, this.scroll.maxScrollY, time);
+    },
+    showEmoji(){
+      this.show_emoji= !this.show_emoji;
     }
   }
 };
@@ -150,11 +186,14 @@ export default {
   }
   .wrapper {
     top: 1.76rem;
-    bottom: 1.28rem;
+    bottom: 1.96rem;
     width: 100%;
     position: absolute;
     left: 0;
     overflow: hidden;
+    &.iphonex {
+      bottom: 2.64rem;
+    }
     .content {
       position: relative;
     }
@@ -176,9 +215,12 @@ export default {
     right: 0;
     box-shadow: 0 1px 0 0 rgba(45, 45, 45, 0.21);
     border-top: 1px solid #c2c3c7;
-    background: #fff;
+    background: #F6F6F6;
+    .footer {
+      position: relative;
+    }
     .chat-function {
-      height: 1.28rem;
+      height: 0.98rem;
       background: #fff;
       display: flex;
       align-items: center;
@@ -222,6 +264,20 @@ export default {
         margin-left: 0.25rem;
         font-weight: 500;
         color: rgba(51, 51, 51, 1);
+      }
+    }
+    .chat-emoji-content{
+      height: 3.300rem;
+      width: 100%;
+      li{
+        height: 1.000rem;
+        color: #333;
+        flex: 1 1 11%;
+        display: -ms-flexbox;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 0.500rem;
       }
     }
   }
