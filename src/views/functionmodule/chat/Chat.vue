@@ -24,7 +24,7 @@
     </div>
     <div class="chat-bottom">
       <div class="chat-function">
-        <i class="chat-btn-func" ></i>
+        <i class="chat-btn-func"></i>
         <i class="chat-btn-emoji" @click="showEmoji"></i>
         <i class="chat-btn-voice"></i>
         <div class="chat-content">
@@ -32,10 +32,10 @@
         </div>
         <span class="send" @click="send()">发送</span>
       </div>
-      <ul v-if="show_emoji" class="chat-emoji-content" >
-        <van-swipe :autoplay="3000">
+      <ul v-if="show_emoji" class="chat-emoji-content">
+        <van-swipe>
           <van-swipe-item v-for="(item,index) in list" :key="index">
-            <li  v-for="(emoji,i) in item" :key="i">{{emoji}}</li>
+            <li v-for="(emoji,i) in item" :key="i" @click="addMessage(emoji)">{{emoji}}</li>
           </van-swipe-item>
         </van-swipe>
       </ul>
@@ -56,7 +56,9 @@ import PullDown from "@better-scroll/pull-down";
 import Pullup from "@better-scroll/pull-up";
 BScroll.use(Pullup);
 BScroll.use(PullDown);
-const emojiDefault = "😀 😃 😄 😁 😆 😅 😂 🤣 😊 😇 🙂 🙃 😉 😌 😍 😘 😗 😙 😚 😋 😛 😝 😜 😗 🤓 😎 😵 😏 😒 😞 😔 😟 😕 🙁 😣 😖 😫 😩 😢 😭 😤 😠 😡 😳 😱 😨 😰 😥 😓 🤗 🤔 🤥 😶 😐 😑 😬 🙄 😯 😦 😧 😮 😲 😴 🤤 😪 😵 🤐 🤢 🤧 😷 🤒 🤕 🤑 🤠 😈 👿 👹 👺 🤡 💩 👻 💀 ☠️ 👽 👾 🤖 🎃 🐣 🐔 🐛 🐤 💪 ✨ 🔔 ✊ ✋ 👇 👊 👍 👈 👆 💛 👐 👎 👌 💘".split(" ");
+const emojiDefault = "😀 😃 😄 😁 😆 😅 😂 🤣 😊 😇 🙂 🙃 😉 😌 😍 😘 😗 😙 😚 😋 😛 😝 😜 😗 🤓 😎 😵 😏 😒 😞 😔 😟 😕 🙁 😣 😖 😫 😩 😢 😭 😤 😠 😡 😳 😱 😨 😰 😥 😓 🤗 🤔 🤥 😶 😐 😑 😬 🙄 😯 😦 😧 😮 😲 😴 🤤 😪 😵 🤐 🤢 🤧 😷 🤒 🤕 🤑 🤠 😈 👿 👹 👺 🤡 💩 👻 💀 ☠️ 👽 👾 🤖 🎃 🐣 🐔 💪 ✨ 🔔 ✊ ✋ 👇 👊 👍 👈 👆 💛 👐 👎 👌 💘".split(
+  " "
+);
 export default {
   name: "Chat",
   components: {
@@ -70,24 +72,22 @@ export default {
       message: "",
       chatList: [],
       iphonex: false,
-      show_emoji:false,
-      list:[],//表情
+      show_emoji: false,
+      list: [] //表情
     };
   },
-  beforeCreate(){
-
-  },
+  // beforeCreate() {},
   created() {
-    let emojilist=[];
-    let itemSum =26;
-    let len = Math.ceil(emojiDefault.length /(26))
-    for(let i=0;i<this.len;i++){
+    let emojilist = [];
+    let itemSum = 26;
+    let len = Math.ceil(emojiDefault.length / 26);
+    for (let i = 0; i < len; i++) {
       let item = [];
-       for(let k=0;k<26;k++){
-        item.push(emojiDefault[itemSum*i +k])
-        item.push("x")
-       }
-      emojilist.push(item)
+      for (let k = 0; k < 26; k++) {
+        item.push(emojiDefault[itemSum * i + k]);
+      }
+      item.push("x");
+      emojilist.push(item);
     }
     this.list = emojilist;
     this.loadData();
@@ -163,8 +163,22 @@ export default {
     scrollToBottom(time = 1000) {
       this.scroll.scrollTo(0, this.scroll.maxScrollY, time);
     },
-    showEmoji(){
-      this.show_emoji= !this.show_emoji;
+    showEmoji() {
+      this.show_emoji = !this.show_emoji;
+    },
+    addMessage(item) {
+      if (item == "x") {
+        //emoji占2个字符，普通文字占一个字符，网上方法判断是否emoji不全，有些emoji不会判断成为emoji
+        let value = this.message;
+        let number = 1;
+        if (emojiDefault.indexOf(value.slice(-2)) !== -1) {
+          //最后两位是emoji
+          number = 2;
+        }
+        this.message = value.substr(0, value.length - number);
+      } else {
+        this.message += item;
+      }
     }
   }
 };
@@ -215,7 +229,7 @@ export default {
     right: 0;
     box-shadow: 0 1px 0 0 rgba(45, 45, 45, 0.21);
     border-top: 1px solid #c2c3c7;
-    background: #F6F6F6;
+    background: #f6f6f6;
     .footer {
       position: relative;
     }
@@ -266,18 +280,16 @@ export default {
         color: rgba(51, 51, 51, 1);
       }
     }
-    .chat-emoji-content{
-      height: 3.300rem;
+    .chat-emoji-content {
+      height: 3.3rem;
       width: 100%;
-      li{
-        height: 1.000rem;
-        color: #333;
-        flex: 1 1 11%;
-        display: -ms-flexbox;
-        display: flex;
+      li {
+        height: 1rem;
+        width: 0.8rem;
+        display: inline-block;
         justify-content: center;
         align-items: center;
-        font-size: 0.500rem;
+        font-size: 0.5rem;
       }
     }
   }
