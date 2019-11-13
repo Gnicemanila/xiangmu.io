@@ -15,8 +15,8 @@
     <div :class="{'wrapper':true,'iphonex':iphonex}" ref="wrapper">
       <div class="content">
         <div v-for="(item,i) in chatList" :key="i">
-          <Message :list="item" v-if="!item.isme" />
-          <Me :list="item" v-if="item.isme" />
+          <div  @click="operationItem(item)" v-if="!item.isme"> <Message :list="item"/></div>
+          <div @click="operationItem(item)"  v-if="item.isme" > <Me :list="item"/></div>
         </div>
       </div>
       <div class="loading-hook"></div>
@@ -24,21 +24,76 @@
     </div>
     <div class="chat-bottom">
       <div class="chat-function">
-        <i class="chat-btn-func"></i>
-        <i class="chat-btn-emoji" @click="showEmoji"></i>
+        <i class="chat-btn-func" @click="showBottom(show_bottom=='func'?false:'func')"></i>
+        <i class="chat-btn-emoji" @click="showBottom(show_bottom=='emoji'?false:'emoji')"></i>
         <i class="chat-btn-voice"></i>
         <div class="chat-content">
           <van-field v-model="message" rows="1" type="textarea" />
         </div>
         <span class="send" @click="send()">发送</span>
       </div>
-      <ul v-if="show_emoji" class="chat-emoji-content">
-        <van-swipe>
+      <ul v-if="show_bottom =='emoji'" class="chat-emoji-content">
+        <div class="content">
+                  <van-swipe>
           <van-swipe-item v-for="(item,index) in list" :key="index">
-            <li v-for="(emoji,i) in item" :key="i" @click="addMessage(emoji)">{{emoji}}</li>
+            <li v-for="(emoji,i) in item" :key="i" ><span @click="emojiMessage(emoji)">{{emoji}}</span></li>
           </van-swipe-item>
         </van-swipe>
+        </div>
+        <div class="emoji-title">
+          <div class="chat-emoji-tab-item on"></div>
+        </div>
       </ul>
+      <div v-if="show_bottom =='func'" class="chat-func-content">
+        <div class="chat-func-content-item">
+          <div>
+            <i class="chat-set-avatar"></i>
+            <span>设置头像</span>
+          </div>
+        </div>
+        <div class="chat-func-content-item">
+          <div>
+            <i class="chat-set-nickname"></i>
+            <span>设置昵称</span>
+          </div>
+        </div>
+        <div class="chat-func-content-item">
+          <div>
+            <i class="chat-send-img-choose"></i>
+            <span>发送图片</span>
+          </div>
+        </div>
+        <div class="chat-func-content-item">
+          <div>
+            <i class="chat-send-red-bag"></i>
+            <span>发送红包</span>
+          </div>
+        </div>
+        <div class="chat-func-content-item">
+          <div>
+            <i class="chat-all-forbidden"></i>
+            <span>全体禁言</span>
+          </div>
+        </div>
+        <div class="chat-func-content-item">
+          <div>
+            <i class="chat-member-list"></i>
+            <span>成员列表</span>
+          </div>
+        </div>
+        <div class="chat-func-content-item">
+          <div>
+            <i class="chat-room-list"></i>
+            <span>房间列表</span>
+          </div>
+        </div>
+        <div class="chat-func-content-item">
+          <div>
+            <i class="chat-private-chat"></i>
+            <span>私聊列表</span>
+          </div>
+        </div>
+      </div>
       <Footer message="聊天室" />
     </div>
   </div>
@@ -72,7 +127,7 @@ export default {
       message: "",
       chatList: [],
       iphonex: false,
-      show_emoji: false,
+      show_bottom: "",
       list: [] //表情
     };
   },
@@ -127,7 +182,7 @@ export default {
       };
       this.chatList.push(say);
       this.message = "";
-      // this.scrollToBottom()
+      this.showBottom();
       this.$nextTick(() => {
         this.scroll.refresh();
         this.scroll.scrollTo(0, this.scroll.maxScrollY, 100);
@@ -163,10 +218,10 @@ export default {
     scrollToBottom(time = 1000) {
       this.scroll.scrollTo(0, this.scroll.maxScrollY, time);
     },
-    showEmoji() {
-      this.show_emoji = !this.show_emoji;
+    showBottom(item = null) {
+      this.show_bottom = item;
     },
-    addMessage(item) {
+    emojiMessage(item) {
       if (item == "x") {
         //emoji占2个字符，普通文字占一个字符，网上方法判断是否emoji不全，有些emoji不会判断成为emoji
         let value = this.message;
@@ -179,6 +234,9 @@ export default {
       } else {
         this.message += item;
       }
+    },
+    operationItem(item) {
+      console.log(item);
     }
   }
 };
@@ -233,6 +291,7 @@ export default {
     .footer {
       position: relative;
     }
+
     .chat-function {
       height: 0.98rem;
       background: #fff;
@@ -280,16 +339,133 @@ export default {
         color: rgba(51, 51, 51, 1);
       }
     }
-    .chat-emoji-content {
-      height: 3.3rem;
-      width: 100%;
-      li {
-        height: 1rem;
-        width: 0.8rem;
-        display: inline-block;
+    .chat-func-content {
+      display: flex;
+      flex-wrap: wrap;
+      // justify-content: center;
+      .chat-func-content-item {
+        vertical-align: top;
+        width: 1.875rem;
+        display: flex;
+        height: 2rem;
         justify-content: center;
         align-items: center;
+        .chat-set-avatar {
+          display: block;
+          width: 1.06rem;
+          height: 1.06rem;
+          background: url("../../../assets/imgs/chat/chat-avatar.png") no-repeat;
+          background-size: 100%;
+        }
+        .chat-send-red-bag {
+          display: block;
+          width: 1.06rem;
+          height: 1.06rem;
+          background: url("../../../assets/imgs/chat/chat-send-reb-bag.png")
+            no-repeat;
+          background-size: 100%;
+        }
+        .chat-chat-red-bag-not {
+          display: block;
+          width: 1.06rem;
+          height: 1.06rem;
+          background: url("../../../assets/imgs/chat/chat-red-bag-not.png")
+            no-repeat;
+          background-size: 100%;
+        }
+        .chat-private-chat {
+          display: block;
+          width: 1.06rem;
+          height: 1.06rem;
+          background: url("../../../assets/imgs/chat/private-chat.png")
+            no-repeat;
+          background-size: 100%;
+        }
+        .chat-member-list {
+          display: block;
+          width: 1.06rem;
+          height: 1.06rem;
+          background: url("../../../assets/imgs/chat/member-list.png") no-repeat;
+          background-size: 100%;
+        }
+        .chat-send-img-choose {
+          display: block;
+          width: 1.06rem;
+          height: 1.06rem;
+          background: url("../../../assets/imgs/chat/send-img-choose.png")
+            no-repeat;
+          background-size: 100%;
+        }
+        .chat-room-list {
+          display: block;
+          width: 1.06rem;
+          height: 1.06rem;
+          background: url("../../../assets/imgs/chat/room-list.png") no-repeat;
+          background-size: 100%;
+        }
+        .chat-all-forbidden {
+          display: block;
+          width: 1.06rem;
+          height: 1.06rem;
+          background: url("../../../assets/imgs/chat/all-forbidden.png")
+            no-repeat;
+          background-size: 100%;
+        }
+        .chat-all-forbidden-on {
+          display: block;
+          width: 1.06rem;
+          height: 1.06rem;
+          background: url("../../../assets/imgs/chat/all-forbidden-on.png")
+            no-repeat;
+          background-size: 100%;
+        }
+        .chat-set-nickname {
+          display: block;
+          width: 1.06rem;
+          height: 1.06rem;
+          background: url("../../../assets/imgs/chat/set-nickname.png")
+            no-repeat;
+          background-size: 100%;
+        }
+        span {
+          display: inline-block;
+          width: 100%;
+          text-align: center;
+          font-weight: bold;
+          font-size: 0.22rem;
+          color: #333333;
+        }
+      }
+    }
+    .chat-emoji-content {
+      height: 4rem;
+      width: 100%;
+      background: #fff;
+      .emoji-title{
+        height: .7rem;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        overflow-x: scroll;
+        .chat-emoji-tab-item{
+          min-width: 0.800rem;
+          height: 0.700rem;
+          display: flex;
+          align-items: center;
+          &.on{
+                background: #dfdfdf;
+          }
+        }
+      }
+      .content{
+         height: 3.3rem;
+              li {
+           height: 1.1rem;
+          line-height: 1.1rem;
+        width: 0.8rem;
+        display: inline-block;
         font-size: 0.5rem;
+      }
       }
     }
   }

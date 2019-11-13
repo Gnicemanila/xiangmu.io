@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "precache-manifest.5c97bfe5cd338df2aec62356df13e475.js"
+  "precache-manifest.e90af5298e8b753384d441c23855da46.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "xiangmu"});
