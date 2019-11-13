@@ -14,9 +14,9 @@
     </div>
     <div :class="{'wrapper':true,'iphonex':iphonex}" ref="wrapper">
       <div class="content">
-        <div v-for="(item,i) in chatList" :key="i">
-          <div  @click="operationItem(item)" v-if="!item.isme"> <Message :list="item"/></div>
-          <div @click="operationItem(item)"  v-if="item.isme" > <Me :list="item"/></div>
+        <div v-for="(item,i) in chatList" :key="i" @click="operationItem(item,i)">
+         <Message :list="item"  v-if="!item.isme"/>
+         <Me :list="item" v-if="item.isme"/>
         </div>
       </div>
       <div class="loading-hook"></div>
@@ -41,7 +41,9 @@
         </van-swipe>
         </div>
         <div class="emoji-title">
-          <div class="chat-emoji-tab-item on"></div>
+          <div class="chat-emoji-tab-item on">
+              <i class="icon-smile"></i>
+          </div>
         </div>
       </ul>
       <div v-if="show_bottom =='func'" class="chat-func-content">
@@ -106,6 +108,7 @@ import Message from "@/components/Message";
 import Me from "@/components/Me";
 import { mapState, mapActions } from "vuex";
 import { getElementViewTop } from "../../../api/publicFuction";
+import { Dialog } from 'vant';
 import BScroll from "@better-scroll/core";
 import PullDown from "@better-scroll/pull-down";
 import Pullup from "@better-scroll/pull-up";
@@ -131,7 +134,6 @@ export default {
       list: [] //表情
     };
   },
-  // beforeCreate() {},
   created() {
     let emojilist = [];
     let itemSum = 26;
@@ -194,7 +196,6 @@ export default {
       }
     },
     loadData() {
-      var self = this;
       let parameter = {};
       this.$http("/getchatlist", parameter, "post").then(res => {
         this.chatList = res.data.concat(this.chatList);
@@ -206,7 +207,8 @@ export default {
               },
               pullDownRefresh: {
                 threshold: 50
-              }
+              },
+              click: true
             });
             this.scrollToBottom();
           } else {
@@ -235,8 +237,17 @@ export default {
         this.message += item;
       }
     },
-    operationItem(item) {
-      console.log(item);
+    operationItem(item,i) {
+      Dialog.confirm({
+        title: '删除',
+        message: item.message
+      }).then(() => {
+        this.chatList.splice(i,1)
+        // on confirm
+      }).catch(() => {
+        // on cancel
+      });
+      // console.log(item);
     }
   }
 };
@@ -452,6 +463,13 @@ export default {
           height: 0.700rem;
           display: flex;
           align-items: center;
+          justify-content: center;
+          .icon-smile{
+            width: .4rem;
+            height: .4rem;
+            background: url("../../../assets/imgs/chat/smile.png") no-repeat;
+           background-size: 100%;
+          }
           &.on{
                 background: #dfdfdf;
           }

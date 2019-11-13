@@ -284,7 +284,7 @@ const router = new VueRouter({
   routes
 })
 
-const blackList = ['/home', '/play', '/chat', '/register','/serve'] // 路由白名单不需要登录的界面
+const blackList = ['/home', '/play', '/register','/serve'] // 路由白名单不需要登录的界面
 
 router.beforeEach((to, from, next) => {
   // console.log('进入守卫');
