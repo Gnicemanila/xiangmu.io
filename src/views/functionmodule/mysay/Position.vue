@@ -1,7 +1,7 @@
 <template>
   <div class="position">
     <Header lefttext="取消" msg="所在位置" righttext="完成" />
-    <Search placeholder="搜索附近位置" />
+    <Search placeholder="搜索附近位置" :onSearch="onSearch" :_this="this" />
     <div class="position-not" @click="showPosition" v-if="show">
       <span>不显示位置</span>
       <i class="icon-sure" v-if="show"></i>
@@ -30,7 +30,7 @@ import Header from "@/components/Header";
 export default {
   name: "Position",
   components: {
-      Header,
+    Header,
     Search
   },
   data() {
@@ -71,6 +71,9 @@ export default {
     },
     showPosition() {
       this.show = !this.show;
+    },
+    onSearch(item) {
+      console.log(item);
     }
   }
 };

@@ -1,10 +1,10 @@
 <template>
   <div class="search">
-      <div class="search-input">
-            <van-search v-model="value" :placeholder="placeholder" show-action @search="onSearch">
-            <div slot="action" @click="onSearch">搜索</div>
-        </van-search>
-      </div>
+    <div class="search-input">
+      <van-search v-model="value" :placeholder="placeholder" show-action @search="onSearch">
+        <div slot="action" @click="Search">搜索</div>
+      </van-search>
+    </div>
   </div>
 </template>
 
@@ -12,31 +12,29 @@
 import { mapState, mapActions } from "vuex";
 export default {
   name: "Search",
-  props:['placeholder'],
-  components: {
+  props: ["placeholder", "onSearch", "_this"],
+  components: {},
+  data() {
+    return {
+      value: ""
+    };
   },
-  data(){
-      return {
-          value:""
-      }
-  },
-  computed: {
-  },
+  computed: {},
   methods: {
     ...mapActions(["runName"]),
-    onSearch() {
-      console.log(this.value);
-    }    
+    Search() {
+      this._this.onSearch(this.value);
+    }
   }
 };
 </script>
 <style lang="less">
-.search{
+.search {
+  height: 1rem;
+  &-input {
+    position: fixed;
     height: 1rem;
-    &-input{
-        position: fixed;
-        height: 1rem;
-        width: 100%;
-    }
+    width: 100%;
+  }
 }
 </style>

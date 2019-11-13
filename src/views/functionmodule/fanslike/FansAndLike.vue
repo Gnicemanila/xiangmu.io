@@ -1,7 +1,7 @@
 <template>
   <div class="fans-and-like">
     <Header goback="true" :msg="msg" serve="true" />
-    <Search placeholder='搜索用户名'/>
+    <Search placeholder='搜索用户名' :onSearch="onSearch" :_this="this"/>
     <ul>
       <li class="list">
         <div class="head"></div>
@@ -118,6 +118,9 @@ export default {
   },
   methods: {
     ...mapActions(["runName"]),
+    onSearch(item){
+      console.log(item)
+    }    
   }
 };
 </script>

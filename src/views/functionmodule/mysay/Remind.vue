@@ -1,7 +1,7 @@
 <template>
   <div class="remind">
     <Header lefttext="取消" msg="提醒谁看" righttext="完成" />
-    <Search placeholder="搜索用户名" />
+    <Search placeholder="搜索用户名" :onSearch="onSearch" :_this="this" />
     <ul class="remind-list">
       <li>胡歌</li>
       <li>彭于晏</li>
@@ -34,7 +34,10 @@ export default {
     })
   },
   methods: {
-    ...mapActions(["runName"])
+    ...mapActions(["runName"]),
+    onSearch(item) {
+      console.log(item);
+    }
   }
 };
 </script>

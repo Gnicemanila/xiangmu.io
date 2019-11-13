@@ -1,7 +1,7 @@
 <template>
   <div class="hot-list">
     <Header goback="true" :msg="hot" serve="true" />
-    <Search placeholder='搜索用户名'/>
+    <Search placeholder="搜索用户名" :onSearch="onSearch" :_this="this" />
     <ul>
       <li class="list">
         <i class="icon-one"></i>
@@ -112,6 +112,9 @@ export default {
   },
   methods: {
     ...mapActions(["runName"]),
+    onSearch(item) {
+      console.log(item);
+    }
   }
 };
 </script>

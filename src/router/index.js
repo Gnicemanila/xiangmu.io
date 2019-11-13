@@ -8,7 +8,12 @@ import BindCard from '../views/functionmodule/info/BindCard.vue'
 import ChoicePsd from '../views/functionmodule/info/ChoicePsd.vue'
 //主功能
 import Play from '../views/Play.vue'
+//聊天室
 import Chat from '../views/functionmodule/chat/Chat.vue'
+//房间列表
+import RoomList from '../views/functionmodule/chat/RoomList.vue'
+
+
 import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
 import Register from '../views/Register.vue'
@@ -267,6 +272,11 @@ const routes = [
     component: Chat
   },
   {
+    path: '/roomList',
+    name: 'roomList',
+    component: RoomList
+  },
+  {
     path: '/about',
     name: 'about',
     // route level code-splitting
@@ -284,7 +294,7 @@ const router = new VueRouter({
   routes
 })
 
-const blackList = ['/home', '/play', '/register','/serve'] // 路由白名单不需要登录的界面
+const blackList = ['/home', '/play', '/chat', '/register','/serve'] // 路由白名单不需要登录的界面
 
 router.beforeEach((to, from, next) => {
   // console.log('进入守卫');

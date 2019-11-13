@@ -1,13 +1,11 @@
 <template>
   <div class="article">
     <Header goback="true" :msg="msg" />
-    <div class="article-title">
-        一种云
-    </div>
+    <div class="article-title">一种云</div>
     <div class="article-user">
       <div class="article-user-head"></div>
       <div class="article-user-title">
-        <div class="article-user-title-name"> 瞿秋白 </div>
+        <div class="article-user-title-name">瞿秋白</div>
         <div class="article-user-title-time">8月15日发表</div>
       </div>
       <button class="article-user-btn">+关注</button>
@@ -18,8 +16,46 @@
       什么时候才黎明呢？
       看那刚刚发现的虹。祈祷是没有用的了。只有自己去做雷公公电闪娘娘。那虹发现的地方，已经有了小小的雷电，打开了层层的乌云，让太阳重新照到紫铜色的脸。如果是惊天动地的霹雳——这可只有你自己做了雷公公电闪娘娘才办得到，如果那小小的雷电变成了惊天动地的霹雳，那才拨得开这些愁云惨雾。
     </div>
+    <div class="article-share">
+      <div class="item">
+        <div>
+          <i class="good"></i>
+          <span>点赞</span>
+        </div>
+      </div>
+      <div class="item">
+        <div>
+          <i class="not-like"></i>
+          <span>不喜欢</span>
+        </div>
+      </div>
+      <div class="item">
+        <div>
+          <i class="share-wechat"></i>
+          <span>分享微信</span>
+        </div>
+      </div>
+      <div class="item">
+        <div>
+          <i class="share-friends"></i>
+          <span>分享朋友圈</span>
+        </div>
+      </div>
+    </div>
     <div class="article-comment">
-
+      <div class="head"></div>
+      <div class="speak">
+        <div class="name">
+          北海彭于晏
+          <i class="min-good fr"></i>
+        </div>
+        <div class="say">
+        中国需要对世界开放，世界也需要对中国开放！
+        </div>
+        <div class="time">
+            <span>10分钟前</span> <i>.</i> <span>回复</span>
+        </div>
+      </div>
     </div>
     <div class="article-foot" v-if="!show">
       <div class="article-foot-message" @click="openwrite()">
@@ -82,8 +118,8 @@ export default {
 <style lang="less">
 .article {
   background: #ffffff;
-    overflow: hidden;
-      padding-bottom: .98rem;
+  overflow: hidden;
+  padding-bottom: 0.98rem;
   &-title {
     padding: 0.3rem;
     font-size: 0.34rem;
@@ -137,6 +173,89 @@ export default {
     font-weight: 500;
     color: rgba(51, 51, 51, 1);
     padding: 0.3rem;
+  }
+  &-share {
+    height: 1rem;
+    padding: 0 0.65rem;
+    display: flex;
+    .item {
+      width: 25%;
+      height: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      span {
+        display: block;
+      }
+      .good {
+        display: inline-block;
+        width: 0.48rem;
+        height: 0.48rem;
+        background: url("../../../assets/imgs/acticle/isgood.png") no-repeat;
+        background-size: 100%;
+      }
+      .not-like {
+        display: inline-block;
+        width: 0.48rem;
+        height: 0.48rem;
+        background: url("../../../assets/imgs/acticle/not_like.png") no-repeat;
+        background-size: 100%;
+      }
+      .share-wechat {
+        display: inline-block;
+        width: 0.48rem;
+        height: 0.48rem;
+        background: url("../../../assets/imgs/acticle/wechat.png") no-repeat;
+        background-size: 100%;
+      }
+      .share-friends {
+        display: inline-block;
+        width: 0.48rem;
+        height: 0.48rem;
+        background: url("../../../assets/imgs/acticle/share_friends.png")
+          no-repeat;
+        background-size: 100%;
+      }
+    }
+  }
+  &-comment {
+    display: flex;
+    padding: 0.3rem 0.58rem 0.3rem 0.3rem;
+    // align-items: center;
+    .head {
+      width: 0.7rem;
+      height: 0.7rem;
+      background: rgba(204, 204, 204, 1);
+      border-radius: 50%;
+    }
+    .speak {
+      padding-left: 0.17rem;
+      width: 5.75rem;
+      .name {
+        width: 100%;
+        font-size: 0.26rem;
+        height: 0.3rem;
+        font-weight: 500;
+        color: rgba(51, 51, 51, 1);
+        text-align: left;
+        .min-good {
+          width: 0.3rem;
+          height: 0.3rem;
+          background: url("../../../assets/imgs/acticle/min_good.png") no-repeat;
+          background-size: 100%;
+        }
+      }
+      .say{
+        font-size:.3rem;
+          font-weight:500;
+          color:rgba(51,51,51,1);
+          padding: .3rem 0;
+          text-align: left;
+      }
+      .time{
+        text-align: left;
+      }
+    }
   }
   &-foot {
     height: 0.98rem;

@@ -15,8 +15,8 @@
     <div :class="{'wrapper':true,'iphonex':iphonex}" ref="wrapper">
       <div class="content">
         <div v-for="(item,i) in chatList" :key="i" @click="operationItem(item,i)">
-         <Message :list="item"  v-if="!item.isme"/>
-         <Me :list="item" v-if="item.isme"/>
+          <Message :list="item" v-if="!item.isme" />
+          <Me :list="item" v-if="item.isme" />
         </div>
       </div>
       <div class="loading-hook"></div>
@@ -34,15 +34,23 @@
       </div>
       <ul v-if="show_bottom =='emoji'" class="chat-emoji-content">
         <div class="content">
-                  <van-swipe>
-          <van-swipe-item v-for="(item,index) in list" :key="index">
-            <li v-for="(emoji,i) in item" :key="i" ><span @click="emojiMessage(emoji)">{{emoji}}</span></li>
-          </van-swipe-item>
-        </van-swipe>
+          <van-swipe>
+            <van-swipe-item v-for="(item,index) in list" :key="index">
+              <li v-for="(emoji,i) in item" :key="i">
+                <span @click="emojiMessage(emoji)">{{emoji}}</span>
+              </li>
+            </van-swipe-item>
+          </van-swipe>
         </div>
         <div class="emoji-title">
           <div class="chat-emoji-tab-item on">
-              <i class="icon-smile"></i>
+            <i class="icon-smile"></i>
+          </div>
+          <div class="chat-emoji-tab-item">
+            <i class="icon-add"></i>
+          </div>
+          <div class="chat-emoji-tab-item">
+            <i class="icon-sets"></i>
           </div>
         </div>
       </ul>
@@ -85,7 +93,7 @@
         </div>
         <div class="chat-func-content-item">
           <div>
-            <i class="chat-room-list"></i>
+            <i class="chat-room-list" @click="goNext('/roomList')"></i>
             <span>房间列表</span>
           </div>
         </div>
@@ -108,7 +116,7 @@ import Message from "@/components/Message";
 import Me from "@/components/Me";
 import { mapState, mapActions } from "vuex";
 import { getElementViewTop } from "../../../api/publicFuction";
-import { Dialog } from 'vant';
+import { Dialog } from "vant";
 import BScroll from "@better-scroll/core";
 import PullDown from "@better-scroll/pull-down";
 import Pullup from "@better-scroll/pull-up";
@@ -175,7 +183,7 @@ export default {
         return;
       }
       let say = {
-        name: this.user.name,
+        name: this.user?this.user.name:"游客",
         avatar: "2",
         vip: "1",
         time: "20:13:38",
@@ -237,18 +245,23 @@ export default {
         this.message += item;
       }
     },
-    operationItem(item,i) {
+    operationItem(item, i) {
       Dialog.confirm({
-        title: '删除',
+        title: "删除",
         message: item.message
-      }).then(() => {
-        this.chatList.splice(i,1)
-        // on confirm
-      }).catch(() => {
-        // on cancel
-      });
+      })
+        .then(() => {
+          this.chatList.splice(i, 1);
+          // on confirm
+        })
+        .catch(() => {
+          // on cancel
+        });
       // console.log(item);
-    }
+    },
+        goNext(path) {
+      this.$router.push({ path: path });
+    },
   }
 };
 </script>
@@ -451,39 +464,51 @@ export default {
     .chat-emoji-content {
       height: 4rem;
       width: 100%;
-      background: #fff;
-      .emoji-title{
-        height: .7rem;
+      background: #f6f6f6;
+      .emoji-title {
+        height: 0.7rem;
         display: flex;
         align-items: center;
         width: 100%;
         overflow-x: scroll;
-        .chat-emoji-tab-item{
-          min-width: 0.800rem;
-          height: 0.700rem;
+        .chat-emoji-tab-item {
+          min-width: 0.8rem;
+          height: 0.7rem;
           display: flex;
           align-items: center;
           justify-content: center;
-          .icon-smile{
-            width: .4rem;
-            height: .4rem;
+          .icon-smile {
+            width: 0.4rem;
+            height: 0.4rem;
             background: url("../../../assets/imgs/chat/smile.png") no-repeat;
-           background-size: 100%;
+            background-size: 100%;
           }
-          &.on{
-                background: #dfdfdf;
+          .icon-add {
+            width: 0.4rem;
+            height: 0.4rem;
+            background: url("../../../assets/imgs/chat/add.png") no-repeat;
+            background-size: 100%;
+          }
+          .icon-sets {
+            width: 0.4rem;
+            height: 0.4rem;
+            background: url("../../../assets/imgs/chat/sets.png") no-repeat;
+            background-size: 100%;
+          }
+          &.on {
+            background: #dfdfdf;
           }
         }
       }
-      .content{
-         height: 3.3rem;
-              li {
-           height: 1.1rem;
+      .content {
+        height: 3.3rem;
+        li {
+          height: 1.1rem;
           line-height: 1.1rem;
-        width: 0.8rem;
-        display: inline-block;
-        font-size: 0.5rem;
-      }
+          width: 0.8rem;
+          display: inline-block;
+          font-size: 0.5rem;
+        }
       }
     }
   }
