@@ -1,7 +1,7 @@
 <template>
   <div class="room-list">
     <Header goback="true" msg="房间列表" serve="true" />
-    <Search  :onSearch="onSearch" :_this="this"/>
+    <Search  :onSearch="onSearch" :_this="this"  placeholder='搜索房间名'/>
   </div>
 </template>
 
