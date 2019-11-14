@@ -40,8 +40,8 @@
             <div class="count">当前参与人数：30269</div>
           </li>
           <li class="win-3" @click="goNext('/hotList/3')">
-            <div class="header">汉正街淘宝</div>
-            <div class="content">逛街购物 舒心放心</div>
+            <div class="header">热搜榜单</div>
+            <div class="content">国际热点 国内热点</div>
             <div class="count">当前参与人数：3659</div>
           </li>
           <li class="win-4" @click="goNext('/hotList/4')">

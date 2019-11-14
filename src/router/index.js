@@ -174,7 +174,7 @@ const routes = [
   {
     path: '/hotList/:type',
     name: 'hotList',
-    component: HotList
+    component: HotList,
   },
   {
     path: '/fansAndLike/:type',

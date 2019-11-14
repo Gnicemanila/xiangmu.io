@@ -3,12 +3,12 @@
     <Header goback="true" :msg="hot" serve="true" />
     <Search :placeholder="placeholder" :onSearch="onSearch" :_this="this" />
     <van-loading size="24px" vertical v-if="loading">加载中...</van-loading>
-        <ul v-if="type==1" class="video-list">
+   <ul v-if="type==1" class="video-list">
         <li v-for="(item,i) in video_list" :key="i">
           <div>
             {{item.text}}
           </div>
-          <video :src="item.video" controls></video>
+          <video :src="item.video" controls loop></video>
         </li>
     </ul>
     <ul v-if="type==2&&music.length==0" class="music">
@@ -27,13 +27,22 @@
         <!-- {{item}}  -->
       </li>
     </ul>
+    <ul v-if="type==3" class="hot-list">
+        <li v-for="(item,i) in hot_list" :key="i" @click="goNext(item)">
+          <img :src="item.image" alt="">
+          <div class="info">
+            <div class="title"> {{item.title}}</div>
+            <div class="time">{{item.passtime}}</div>
+          </div>
+        </li>
+    </ul>
     <ul v-if="music.length>0" class="search-music">
       <li v-for="(item,i) in music" :key="i" class="list">
         <img :src="item.pic" alt />
         <div class="info">
           <div class="author">{{item.author}}</div>
           <div>{{item.title}}</div>
-          <audio :src="item.url" controls></audio>
+          <audio :src="item.url" controls loop></audio>
         </div>
       </li>
     </ul>
@@ -124,6 +133,7 @@ export default {
       music_list: [], //热门榜单
       music: [] ,//歌曲
       video_list:[],//
+      hot_list:[],//热搜
       loading:true,//加载
     };
   },
@@ -157,8 +167,14 @@ export default {
         });
         break;
       case "3":
-        this.hot = "汉正街淘宝";
-        this.loading=false;
+        this.hot = "热搜榜单";
+        this.placeholder = "暂时没有对应的热搜榜单搜索接口";
+        this.$http("/getWangYiNews").then(res => {
+          if (res.code == 200) {
+            this.hot_list = res.result;
+            this.loading=false
+          }
+        });
         break;
       case "4":
         this.hot = "网站活跃榜单";
@@ -180,6 +196,9 @@ export default {
           });
           break;
       }
+    },
+    goNext(item){
+      window.open(item.path)
     }
   }
 };
@@ -254,6 +273,26 @@ export default {
       video{
         width: 100%;
         height: 3rem;
+      }
+    }
+  }
+  .hot-list{
+    background: #f5f5f5;
+    li{
+      padding: .1rem .3rem;
+      margin: .3rem 0;
+      display: flex;
+          background: #fff;
+      img{
+        width: 2rem;
+        height:  2rem;
+      }
+      .info{
+        padding: .3rem;
+        text-align: left;
+        .title{
+
+        }
       }
     }
   }
