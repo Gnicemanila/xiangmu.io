@@ -270,6 +270,7 @@ export default {
     li{
       padding: .1rem .3rem;
       margin: .1rem 0;
+      background: #fff;
       video{
         width: 100%;
         height: 3rem;

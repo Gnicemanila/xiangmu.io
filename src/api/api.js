@@ -3,7 +3,7 @@ import Axios from 'axios'
 let BaseUrl = ""; //请求的地址因为我是用node代理测试环境已经配好了
 if (process.env.NODE_ENV == 'development') {    
     //开发用的
-    BaseUrl = 'https://api.apiopen.top';
+    BaseUrl = 'https://json.apiopen.top';
 }
 else if (process.env.NODE_ENV == 'debug') {    
 // 调试用的
