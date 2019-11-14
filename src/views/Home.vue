@@ -13,11 +13,12 @@
           </van-swipe-item>
         </van-swipe>
       </div>
-      <ul class="paly">
+      <!-- <ul class="paly">
         <li class="tittle" @click="play()">
-          <i :class="{'icon-play':true, 'active':active}"></i>当前网站音乐野狼酒吧</li>
-        <audio src="" id="buttonAudio"></audio>
-      </ul>
+          <i :class="{'icon-play':true, 'active':active}"></i>当前网站音乐野狼酒吧
+        </li>
+        <audio src id="buttonAudio"></audio>
+      </ul> -->
       <div class="news">
         <div class="notice">
           <span class="notice-ico fl"></span>
@@ -29,13 +30,13 @@
         </div>
         <ul class="news-deatil">
           <li class="win-1" @click="goNext('/hotList/1')">
-            <div class="header">科技榜</div>
-            <div class="content">学子高手 各显神通</div>
+            <div class="header">视频榜</div>
+            <div class="content">好玩的 好看的</div>
             <div class="count">当前参与人数：123456</div>
           </li>
           <li class="win-2" @click="goNext('/hotList/2')">
-            <div class="header">IT创业</div>
-            <div class="content">码农大侠 各显神通</div>
+            <div class="header">音乐榜单</div>
+            <div class="content">一展歌喉 沉醉其中</div>
             <div class="count">当前参与人数：30269</div>
           </li>
           <li class="win-3" @click="goNext('/hotList/3')">
@@ -44,8 +45,8 @@
             <div class="count">当前参与人数：3659</div>
           </li>
           <li class="win-4" @click="goNext('/hotList/4')">
-            <div class="header">奇闻异事</div>
-            <div class="content">民间趣味 说来有趣</div>
+            <div class="header">网站活跃榜单</div>
+            <div class="content">话题多，粉丝多</div>
             <div class="count">当前参与人数：9999</div>
           </li>
         </ul>
@@ -97,22 +98,23 @@ import { mapState } from "vuex";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FansLike from "@/components/FansLike";
+// import Search from "@/components/Search";
 export default {
   name: "Home",
   components: {
     Header,
     Footer,
-    FansLike
+    FansLike,
   },
-      mounted(){
+  mounted() {
     var u = navigator.userAgent;
-    var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端    
-      if (isIOS) {    	
-        if (screen.height == 812 && screen.width == 375){
-    	   this.iphonex=true
-        }else{
-         this.iphonex=false
-        } 
+    var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+    if (isIOS) {
+      if (screen.height == 812 && screen.width == 375) {
+        this.iphonex = true;
+      } else {
+        this.iphonex = false;
+      }
     }
   },
   data() {
@@ -123,8 +125,8 @@ export default {
       video2: require("../assets/imgs/home/video2.png"),
       video3: require("../assets/imgs/home/video3.png"),
       video4: require("../assets/imgs/home/video4.png"),
-      active:false,
-      iphonex:false
+      active: false,
+      iphonex: false
     };
   },
   computed: {
@@ -132,38 +134,42 @@ export default {
       user: state => state.user
     })
   },
-  mounted(){
-        var u = navigator.userAgent;
-        var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端    
-        if (isIOS) {    	
-        if (screen.height == 812 && screen.width == 375){
-         this.iphonex=true
-
-        }else{
-         this.iphonex=false
-        } 
+  mounted() {
+    var u = navigator.userAgent;
+    var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+    if (isIOS) {
+      if (screen.height == 812 && screen.width == 375) {
+        this.iphonex = true;
+      } else {
+        this.iphonex = false;
+      }
     }
   },
   methods: {
     goNext(path) {
       this.$router.push({ path: path });
     },
-        play() {
-          if(!this.active){
-          this.openMusic();
-          }else{
-              this.closeMusic();
-          }
-            this.active=!this.active;
-        },       
+    play() {
+      if (!this.active) {
+        this.openMusic();
+      } else {
+        this.closeMusic();
+      }
+      this.active = !this.active;
+    },
+      onSearch(item){
+         this.$http("/searchMusic?name="+item).then((res)=>{
+         console.log(res.result)
+         })
+    }
   }
 };
 </script>
 
 <style lang="less">
 .home {
-  padding-bottom: .98rem;
-  &.iphonex{
+  padding-bottom: 0.98rem;
+  &.iphonex {
     padding-bottom: 1.66rem;
   }
   .info {
@@ -191,16 +197,17 @@ export default {
       white-space: nowrap;
       height: 0.5rem;
       &.tittle {
-        .icon-play{
+        .icon-play {
           display: inline-block;
-          width: .4rem;
-          height: .4rem;
-          background: url('./../assets/imgs/home/playvideo.png') no-repeat;
+          width: 0.4rem;
+          height: 0.4rem;
+          background: url("./../assets/imgs/home/playvideo.png") no-repeat;
           background-size: 100%;
-          margin: 0 .3rem;
-          &.active{
-             background: url('./../assets/imgs/home/playvideo_active.png') no-repeat;
-             background-size: 100%;
+          margin: 0 0.3rem;
+          &.active {
+            background: url("./../assets/imgs/home/playvideo_active.png")
+              no-repeat;
+            background-size: 100%;
           }
         }
       }
@@ -210,6 +217,7 @@ export default {
     height: 3.9rem;
     padding: 0 0.3rem;
     background: #ffffff;
+    margin: .1rem 0;
     .notice {
       height: 0.72rem;
       justify-content: center;

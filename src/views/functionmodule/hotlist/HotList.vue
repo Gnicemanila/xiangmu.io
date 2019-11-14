@@ -1,8 +1,43 @@
 <template>
   <div class="hot-list">
     <Header goback="true" :msg="hot" serve="true" />
-    <Search placeholder="搜索用户名" :onSearch="onSearch" :_this="this" />
-    <ul>
+    <Search :placeholder="placeholder" :onSearch="onSearch" :_this="this" />
+    <van-loading size="24px" vertical v-if="loading">加载中...</van-loading>
+        <ul v-if="type==1" class="video-list">
+        <li v-for="(item,i) in video_list" :key="i">
+          <div>
+            {{item.text}}
+          </div>
+          <video :src="item.video" controls></video>
+        </li>
+    </ul>
+    <ul v-if="type==2&&music.length==0" class="music">
+      <li v-for="(item,i) in music_list" :key="i">
+        <img :src="item.pic_s192" alt />
+        <div class="name">
+          <h3 :style="{'color':item.color}">{{item.name}}</h3>
+          <div class="miaoshu">
+            <div v-for="(m,j) in item.content" :key="j" class="item">
+              <span class="text-over">{{m.album_title}}</span>
+              <span class="text-over">{{m.author}}</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- {{item}}  -->
+      </li>
+    </ul>
+    <ul v-if="music.length>0" class="search-music">
+      <li v-for="(item,i) in music" :key="i" class="list">
+        <img :src="item.pic" alt />
+        <div class="info">
+          <div class="author">{{item.author}}</div>
+          <div>{{item.title}}</div>
+          <audio :src="item.url" controls></audio>
+        </div>
+      </li>
+    </ul>
+    <ul v-if="type==4">
       <li class="list">
         <i class="icon-one"></i>
         <span class="head"></span>
@@ -15,7 +50,7 @@
           <li>
             <span class="fans text-over">粉丝999999</span>
             <span class="likes text-over">关注999999</span>
-            <button class="add-likes fr">+关注</button>
+            <button class="add-likes fr">相互关注</button>
           </li>
         </ul>
       </li>
@@ -24,7 +59,7 @@
         <span class="head"></span>
         <ul class="user-info">
           <li class="user">
-            <span>胡歌</span>
+            <span>彭于晏</span>
             <i class="icon-boy"></i>
             <span class="big">大V</span>
           </li>
@@ -40,7 +75,7 @@
         <span class="head"></span>
         <ul class="user-info">
           <li class="user">
-            <span>胡歌</span>
+            <span>明楼</span>
             <i class="icon-boy"></i>
             <span class="big">大V</span>
           </li>
@@ -56,14 +91,14 @@
         <span class="head"></span>
         <ul class="user-info">
           <li class="user">
-            <span>胡歌</span>
+            <span>谢霆锋</span>
             <i class="icon-boy"></i>
             <span class="big">大V</span>
           </li>
           <li>
             <span class="fans text-over">粉丝999999</span>
             <span class="likes text-over">关注999999</span>
-            <button class="add-likes fr">+关注</button>
+            <button class="add-likes fr">已关注</button>
           </li>
         </ul>
       </li>
@@ -75,6 +110,7 @@
 import { mapState, mapActions } from "vuex";
 import Header from "@/components/Header";
 import Search from "@/components/Search";
+import { Loading } from "vant";
 export default {
   name: "HotList",
   components: {
@@ -84,7 +120,11 @@ export default {
   data() {
     return {
       placeholder: "",
-      hot: ""
+      hot: "",
+      music_list: [], //热门榜单
+      music: [] ,//歌曲
+      video_list:[],//
+      loading:true,//加载
     };
   },
   computed: {
@@ -93,33 +133,130 @@ export default {
     })
   },
   created() {
-    //   console.log(this.$route.params.type)
     let type = this.$route.params.type;
+    this.type = type;
     switch (type) {
       case "1":
-        this.hot = "科技榜";
+        this.hot = "视频榜";
+        this.placeholder = "暂时没有对应的视频搜索接口";
+        this.$http("/getJoke?page=2&count=30").then(res => {
+          if (res.code == 200) {
+            this.video_list = res.result;
+            this.loading=false
+          }
+        });
         break;
       case "2":
-        this.hot = "IT创业";
+        this.hot = "音乐榜单";
+        this.placeholder = "搜索歌曲名播放音乐";
+        this.$http("/musicRankings").then(res => {
+          if (res.code == 200) {
+            this.music_list = res.result;
+            this.loading=false
+          }
+        });
         break;
       case "3":
         this.hot = "汉正街淘宝";
+        this.loading=false;
         break;
       case "4":
-        this.hot = "奇闻异事";
+        this.hot = "网站活跃榜单";
+        this.loading=false;
         break;
     }
   },
   methods: {
     ...mapActions(["runName"]),
     onSearch(item) {
-      console.log(item);
+      let type = this.$route.params.type;
+      switch (type) {
+        case "2":
+          this.$http("/searchMusic?name=" + item).then(res => {
+            if (res.code == 200) {
+              this.music = res.result;
+              console.log(res.result);
+            }
+          });
+          break;
+      }
     }
   }
 };
 </script>
 <style lang="less">
 .hot-list {
+  .music {
+    overflow: hidden;
+    li {
+      display: flex;
+      // align-items: center;
+      padding: 0.1rem 0.3rem;
+      margin: 0.1rem 0;
+      background: #ffffff;
+      img {
+        width: 2rem;
+        height: 2.4rem;
+      }
+      .name {
+        width: 70%;
+        .miaoshu {
+          width: 100%;
+          padding: 0 0.1rem;
+          .item {
+            border-bottom: 1px solid #f5f5f5;
+            display: flex;
+            span {
+              &:first-child {
+                display: inline-block;
+                width: 70%;
+                text-align: left;
+              }
+              &:last-child {
+                display: inline-block;
+                width: 30%;
+                text-align: left;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .search-music {
+    overflow: hidden;
+    li {
+      display: flex;
+      // align-items: center;
+      padding: 0.1rem 0.3rem;
+      margin: 0.1rem 0;
+      background: #ffffff;
+      img {
+        width: 1.5rem;
+        height: 1.5rem;
+      }
+      .info {
+        padding: 0 0.3rem;
+        .author {
+        }
+        audio {
+          width: 5rem;
+          height: 0.5rem;
+        }
+      }
+    }
+  }
+  .video-list{
+    background: #f5f5f5;
+    li{
+      padding: .1rem .3rem;
+      margin: .1rem 0;
+      video{
+        width: 100%;
+        height: 3rem;
+      }
+    }
+  }
   .list {
     height: 1.6rem;
     display: flex;
@@ -159,7 +296,6 @@ export default {
         line-height: 0.45rem;
         padding: 0 0.23rem;
         text-align: left;
-        //   width: 5.6rem;
         .add-likes {
           width: 1.2rem;
           height: 0.45rem;

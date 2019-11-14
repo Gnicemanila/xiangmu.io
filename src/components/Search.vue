@@ -33,6 +33,7 @@ export default {
   height: 1rem;
   &-input {
     position: fixed;
+    z-index: 2;
     height: 1rem;
     width: 100%;
   }

@@ -98,14 +98,14 @@ export default {
     },
     async getphonecode() {
       let res = await this.$http("/getphonecode");
-      if (res.status == 200) {
+      if (res.code == 400)  {
         // console.log(res)
         this.show=true;
         let _this=this;
         setTimeout(function(){
           _this.show=false;
         },60000)
-        this.verificationCode = res.data.code;
+        this.verificationCode ="456789";
       }
     },
     async goregister() {

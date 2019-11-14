@@ -1,11 +1,19 @@
 <template>
   <div class="weibo">
     <Header goback="true" msg="动态" />
+     <van-loading size="24px" vertical v-if="loading">加载中...</van-loading>
     <div class="wrapper" ref="wrapper">
       <div class="content">
         <div v-for="(item,i) in weiboList" :key="i">
-          <Message :list="item" v-if="!item.isme" />
-          <Me :list="item" v-if="item.isme" />
+          <div class="item">
+            <img :src="item.album_1000_1000" alt="">
+            <ul class="info">
+              <li>{{item.album_title}}</li>
+              <li>演唱：{{item.author}}</li>
+              <li>{{item.country}}</li>
+              <li>{{item.language}}</li>
+            </ul>
+          </div>
         </div>
       </div>
       <div class="loading-hook"></div>
@@ -30,7 +38,9 @@ export default {
   },
   data() {
     return {
-      weiboList: []
+      weiboList: [],
+      init:1,
+      loading:true
     };
   },
   computed: {
@@ -40,21 +50,30 @@ export default {
     })
   },
   created() {
-    this.loadData();
+    this.loadData(1);
   },
   mounted() {
     document.addEventListener("keydown", this.onKeyDown);
   },
   methods: {
-    loadData(init = false) {
+    loadData(page) {
       var self = this;
+      let init =page?page:this.init;
       let parameter = {};
-      this.$http("/getweibolist", parameter, "post").then(res => {
-        if (!init) {
-          this.weiboList = res.data;
+      this.$http("/musicRankingsDetails?type="+init, parameter,).then(res => {
+        if (page) {
+          this.weiboList = res.result;
+          this.init = 1;
+          this.loading=false;
         } else {
-          this.weiboList = res.data.concat(this.weiboList);
+          if(res.result){
+            this.weiboList = this.weiboList.concat(res.result)
+            this.init  =this.init + 1;
+            }else{
+            this.weiboList = this.weiboList;
+          }
         }
+        console.log(this.weiboList)
         this.$nextTick(() => {
           if (!self.scroll) {
             self.scroll = new BScroll(this.$refs.wrapper, {
@@ -75,7 +94,7 @@ export default {
               setTimeout(function() {
                 // 恢复文本值
                 document.querySelector(".loading-hook").innerText = ""; // 向列表添加数据
-                self.loadData(true);
+                self.loadData();
               }, 1000);
             });
             self.scroll.on("pullingDown", pos => {
@@ -83,7 +102,7 @@ export default {
               setTimeout(function() {
                 // 恢复文本值
                 document.querySelector(".loading-down").innerText = ""; // 向列表添加数据
-                self.loadData();
+                self.loadData(1);
               }, 1000);
             });
           } else {
@@ -107,6 +126,21 @@ export default {
     left: 0;
     overflow: hidden;
     .content {
+      .item{
+        display: flex;
+        padding:.1rem .3rem;
+        img{
+          width: 2rem;
+          height: 2rem;
+        }
+        .info{
+              width: 70%;
+              li{
+                    padding: 0 0.1rem;
+                    border-bottom: 1px solid #f5f5f5;
+              }
+        }
+      }
     }
     .loading-down {
       position: absolute;

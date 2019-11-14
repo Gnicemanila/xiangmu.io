@@ -39,7 +39,7 @@
     </div>
     <ul class="old-say-say">
       <li  v-for="(item,i) in weiboList" :key="i">
-         <Message  :list.sync="item" v-if="item.isme"/>
+         <Message  :list="item" v-if="item.isme"/>
       </li>
     </ul>
     <div v-if="show_date" class="date">
@@ -209,7 +209,6 @@ export default {
     li {
       border-top: 1px solid #f5f5f5;
       background: #ffffff;
-      margin-top: 0.1rem;
     }
   }
   .date {

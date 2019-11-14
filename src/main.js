@@ -9,8 +9,9 @@ import './assets/style/reset.less'
 import './variables.less';
 
 
-import audio1 from "./assets/video/m1.mp3";
-import audio2 from "./assets/video/m2.mp3";
+// import audio1 from "./assets/video/m1.mp3";
+// import audio2 from "./assets/video/m2.mp3";
+let audio1 ="http://music.163.com/song/media/outer/url?id=1376577855.mp3";
 Vue.prototype.openMusic = () => {
     let buttonAudio = document.getElementById('buttonAudio');
     buttonAudio.setAttribute('src', audio1);
@@ -34,7 +35,7 @@ import Api from './api/api'
 import VueClipboard from 'vue-clipboard2'
 Vue.use(VueClipboard)
 Vue.prototype.$http=Api
-import './mock/index'
+// import './mock/index'
 Vue.use(Vant)
 Vue.config.productionTip = false
 
