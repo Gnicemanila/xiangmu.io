@@ -83,17 +83,17 @@ export default {
       parameter.code = this.code;
       let res = await this.$http("/getlogin", parameter, "post");
       if (res.code == 400) {
-        let user ={
-            'id': '9527',
-            'name': this.name,
-            'real_name': '胡歌',
-            'sex': 0,
-            'phone': '188****8888',
-            'card': "6222********1234",
-            'integral': 580,
-            'coin': 690,
-            isBoss: false
-        }
+        let user = {
+          id: "9527",
+          name: this.name,
+          real_name: "胡歌",
+          sex: 0,
+          phone: "188****8888",
+          card: "6222********1234",
+          integral: 580,
+          coin: 690,
+          isBoss: false
+        };
         this.runName(user);
         sessionStorage.setItem("user", JSON.stringify(user));
         this.$router.push({ path: "/home" });
@@ -106,8 +106,8 @@ export default {
       this.cangetcode = true;
       let res = await this.$http("/getcode");
       if (res.code == 400) {
-        let code =Math.random(1000,9999);
-        this.verificationCode = ""+code;
+        let code = Math.random(1000, 9999);
+        this.verificationCode = "" + code;
         this.cangetcode = false;
         this.drawPic();
       }

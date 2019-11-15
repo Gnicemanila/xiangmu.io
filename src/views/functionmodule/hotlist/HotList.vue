@@ -3,13 +3,11 @@
     <Header goback="true" :msg="hot" serve="true" />
     <Search :placeholder="placeholder" :onSearch="onSearch" :_this="this" />
     <van-loading size="24px" vertical v-if="loading">加载中...</van-loading>
-   <ul v-if="type==1" class="video-list">
-        <li v-for="(item,i) in video_list" :key="i">
-          <div>
-            {{item.text}}
-          </div>
-          <video :src="item.video" controls loop></video>
-        </li>
+    <ul v-if="type==1" class="video-list">
+      <li v-for="(item,i) in video_list" :key="i">
+        <div>{{item.text}}</div>
+        <video :src="item.video" controls loop></video>
+      </li>
     </ul>
     <ul v-if="type==2&&music.length==0" class="music">
       <li v-for="(item,i) in music_list" :key="i">
@@ -28,13 +26,13 @@
       </li>
     </ul>
     <ul v-if="type==3" class="hot-list">
-        <li v-for="(item,i) in hot_list" :key="i" @click="goNext(item)">
-          <img :src="item.image" alt="">
-          <div class="info">
-            <div class="title"> {{item.title}}</div>
-            <div class="time">{{item.passtime}}</div>
-          </div>
-        </li>
+      <li v-for="(item,i) in hot_list" :key="i" @click="goNext(item)">
+        <img :src="item.image" alt />
+        <div class="info">
+          <div class="title">{{item.title}}</div>
+          <div class="time">{{item.passtime}}</div>
+        </div>
+      </li>
     </ul>
     <ul v-if="music.length>0" class="search-music">
       <li v-for="(item,i) in music" :key="i" class="list">
@@ -131,10 +129,10 @@ export default {
       placeholder: "",
       hot: "",
       music_list: [], //热门榜单
-      music: [] ,//歌曲
-      video_list:[],//
-      hot_list:[],//热搜
-      loading:true,//加载
+      music: [], //歌曲
+      video_list: [], //
+      hot_list: [], //热搜
+      loading: true //加载
     };
   },
   computed: {
@@ -152,7 +150,7 @@ export default {
         this.$http("/getJoke?page=2&count=30").then(res => {
           if (res.code == 200) {
             this.video_list = res.result;
-            this.loading=false
+            this.loading = false;
           }
         });
         break;
@@ -162,7 +160,7 @@ export default {
         this.$http("/musicRankings").then(res => {
           if (res.code == 200) {
             this.music_list = res.result;
-            this.loading=false
+            this.loading = false;
           }
         });
         break;
@@ -172,16 +170,16 @@ export default {
         this.$http("/getWangYiNews").then(res => {
           if (res.code == 200) {
             this.hot_list = res.result;
-            this.loading=false
+            this.loading = false;
           }
         });
         break;
       case "4":
         this.hot = "网站活跃榜单";
-        this.$http("/getImages",{},).then(res => {
+        this.$http("/getImages", {}).then(res => {
           if (res.code == 200) {
             this.hot_list = res.result;
-            this.loading=false
+            this.loading = false;
           }
         });
         break;
@@ -202,8 +200,8 @@ export default {
           break;
       }
     },
-    goNext(item){
-      window.open(item.path)
+    goNext(item) {
+      window.open(item.path);
     }
   }
 };
@@ -270,34 +268,33 @@ export default {
       }
     }
   }
-  .video-list{
+  .video-list {
     background: #f5f5f5;
-    li{
-      padding: .1rem .3rem;
-      margin: .1rem 0;
+    li {
+      padding: 0.1rem 0.3rem;
+      margin: 0.1rem 0;
       background: #fff;
-      video{
+      video {
         width: 100%;
         height: 3rem;
       }
     }
   }
-  .hot-list{
+  .hot-list {
     background: #f5f5f5;
-    li{
-      padding: .1rem .3rem;
-      margin: .3rem 0;
+    li {
+      padding: 0.1rem 0.3rem;
+      margin: 0.3rem 0;
       display: flex;
-          background: #fff;
-      img{
+      background: #fff;
+      img {
         width: 2rem;
-        height:  2rem;
+        height: 2rem;
       }
-      .info{
-        padding: .3rem;
+      .info {
+        padding: 0.3rem;
         text-align: left;
-        .title{
-
+        .title {
         }
       }
     }

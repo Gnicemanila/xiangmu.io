@@ -24,17 +24,17 @@ import './variables.less';
 //   let buttonAudio = document.getElementById('buttonAudio');
 //   buttonAudio.pause();
 // }
-document.body.addEventListener('click', function(e) {
-    let event = e || window.event;
-    let target = event.target || event.srcElement;
-    let clickMusic = target.getAttribute('clickMusic')
-    if (clickMusic === 'true') Vue.prototype.clickButton()
-    else return false;
+document.body.addEventListener('click', function (e) {
+  let event = e || window.event;
+  let target = event.target || event.srcElement;
+  let clickMusic = target.getAttribute('clickMusic')
+  if (clickMusic === 'true') Vue.prototype.clickButton()
+  else return false;
 })
 import Api from './api/api'
 import VueClipboard from 'vue-clipboard2'
 Vue.use(VueClipboard)
-Vue.prototype.$http=Api
+Vue.prototype.$http = Api
 // import './mock/index'
 Vue.use(Vant)
 Vue.config.productionTip = false
