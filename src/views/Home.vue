@@ -149,19 +149,19 @@ export default {
     goNext(path) {
       this.$router.push({ path: path });
     },
-    play() {
-      if (!this.active) {
-        this.openMusic();
-      } else {
-        this.closeMusic();
-      }
-      this.active = !this.active;
-    },
-      onSearch(item){
-         this.$http("/searchMusic?name="+item).then((res)=>{
-         console.log(res.result)
-         })
-    }
+    // play() {
+    //   if (!this.active) {
+    //     this.openMusic();
+    //   } else {
+    //     this.closeMusic();
+    //   }
+    //   this.active = !this.active;
+    // },
+    //   onSearch(item){
+    //      this.$http("/searchMusic?name="+item).then((res)=>{
+    //      console.log(res.result)
+    //      })
+    // }
   }
 };
 </script>

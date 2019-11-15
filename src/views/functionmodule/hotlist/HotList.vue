@@ -178,7 +178,12 @@ export default {
         break;
       case "4":
         this.hot = "网站活跃榜单";
-        this.loading=false;
+        this.$http("/getImages",{},).then(res => {
+          if (res.code == 200) {
+            this.hot_list = res.result;
+            this.loading=false
+          }
+        });
         break;
     }
   },

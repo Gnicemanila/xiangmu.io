@@ -11,19 +11,19 @@ import './variables.less';
 
 // import audio1 from "./assets/video/m1.mp3";
 // import audio2 from "./assets/video/m2.mp3";
-let audio1 ="http://music.163.com/song/media/outer/url?id=1376577855.mp3";
-Vue.prototype.openMusic = () => {
-    let buttonAudio = document.getElementById('buttonAudio');
-    buttonAudio.setAttribute('src', audio1);
-    buttonAudio.setAttribute('loop','loop');
-    //重复播放
-    buttonAudio.play();
-    //开始播放
-}
-Vue.prototype.closeMusic = () => {
-  let buttonAudio = document.getElementById('buttonAudio');
-  buttonAudio.pause();
-}
+// let audio1 ="http://music.163.com/song/media/outer/url?id=1376577855.mp3";
+// Vue.prototype.openMusic = () => {
+//     let buttonAudio = document.getElementById('buttonAudio');
+//     buttonAudio.setAttribute('src', audio1);
+//     buttonAudio.setAttribute('loop','loop');
+//     //重复播放
+//     buttonAudio.play();
+//     //开始播放
+// }
+// Vue.prototype.closeMusic = () => {
+//   let buttonAudio = document.getElementById('buttonAudio');
+//   buttonAudio.pause();
+// }
 document.body.addEventListener('click', function(e) {
     let event = e || window.event;
     let target = event.target || event.srcElement;
