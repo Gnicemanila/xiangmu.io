@@ -24,7 +24,9 @@ npm run test
 ```
 npm run lint
 ```
-
+### theme js
+    网站主题js @primary 基础色
+    
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
 

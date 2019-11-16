@@ -1,7 +1,17 @@
 const CompressionPlugin = require("compression-webpack-plugin");
+const isProduction = process.env.NODE_ENV === 'production';
+const cdn = {
+  css: [],
+  js: [
+      'https://cdn.bootcss.com/vue/2.5.17/vue.runtime.min.js',
+      'https://cdn.bootcss.com/vue-router/3.0.1/vue-router.min.js',
+      'https://cdn.bootcss.com/vuex/3.0.1/vuex.min.js',
+      'https://cdn.bootcss.com/axios/0.18.0/axios.min.js',
+  ]
+}
 module.exports = {
   //webpack配置
-  publicPath: process.env.NODE_ENV === 'production' ? './' : '/',// 部署应用包时的基本 URL
+  publicPath:isProduction ? './' : '/',// 部署应用包时的基本 URL
   assetsDir: 'static',
   outputDir: 'docs',
   configureWebpack: {
@@ -10,19 +20,6 @@ module.exports = {
       hints: false
     }
     //或者
-
-    //警告 webpack 的性能提示
-    // performance: {
-    //   hints:'warning',
-    //   //入口起点的最大体积
-    //   maxEntrypointSize: 50000000,
-    //   //生成文件的最大体积
-    //   maxAssetSize: 30000000,
-    //   //只给出 js 文件的性能提示
-    //   assetFilter: function(assetFilename) {
-    //     return assetFilename.endsWith('.js');
-    //   }
-    // }
   }
   ,
   chainWebpack: config => {
@@ -35,12 +32,12 @@ module.exports = {
       .loader('image-webpack-loader')
       .options({ bypassOnDebug: true })
     // 开启js、css压缩
-    if (process.env.NODE_ENV === 'production') {
+    if (isProduction) {
       config.plugin('compressionPlugin')
         .use(new CompressionPlugin({
           test: /\.js$|\.html$|.\css/, // 匹配文件名
           threshold: 10240, // 对超过10k的数据压缩
-          deleteOriginalAssets: false // 不删除源文件
+          deleteOriginalAssets: true // 不删除源文件
         }))
     }
   },
