@@ -1,45 +1,55 @@
 const CompressionPlugin = require("compression-webpack-plugin");
 const isProduction = process.env.NODE_ENV === 'production';
+// 本地环境是否需要使用cdn
+const devNeedCdn = false
+
+// cdn链接
 const cdn = {
-  css: [],
-  js: [
-      'https://cdn.bootcss.com/vue/2.5.17/vue.runtime.min.js',
-      'https://cdn.bootcss.com/vue-router/3.0.1/vue-router.min.js',
-      'https://cdn.bootcss.com/vuex/3.0.1/vuex.min.js',
-      'https://cdn.bootcss.com/axios/0.18.0/axios.min.js',
-  ]
+    // cdn：模块名称和模块作用域命名（对应window里面挂载的变量名称）
+    externals: {
+        vue: 'Vue',
+        vuex: 'Vuex',
+        'vue-router': 'VueRouter',
+        'axios': 'axios'
+    },
+    // cdn的css链接
+    css: [],
+    // cdn的js链接
+    js: [
+        'https://cdn.staticfile.org/vue/2.6.10/vue.min.js',
+        'https://cdn.staticfile.org/vuex/3.0.1/vuex.min.js',
+        'https://cdn.staticfile.org/vue-router/3.0.3/vue-router.min.js',
+        'https://cdn.bootcss.com/axios/0.18.0/axios.min.js',
+    ]
 }
 module.exports = {
   //webpack配置
-  publicPath:isProduction ? './' : '/',// 部署应用包时的基本 URL
+  publicPath: isProduction ? './' : '/',// 部署应用包时的基本 URL
   assetsDir: 'static',
   outputDir: 'docs',
-  configureWebpack: {
-    //关闭 webpack 的性能提示
-    performance: {
-      hints: false
-    }
-    //或者
+  configureWebpack: config => {
+    // 用cdn方式引入，则构建时要忽略相关资源
+    if (isProduction || devNeedCdn) config.externals = cdn.externals
   }
   ,
   chainWebpack: config => {
     // 解决ie11兼容ES6
     config.entry('main').add('babel-polyfill')
-    // 开启图片压缩
-    config.module.rule('images')
-      .test(/\.(png|jpe?g|gif|svg)(\?.*)?$/)
+    // ============压缩图片 start============
+    config.module
+      .rule('images')
       .use('image-webpack-loader')
       .loader('image-webpack-loader')
       .options({ bypassOnDebug: true })
-    // 开启js、css压缩
-    if (isProduction) {
-      config.plugin('compressionPlugin')
-        .use(new CompressionPlugin({
-          test: /\.js$|\.html$|.\css/, // 匹配文件名
-          threshold: 10240, // 对超过10k的数据压缩
-          deleteOriginalAssets: true // 不删除源文件
-        }))
-    }
+      .end()
+    // ============压缩图片 end============
+    // ============注入cdn start============
+config.plugin('html').tap(args => {
+  // 生产环境或本地需要cdn时，才注入cdn
+  if (isProduction || devNeedCdn) args[0].cdn = cdn
+  return args
+})
+// ============注入cdn start============
   },
   transpileDependencies: [
     'biyi-admin', // 指定对第三方依赖包进行babel-polyfill处理

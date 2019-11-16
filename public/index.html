@@ -30,6 +30,12 @@
       <strong>We're sorry but xiangmu doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
     <div id="app"></div>
+            <!-- 使用CDN的JS文件 -->
+            <% for (var i in htmlWebpackPlugin.options.cdn &&
+            htmlWebpackPlugin.options.cdn.js) { %>
+            <script src="<%= htmlWebpackPlugin.options.cdn.js[i] %>"></script>
+            <% } %>
+            <!-- 使用CDN的JS文件 -->
     <!-- built files will be auto injected -->
   </body>
 </html>
