@@ -59,12 +59,12 @@
       </div>
     </div>
     <ul class="room-list">
-      <li  @click="goNext('/chat')">
+      <li @click="goNext('/chat')">
         <div class="room-name">
           <div class="type">私密房间</div>
           <div class="hot-number">
-              <i class="hot"></i>
-              <span>19.5万</span>
+            <i class="hot"></i>
+            <span>19.5万</span>
           </div>
         </div>
         <div class="hot-say text-over">胡歌来了直播间</div>
@@ -222,10 +222,10 @@ export default {
           align-items: center;
           padding: 0 0.2rem;
         }
-        .hot-number{
-            position: absolute;
-            left: .2rem;
-            bottom: .1rem;
+        .hot-number {
+          position: absolute;
+          left: 0.2rem;
+          bottom: 0.1rem;
         }
       }
       .hot-say {
