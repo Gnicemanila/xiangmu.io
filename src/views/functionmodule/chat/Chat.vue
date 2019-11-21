@@ -93,18 +93,17 @@
         </div>
         <div class="chat-func-content-item">
           <div>
-            <i class="chat-room-list" @click="goNext('/roomList')"></i>
-            <span>房间列表</span>
-          </div>
-        </div>
-        <div class="chat-func-content-item">
-          <div>
             <i class="chat-private-chat"></i>
             <span>私聊列表</span>
           </div>
         </div>
       </div>
       <Footer message="聊天室" />
+    </div>
+    <div class="loading" v-if="loading">
+      <div class="ing">
+          <van-loading type="spinner" />
+      </div>
     </div>
   </div>
 </template>
@@ -116,7 +115,7 @@ import Message from "@/components/Message";
 import Me from "@/components/Me";
 import { mapState, mapActions } from "vuex";
 import { getElementViewTop } from "../../../api/publicFuction";
-import { Dialog } from "vant";
+import { Dialog,Loading  } from "vant";
 import BScroll from "@better-scroll/core";
 import PullDown from "@better-scroll/pull-down";
 import Pullup from "@better-scroll/pull-up";
@@ -139,7 +138,8 @@ export default {
       chatList: [],
       iphonex: false,
       show_bottom: "",
-      list: [] //表情
+      list: [], //表情
+      loading:false,//加载提示
     };
   },
   created() {
@@ -205,8 +205,10 @@ export default {
     },
     loadData() {
       let parameter = {};
+      this.loading =true;
       this.$http("/getchatlist", parameter).then(res => {
         if (res.code == 400) {
+          this.loading =false;
           let data = [
             {
               name: "彭于晏",
@@ -610,6 +612,18 @@ export default {
           font-size: 0.5rem;
         }
       }
+    }
+  }
+  .loading{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    background: rgba(0, 0, 0, 0.3);
+    .ing{
+          margin: 45% 0;
     }
   }
 }

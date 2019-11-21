@@ -11,7 +11,7 @@
       </li>
       <li v-bind:class="{ active: this.message=='聊天室' }">
         <i class="icon_chat"></i>
-        <router-link to="/chat">聊天室</router-link>
+        <router-link to="/chatRoom">聊天室</router-link>
       </li>
       <li v-bind:class="{ active: this.message=='活动' }">
         <i class="icon_play"></i>

@@ -9,9 +9,8 @@ import ChoicePsd from '../views/functionmodule/info/ChoicePsd.vue'
 //主功能
 import Play from '../views/Play.vue'
 //聊天室
+import ChatRoom from '../views/ChatRoom.vue'
 import Chat from '../views/functionmodule/chat/Chat.vue'
-//房间列表
-import RoomList from '../views/functionmodule/chat/RoomList.vue'
 
 
 import Home from '../views/Home.vue'
@@ -267,14 +266,14 @@ const routes = [
     component: Play
   },
   {
+    path: '/chatRoom',
+    name: 'chatRoom',
+    component: ChatRoom
+  },
+  {
     path: '/chat',
     name: 'chat',
     component: Chat
-  },
-  {
-    path: '/roomList',
-    name: 'roomList',
-    component: RoomList
   },
   {
     path: '/about',
