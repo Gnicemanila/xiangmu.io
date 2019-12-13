@@ -134,7 +134,7 @@ export default {
         margin-bottom: 0.7rem;
       }
       .form-input {
-        width: 85%;
+        width: 70%;
       }
       .get-code {
         font-size: 0.28rem;

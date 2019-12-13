@@ -5,20 +5,11 @@
     <div class="home-body">
       <div class="swipe">
         <van-swipe :autoplay="3000">
-          <van-swipe-item>
-            <img :src="imgUrl" />
-          </van-swipe-item>
-          <van-swipe-item>
-            <img :src="imgUrl2" />
+          <van-swipe-item v-for="(item,i) in img" :key="i">
+            <img :src="item" />
           </van-swipe-item>
         </van-swipe>
       </div>
-      <!-- <ul class="paly">
-        <li class="tittle" @click="play()">
-          <i :class="{'icon-play':true, 'active':active}"></i>当前网站音乐野狼酒吧
-        </li>
-        <audio src id="buttonAudio"></audio>
-      </ul> -->
       <div class="news">
         <div class="notice">
           <span class="notice-ico fl"></span>
@@ -60,18 +51,9 @@
               <li @click="goNext('/article')">江汉路改名韩红江路</li>
             </ul>
           </div>
-          <van-swipe :loop="false" :width="300">
-            <van-swipe-item>
-              <img :src="video1" />
-            </van-swipe-item>
-            <van-swipe-item>
-              <img :src="video2" />
-            </van-swipe-item>
-            <van-swipe-item>
-              <img :src="video3" />
-            </van-swipe-item>
-            <van-swipe-item>
-              <img :src="video4" />
+          <van-swipe :loop="false" :width="300" :autoplay="3000">
+            <van-swipe-item v-for="(item,i) in video" :key="i">
+              <img :src="item" />
             </van-swipe-item>
           </van-swipe>
         </div>
@@ -98,13 +80,12 @@ import { mapState } from "vuex";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FansLike from "@/components/FansLike";
-// import Search from "@/components/Search";
 export default {
   name: "Home",
   components: {
     Header,
     Footer,
-    FansLike,
+    FansLike
   },
   mounted() {
     var u = navigator.userAgent;
@@ -119,12 +100,18 @@ export default {
   },
   data() {
     return {
-      imgUrl: require("../assets/imgs/home/banner1.png"),
-      imgUrl2: require("../assets/imgs/home/banner2.png"),
-      video1: require("../assets/imgs/home/video1.png"),
-      video2: require("../assets/imgs/home/video2.png"),
-      video3: require("../assets/imgs/home/video3.png"),
-      video4: require("../assets/imgs/home/video4.png"),
+      img:[
+        "https://img.yzcdn.cn/vant/apple-5.jpg",
+        "https://img.yzcdn.cn/vant/apple-6.jpg",
+        "https://img.yzcdn.cn/vant/apple-7.jpg",
+        "https://img.yzcdn.cn/vant/apple-8.jpg",
+      ],
+      video: [
+        "https://img.yzcdn.cn/vant/apple-1.jpg",
+        "https://img.yzcdn.cn/vant/apple-2.jpg",
+        "https://img.yzcdn.cn/vant/apple-3.jpg",
+        "https://img.yzcdn.cn/vant/apple-4.jpg"
+      ],
       active: false,
       iphonex: false
     };
@@ -148,20 +135,7 @@ export default {
   methods: {
     goNext(path) {
       this.$router.push({ path: path });
-    },
-    // play() {
-    //   if (!this.active) {
-    //     this.openMusic();
-    //   } else {
-    //     this.closeMusic();
-    //   }
-    //   this.active = !this.active;
-    // },
-    //   onSearch(item){
-    //      this.$http("/searchMusic?name="+item).then((res)=>{
-    //      console.log(res.result)
-    //      })
-    // }
+    }
   }
 };
 </script>
@@ -179,45 +153,15 @@ export default {
     height: 2.76rem;
     margin-top: 0.02rem;
     img {
+      height: 2.76rem;
       width: 100%;
-    }
-  }
-  .paly {
-    background: #ffffff;
-    padding: 0.2rem 0.3rem;
-    margin-bottom: 0.16rem;
-    li {
-      font-size: 0.28rem;
-      font-weight: 500;
-      color: rgba(51, 51, 51, 1);
-      display: flex;
-      // text-align: left;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      height: 0.5rem;
-      &.tittle {
-        .icon-play {
-          display: inline-block;
-          width: 0.4rem;
-          height: 0.4rem;
-          background: url("./../assets/imgs/home/playvideo.png") no-repeat;
-          background-size: 100%;
-          margin: 0 0.3rem;
-          &.active {
-            background: url("./../assets/imgs/home/playvideo_active.png")
-              no-repeat;
-            background-size: 100%;
-          }
-        }
-      }
     }
   }
   .news {
     height: 3.9rem;
     padding: 0 0.3rem;
     background: #ffffff;
-    margin: .1rem 0;
+    margin: 0.1rem 0;
     .notice {
       height: 0.72rem;
       justify-content: center;
@@ -228,7 +172,6 @@ export default {
         padding: 0;
         height: 0.72rem;
       }
-      // align-items: center;
     }
     .news-deatil {
       li {
@@ -281,7 +224,7 @@ export default {
   .video-content {
     margin-top: 0.16rem;
     height: 4.26rem;
-    background: #ffffff;
+    // background: #ffffff;
     .tittle {
       height: 1.26rem;
       display: flex;

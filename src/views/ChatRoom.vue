@@ -70,7 +70,13 @@
         <div class="hot-say text-over">胡歌来了直播间</div>
       </li>
       <li @click="goNext('/chat')">
-        <div class="room-name"></div>
+               <div class="room-name">
+          <div class="type">公共房间</div>
+          <div class="hot-number">
+            <i class="hot"></i>
+            <span>19.5万</span>
+          </div>
+        </div>
         <div class="hot-say text-over">胡歌来了直播间</div>
       </li>
       <li @click="goNext('/chat')">
